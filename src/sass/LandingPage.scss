@@ -1,41 +1,251 @@
+$inside-orange: #df4b32;
+$inside-dark: #202020;
+$inside-cream: #f6f1ea;
+$inside-white: #ffffff;
+
 .landing-page {
   position: relative;
-  height: calc(100vh - 20px);
-  width: calc(100vw - 20px);
-  margin: 10px; // This ensures the 10px margin on all sides if that's the intention
-  background: white url('../assets/images/port-splash.png') no-repeat center
-    center;
-  background-size: contain;
-  box-sizing: border-box; // Includes padding and border in the element's total width and height
-  padding-top: 10px;
+  width: 100%;
+  min-height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(223, 75, 50, 0.13) 0,
+      rgba(223, 75, 50, 0) 28%
+    ),
+    $inside-cream;
+  color: $inside-dark;
 
-  &.landscape {
-    background: white url('../assets/images/port-splash-horizontal.png')
-      no-repeat center center;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        110deg,
+        transparent 0 66%,
+        rgba(255, 255, 255, 0.48) 66% 67%,
+        transparent 67%
+      );
+  }
 
-    .round-button {
-      top: 65%;
-      left: 75%;
-      transform: translate(-50%, -50%);
+  &__brand {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    flex-direction: column;
+    align-self: flex-start;
+    line-height: 0.82;
+    letter-spacing: 0.09em;
+  }
+
+  &__brand-inside {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    padding-left: 0.18em;
+  }
+
+  &__brand-south {
+    color: $inside-orange;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 800;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    width: min(720px, 100%);
+    margin: auto 0;
+  }
+
+  &__eyebrow {
+    margin: 0 0 14px;
+    color: $inside-orange;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    color: $inside-orange;
+    font-size: clamp(4rem, 11vw, 9.5rem);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.055em;
+  }
+
+  &__subtitle {
+    margin: 20px 0 0;
+    font-size: clamp(1rem, 2.2vw, 1.55rem);
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  &__intro {
+    max-width: 590px;
+    margin: 28px 0 0;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.65;
+  }
+
+  &__explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    margin-top: 34px;
+    padding: 16px 22px;
+    border: 2px solid $inside-orange;
+    color: $inside-orange;
+    background: transparent;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+      background 180ms ease,
+      color 180ms ease,
+      transform 180ms ease;
+
+    &:hover,
+    &:focus-visible {
+      background: $inside-orange;
+      color: $inside-white;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__arrow {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  &__footer {
+    position: relative;
+    z-index: 2;
+    color: $inside-orange;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+  }
+
+  &__river {
+    position: absolute;
+    z-index: 1;
+    width: 42vw;
+    height: 145vh;
+    right: -16vw;
+    top: -20vh;
+    border: clamp(55px, 8vw, 130px) solid rgba(223, 75, 50, 0.09);
+    border-radius: 48% 52% 46% 54%;
+    transform: rotate(17deg);
+    pointer-events: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: inherit;
+    }
+
+    &::before {
+      inset: 9%;
+      border: clamp(24px, 4vw, 60px) solid rgba(223, 75, 50, 0.07);
+    }
+
+    &::after {
+      inset: 24%;
+      border: 2px solid rgba(223, 75, 50, 0.15);
     }
   }
 
   &.desktop {
-    background: white url('../assets/images/port-splash-desktop.png') no-repeat
-      center center;
-    background-size: contain;
-    background-position: center;
+    padding: 52px 6vw;
 
-    .round-button {
-      width: 200px;
-      height: 200px;
-      top: 65%;
-      left: 70%;
-      transform: translate(-50%, -50%);
+    .landing-page__content {
+      margin-left: 5vw;
+    }
+  }
+
+  &.landscape {
+    padding: 26px 5vw;
+
+    .landing-page__content {
+      max-width: 62vw;
     }
 
-    .round-button span {
-      font-size: 35px;
+    .landing-page__intro {
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    .landing-page__explore {
+      margin-top: 22px;
+    }
+  }
+
+  &.portrait {
+    padding: 28px 24px;
+
+    h1 {
+      font-size: clamp(3.8rem, 18vw, 6.3rem);
+    }
+
+    .landing-page__subtitle {
+      max-width: 360px;
+      line-height: 1.5;
+    }
+
+    .landing-page__intro {
+      margin-top: 22px;
+      line-height: 1.55;
+    }
+
+    .landing-page__river {
+      width: 82vw;
+      right: -55vw;
+    }
+
+    .landing-page__footer {
+      max-width: 300px;
+      line-height: 1.6;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .landing-page {
+    padding: 24px 20px;
+
+    &__brand-south {
+      font-size: 2.6rem;
+    }
+
+    &__intro {
+      font-size: 0.98rem;
+    }
+
+    &__explore {
+      width: 100%;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    &__footer {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
     }
   }
 }
