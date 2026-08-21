@@ -1,0 +1,131 @@
+footer {
+  //   text-align: center;
+  //   color: white;
+  //   height: 100px;
+  //   width: 100%;
+  //   flex-shrink: 0;
+  //   position: relative;
+  //   bottom: 0;
+  //   box-sizing: border-box;
+  //   padding-bottom: 20px;
+  //   display: flex;
+
+  .footer-circles {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #8bc43e inset;
+    z-index: 2;
+  }
+
+  .icon-svg {
+    width: 65%;
+    fill: #e7e7e7;
+    position: absolute;
+  }
+
+  .icon-label {
+    color: #007037;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%; // Centers vertically
+    transform: translateY(-50%); // Offset for exact centering
+    z-index: 1; // Ensures text is above the icon
+  }
+
+  .active {
+    background-color: #8bc43e; // Active background color
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 3px #8a957b inset;
+  }
+
+  .active-icon {
+    fill: #8a957b; // Active icon fill
+  }
+
+  .active-text {
+    color: white; // Active text color
+  }
+}
+
+.footer-container {
+  position: relative;
+  padding: 20px;
+}
+
+.circle-background {
+  position: absolute;
+  top: -110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 484px;
+  height: 200px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.circle-background::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 484px;
+  height: 200px;
+  background-color: #bf772f;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.circle-background::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 484px;
+  height: 200px;
+  background-color: #007037;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.circle-background h3 {
+  color: #ffe28e;
+  font-size: 39px;
+  font-weight: 600;
+  padding-top: 30px;
+  margin: 0;
+  text-shadow: 1px 1px 2px black;
+}
+
+.circle-background p {
+  color: #fff;
+  font-size: 22px;
+  margin: 0;
+  text-shadow: 1px 1px 2px black;
+  font-weight: 600;
+}
+
+.footer-content {
+  z-index: 3;
+}

@@ -1,0 +1,57 @@
+.sort-menu {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 59%;
+  position: fixed;
+  top: 3px;
+  right: 0;
+  transition: transform 0.5s ease-in-out;
+  background-color: #fff;
+  border-bottom-left-radius: 12px;
+  box-shadow: -4px 4px 8px #000;
+  border: none;
+  padding: 10px 20px;
+
+  .s-menu-item {
+    width: 100%;
+
+    select {
+      width: 80%;
+    } 
+  }
+}
+  
+  .s-menu-item {
+    font-size: 19px;
+    width: 100%;
+    text-align: start;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .s-menu-item:last-child {
+    border-bottom: none;
+  }
+  
+  .s-menu-item svg {
+    width: 25px;
+    padding-right: 15px;
+  }
+  
+  .sort-menu button {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    border: none;
+    background-color: #fff;
+  }
+
+  .s-menu-item select {
+    font-size: 1.2rem;
+  }

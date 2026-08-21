@@ -1,0 +1,408 @@
+.page-title {
+  margin-bottom: 10px;
+}
+
+.internal-content {
+  /*display: flex;
+  flex-direction: column;
+  justify-content: flex-start;*/
+  overflow: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+}
+
+.itinerery-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.right-button {
+  position: absolute;
+  right: 35px;
+}
+
+.right-button button {
+  background-color: #bf772f;
+  width: 64px;
+  height: 42px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-button svg {
+  width: 12px;
+  height: 15px;
+}
+
+.location-item {
+  display: flex;
+  padding: 10px 0;
+}
+
+.location-item:nth-child(even) {
+  background-color: #e2f8ff;
+}
+
+.left-side {
+  width: 23%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.day-box {
+  background-color: #888888;
+  padding: 4px 16px;
+}
+
+.day-label {
+  font-weight: bold;
+  color: white;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.day-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.date-box, .time-box {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.date-value, .time-value {
+  font-size: 1.1rem;
+  color: #29ABE2;
+  font-weight: bold;
+}
+
+.time-value {
+  margin-bottom: 20px;
+}
+
+.details-button {
+  background-color: #FFFFFF;
+  border: none;
+  color: #818181;
+  padding: 6px 10px;
+  border: 2px solid #818181;
+  box-shadow: 2px 4px 8px #81818181;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: auto;
+
+  svg {
+    fill: #818181;
+    width: 70%;
+  }
+}
+
+.details-button:hover {
+  background-color: #999999;
+}
+
+.right-side {
+  width: 77%;
+  padding: 10px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  p {
+    margin: 0;
+  }
+
+  p:nth-of-type(2) {
+    margin-bottom: 10px;
+  }
+}
+
+.right-side-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .textBlock {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  color: #29ABE2;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: 2px solid #818181;
+  border-radius: 10px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  margin-bottom: auto;
+  background-color: white;
+
+  svg {
+    fill: #8BC43E;
+  }
+}
+
+.right-side h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #007037;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: auto;
+}
+
+.button-group button {
+  flex: 1;
+  background-color: #8BC43E;
+  border: none;
+  color: white;
+  padding: 8px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 23%;
+  
+  svg {
+    fill: white;
+    width: 70%;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.button-group button:hover {
+  background-color: #007037;
+}
+
+.edit-box {
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+.edit-box label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.edit-box button {
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+.itinHeaderRow {
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+
+  select, input, button {
+    font-size: 1.2rem;
+  }
+}
+
+.desktop {
+
+  .itin {
+
+    .itinerary-content {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      margin-top: 15px;
+
+      .location-item {
+        width: 49%;
+        border: 1px solid #777777;
+        background-color: white;
+
+        .edit-box {
+
+          input, button {
+            font-size: 1.2rem;
+            margin-top: 0;
+          }
+
+          label {
+            margin-top: 10px;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}  
+
+.itinerary-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .itinerary-select-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px; /* Move the top margin to the container to ensure both elements align */
+  }
+
+  .itinerary-select {
+    width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .itinerary-select-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #8bc43e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Ensure spacing between dropdown and button */
+
+    &:hover {
+      background-color: darken(#8bc43e, 10%);
+    }
+  }
+
+  .itinerary-title {
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.itinerary-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.itinerary-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.itinerary-modal {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .itinerary-popup-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .itinerary-save-button {
+    background-color: #006837;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken(#006837, 10%);
+    }
+  }
+
+  .itinerary-cancel-button {
+    background-color: #d9534f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken(#d9534f, 10%);
+    }
+  }
+}
+
+.uBut {
+  margin-left: 10px;
+  color: white;
+  background-color: #006837;
+}
+
+.rBut {
+  color: white;
+  background-color: red;
+}
+
+.cBut {
+  color: white;
+  background-color: #bf772f;
+}

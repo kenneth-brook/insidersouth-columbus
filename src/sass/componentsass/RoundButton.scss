@@ -1,0 +1,41 @@
+.container {
+    position: relative;
+    height: 100vh;
+  }
+
+.round-button {
+    position: absolute;
+    bottom: 100px; // 50px above the bottom of the container
+    left: 50%; // Center horizontally
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px; // Adjust size as necessary
+    height: 120px; // Make it a perfect circle
+    background-color: #007037;
+    color: white;
+    border-radius: 50%; // Make it round
+    font-family: Arial, sans-serif; // Specify font
+    font-size: 24px; // Base font size
+    line-height: 1;
+    font-weight: bolder;
+    cursor: pointer;
+    border: none;
+  
+    // Adding multiple shadows for the layered border effect
+    box-shadow:
+      0 0 0 7px white,  // First white gap
+      0 0 0 10px #BF772F, // Orange ring, 2px wide
+      0 0 0 18px white,
+      3px 3px 6px 22px #00000050;  // Second white border (outermost)
+  
+    &:hover {
+      background-color: darken(#007037, 10%);
+    }
+  
+    .tap {
+      font-size: 30px; // Slightly larger size for "TAP"
+    }
+}

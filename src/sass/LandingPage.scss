@@ -1,0 +1,41 @@
+.landing-page {
+  position: relative;
+  height: calc(100vh - 20px);
+  width: calc(100vw - 20px);
+  margin: 10px; // This ensures the 10px margin on all sides if that's the intention
+  background: white url('../assets/images/port-splash.png') no-repeat center
+    center;
+  background-size: contain;
+  box-sizing: border-box; // Includes padding and border in the element's total width and height
+  padding-top: 10px;
+
+  &.landscape {
+    background: white url('../assets/images/port-splash-horizontal.png')
+      no-repeat center center;
+
+    .round-button {
+      top: 65%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &.desktop {
+    background: white url('../assets/images/port-splash-desktop.png') no-repeat
+      center center;
+    background-size: contain;
+    background-position: center;
+
+    .round-button {
+      width: 200px;
+      height: 200px;
+      top: 65%;
+      left: 70%;
+      transform: translate(-50%, -50%);
+    }
+
+    .round-button span {
+      font-size: 35px;
+    }
+  }
+}

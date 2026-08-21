@@ -1,0 +1,267 @@
+.app-container.desktop.internal-desktop {
+  header,
+  footer {
+    width: 50%;
+    flex-direction: column;
+    background-color: #fff;
+  }
+
+  footer {
+    height: 19%;
+    top: 0px;
+    right: 0;
+    z-index: 999;
+    float: right;
+    margin-left: auto;
+  }
+
+  .footer-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  main {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    flex-grow: 0;
+    margin: 20px;
+    z-index: 1;
+  }
+
+  #main-container {
+    margin-bottom: -30px;
+  }
+
+  .exploring-header {
+    top: 100px;
+    font-size: 46px;
+  }
+
+  .main-content {
+    box-shadow: none;
+  }
+
+  .square-button-link {
+    order: 3;
+  }
+
+  .centerWrap {
+    order: 1;
+    padding-top: 0;
+    width: 60%;
+    height: 130px;
+  }
+
+  .centered-image {
+    max-height: 150px;
+  }
+
+  .page-title {
+    width: 95%;
+    margin: 0 auto;
+    z-index: 0;
+  }
+
+  .more-button {
+    display: none;
+  }
+
+  .two-column-layout {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .two-column-layout-desk {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .content-item {
+    width: calc(50% - 20px);
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+    border: thin solid #707070;
+    padding: 5px 0 15px 5px
+  }
+
+  .content-item:nth-child(odd) {
+    border-left: none;
+  }
+  .content-item:nth-child(even) {
+    border-right: none;
+  }
+
+  .content-item:nth-child(-n + 2) {
+    border-top: none;
+  }
+
+  .bottom-button button {
+    width: 150px;
+  }
+
+  .contact-btn {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .contact-btn a {
+    width: 50%;
+  }
+
+  .web-button {
+    width: 33.333%;
+  }
+
+  .top-container {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: flex-start;
+  }
+
+  .view-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .circle-background {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 220px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+  }
+
+  .circle-background::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 220px;
+    background-color: #bf772f;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .circle-background::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 220px;
+    background-color: #007037;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .footer-circles {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .contact-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .top-image {
+    width: 90%;
+  }
+  .contact-container a {
+    width: 33.333%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #bcd743;
+    border: none;
+    border-radius: 10px;
+    color: #007037;
+    font-weight: 700;
+    font-size: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .web-button {
+    background-color: #007037 !important;
+    color: #fff !important;
+  }
+
+  .contact-container svg {
+    fill: #007037;
+    margin-right: 4px;
+  }
+
+  .image-container {
+    width: 29%;
+  }
+
+  .text-container {
+    width: 70%;
+  }
+
+  .text-box p {
+    border-bottom: none;
+  }
+
+  .top-container {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text-container h2 {
+    border-bottom: none;
+  }
+
+  .bottom-button {
+    gap: 30px;
+  }
+
+  .text-box p {
+    padding: 10px;
+  }
+  .contact-container a {
+    font-size: 14px;
+  }
+
+  @media only screen and (max-width: 1800px) {
+    .footer-icon {
+      width: 70px;
+      height: 70px;
+    }
+  }
+
+  @media only screen and (max-width: 1400px) {
+    .footer-icon {
+      width: 60px;
+      height: 60px;
+    }
+    @media only screen and (max-width: 1200px) {
+      .bottom-button {
+        gap: 10px;
+      }
+
+      .footer-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}

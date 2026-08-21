@@ -1,0 +1,74 @@
+.login-container {
+    padding-top: 25px;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center; // Center form contents horizontally
+  
+      .form-group {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+  
+        label {
+          width: 35%;
+        }
+  
+        input {
+          width: 62%;
+          padding: 8px;
+          margin-bottom: 15px;
+        }
+      }
+  
+      button {
+        padding: 5px 20px;
+        font-size: 1.4rem;
+        align-self: center; // Center the button within the form
+      }
+    }
+  
+    p {
+      font-size: 1.2rem;
+      line-height: 0.4;
+  
+      span {
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+  
+      .register-link {
+        color: darkgreen;
+      }
+  
+      .reset-link {
+        color: red;
+      }
+    }
+  }
+  
+  .desktop {
+
+    .internal-content {
+      
+
+      .login-container {
+        width: 100%;
+        justify-content: center;
+
+        form {
+          width: 50%;
+        }
+      }
+    }
+  }

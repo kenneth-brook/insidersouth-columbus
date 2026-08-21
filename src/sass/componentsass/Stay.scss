@@ -1,0 +1,45 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header, footer {
+    flex: 0 0 auto; // Ensure header and footer don't grow or shrink
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  header {
+    top: 0;
+  }
+  
+  footer {
+    bottom: 0;
+  }
+  
+  main.internal-content {
+    flex: 1 0 auto; // Allow main to grow and take up remaining space
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .page-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    flex: 1 0 auto; // Allow content to grow and take up remaining space
+    overflow-y: auto;
+    padding: 20px;
+  }
+  

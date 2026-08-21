@@ -1,0 +1,249 @@
+.image-container {
+  width: 360px;
+  height: 150px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.text-container {
+  text-align: center;
+}
+
+.text-container h2 {
+  color: #007037;
+  border-bottom: 1px solid #707070;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.text-container > p:nth-of-type(1) {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.text-container > p:nth-of-type(2) {
+  font-size: 19px;
+}
+
+.contact-container {
+  display: flex;
+  gap: 20px;
+}
+
+.web-button {
+  max-width: 30%;
+  height: 26px;
+  padding: 10px;
+  background-color: #007037;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.contact-btn {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+.contact-btn a {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #bcd743;
+  border: none;
+  border-radius: 10px;
+  color: #007037;
+  font-weight: 700;
+  font-size: 19px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 90%;
+}
+
+.contact-btn svg {
+  width: 21px;
+  height: 21px;
+  fill: #007037;
+  padding-top: 3px;
+}
+
+.phone-button {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #bcd743;
+  border: none;
+  border-radius: 10px;
+  color: #007037;
+  font-weight: 700;
+  font-size: 19px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.phone-button svg {
+  width: 21px;
+  height: 21px;
+  fill: #007037;
+}
+
+.bottom-button {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.bottom-button button {
+  width: 33.333%;
+  height: 60px;
+  background: rgb(0, 112, 55);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 112, 55, 1) 70%,
+    rgba(139, 196, 62, 1) 100%
+  );
+  border: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-button button svg {
+  width: 21px;
+  height: 21px;
+  fill: #fff;
+  padding-bottom: 5px;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+
+  &.landscape {
+    .contact-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .web-button {
+      max-width: 100%;
+      height: 23px;
+      padding: 10px;
+      background-color: #007037;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .contact-btn {
+      width: 100%;
+    }
+
+    .top-image {
+      display: flex;
+      gap: 10px;
+    }
+
+    .image-container {
+      width: 100%;
+    }
+
+    .contact-container {
+      width: 50%;
+    }
+
+    .text-container h2 {
+      margin-top: 5px;
+    }
+  }
+}
+
+.date-container {
+  border-bottom: 1px solid #707070;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #007037;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.date-container p {
+  margin: 5px;
+}
+
+.date-container svg,
+.text-container svg {
+  width: 15px;
+  height: 15px;
+  fill: #bf772f;
+  padding-right: 10px;
+}
+
+.events-text {
+  color: #007037;
+  font-size: 19px !important;
+}
+
+.web-back {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30%;
+}
+
+.web-button {
+  max-width: 98%;
+  text-align: center;
+}
+
+.web-button svg {
+  width: 17px;
+  height: 17px;
+  fill: #fff;
+  padding-right: 10px;
+}
+
+.web-button-landscape svg {
+  width: 17px;
+  height: 17px;
+  fill: #fff;
+  padding-right: 10px;
+}
+
+.web-button-landscape {
+  background-color: #007037;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
+
+.top-image {
+  width: 100%;
+}
+
+.img-back {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}

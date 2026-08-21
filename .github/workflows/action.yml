@@ -1,0 +1,47 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: |
+        unset CI
+        npm run build
+
+    - name: Debug - Print Host
+      run: echo "EC2_HOST=${{ secrets.EC2_HOST }}"
+
+    - name: Create Key File
+      env:
+        KEY: ${{ secrets.EC2_KEY }}
+      run: |
+        echo "${{ secrets.EC2_KEY }}" > key.pem
+        chmod 600 key.pem
+        ls -l key.pem
+        head -c 50 key.pem # Print only the first 50 characters to verify
+
+    - name: Deploy to EC2
+      env:
+        HOST: ${{ secrets.EC2_HOST }}
+      run: |
+        echo "Deploying to host: ${HOST}"
+        scp -r -o StrictHostKeyChecking=no -i key.pem build/* ubuntu@${HOST}:/home/ubuntu/town-tripping-douglas-react/build/
+        ssh -o StrictHostKeyChecking=no -i key.pem ubuntu@${HOST} "sudo systemctl restart nginx"
