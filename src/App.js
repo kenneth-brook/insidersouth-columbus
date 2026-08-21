@@ -42,7 +42,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename="/columbus">
       <OrientationProvider>
         <HeightProvider>
           <DataProvider>
