@@ -5,6 +5,7 @@ import chair from '../../assets/images/chair.png';
 import { useOrientation } from '../../hooks/OrientationContext';
 import { useHeightContext } from '../../hooks/HeightContext';
 import Header from './Header'
+import '../../sass/componentsass/HomeContent.scss'
 
 const HomeContent = () => {
   const [circles, setCircles] = useState([]);
@@ -21,9 +22,9 @@ const HomeContent = () => {
 
     const calculateDistance = () => {
       if (orientation === 'desktop') {
-        return 200; // Distance for desktop
+        return 200;
       } else {
-        return 128; // Distance for mobile version
+        return 128;
       }
     };
 
@@ -38,39 +39,39 @@ const HomeContent = () => {
 
   return (
     <>
-    <Header ref={headerRef} />
-    <main className="main-content homePage">
-      <h1 className="exploring-header">Tap to begin exploring</h1>
-      <div id="main-container">
-        <div className="background-circle2"></div>
-        <div className="background-circle"></div>
-        <div id="circle-container">
-          <img
-            src={chair}
-            alt="Centered"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-              maxWidth: '78%',
-              maxHeight: '78%',
-              zIndex: 1,
-            }}
-          />
-          {circles.map((circle, index) => (
-            <Circle
-              key={index}
-              icon={circle.icon}
-              text={circle.text}
-              angle={circle.angle}
-              distance={circle.distance}
-              className={circle.icon === 'play' ? 'rotated-icon' : ''}
+      <Header ref={headerRef} />
+      <main className="main-content homePage">
+        <h1 className="exploring-header">Tap to begin exploring Columbus</h1>
+        <div id="main-container">
+          <div className="background-circle2"></div>
+          <div className="background-circle"></div>
+          <div id="circle-container">
+            <img
+              src={chair}
+              alt="Columbus guide"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                maxWidth: '78%',
+                maxHeight: '78%',
+                zIndex: 1,
+              }}
             />
-          ))}
+            {circles.map((circle, index) => (
+              <Circle
+                key={index}
+                icon={circle.icon}
+                text={circle.text}
+                angle={circle.angle}
+                distance={circle.distance}
+                className={circle.icon === 'play' ? 'rotated-icon' : ''}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
     </>
   );
 };
