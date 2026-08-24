@@ -1,0 +1,32 @@
+[
+  {
+    "id": "columbus-airport",
+    "name": "Columbus Airport",
+    "source_category": "Services"
+  },
+  {
+    "id": "columbus-state-university-office-of-strategic-communication-and-marketing",
+    "name": "Columbus State University- Office of Strategic Communication & Marketing",
+    "source_category": "Education"
+  },
+  {
+    "id": "flint-energies",
+    "name": "Flint Energies",
+    "source_category": "Utility"
+  },
+  {
+    "id": "harris-county-chamber-of-commerce",
+    "name": "Harris County Chamber of Commerce",
+    "source_category": "Chamber"
+  },
+  {
+    "id": "russell-county-alabama",
+    "name": "Russell County, Alabama",
+    "source_category": "Municipality/Government"
+  },
+  {
+    "id": "w-c-bradley-co-real-estate-llc",
+    "name": "W C Bradley Co. Real Estate LLC",
+    "source_category": "Real Estate"
+  }
+]

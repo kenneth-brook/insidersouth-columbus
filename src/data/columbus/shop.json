@@ -1,0 +1,38 @@
+[
+  {
+    "id": "chancellors",
+    "name": "Chancellor's",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "shop_types": []
+  },
+  {
+    "id": "posh-peach-the",
+    "name": "Posh Peach, The",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "shop_types": []
+  },
+  {
+    "id": "sissy-boutique",
+    "name": "Sissy Boutique",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "shop_types": []
+  }
+]
