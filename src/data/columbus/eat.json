@@ -1,0 +1,38 @@
+[
+  {
+    "id": "black-cow",
+    "name": "Black Cow",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "menu_types": []
+  },
+  {
+    "id": "countrys-bbq",
+    "name": "Country's BBQ",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "menu_types": []
+  },
+  {
+    "id": "ruth-anns-family-restaurant",
+    "name": "Ruth Anns Family Restaurant",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "menu_types": []
+  }
+]
