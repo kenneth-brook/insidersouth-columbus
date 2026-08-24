@@ -1,250 +1,128 @@
-$inside-orange: #df4b32;
-$inside-dark: #202020;
-$inside-cream: #f6f1ea;
-$inside-white: #ffffff;
+$gold: #b8942f;
+$dark: #1f2933;
+$cream: #fbfaf7;
+$white: #ffffff;
 
 .landing-page {
-  position: relative;
-  width: 100%;
-  min-height: calc(var(--vh, 1vh) * 100);
+  width: calc(100vw - 16px);
+  height: calc(100vh - 16px);
+  margin: 8px;
+  display: grid;
+  grid-template-columns: 48% 52%;
   overflow: hidden;
+  border: 2px solid $gold;
+  border-radius: 22px;
+  background: $cream;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 32px;
-  background:
-    radial-gradient(
-      circle at 85% 20%,
-      rgba(223, 75, 50, 0.13) 0,
-      rgba(223, 75, 50, 0) 28%
-    ),
-    $inside-cream;
-  color: $inside-dark;
 
-  &__hero-image {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  width: 48%;
-  height: 100%;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      $inside-cream 0%,
-      rgba(246, 241, 234, 0.78) 8%,
-      rgba(246, 241, 234, 0.22) 22%,
-      transparent 42%
-    );
-    pointer-events: none;
-  }
-}
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      linear-gradient(
-        110deg,
-        transparent 0 66%,
-        rgba(255, 255, 255, 0.48) 66% 67%,
-        transparent 67%
-      );
+  &__brand-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 7vh 6vw 9vh;
+    background: $cream;
   }
 
   &__brand {
-    position: relative;
-    z-index: 2;
-    display: inline-flex;
-    flex-direction: column;
-    align-self: flex-start;
-    line-height: 0.82;
-    letter-spacing: 0.09em;
+    text-align: center;
   }
 
-  &__brand-inside {
-    color: #b8942f;
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    font-weight: 500;
-    letter-spacing: 0.42em;
-    padding-left: 0.18em;
-  }
-
-  &__brand-south {
-    color: $inside-orange;
-    font-size: clamp(2.25rem, 5vw, 4rem);
-    font-weight: 800;
-  }
-
-  &__content {
-    position: relative;
-    z-index: 2;
-    width: min(720px, 100%);
-    margin: auto 0;
-  }
-
-  &__eyebrow {
-    margin: 0 0 14px;
-    color: $inside-orange;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    margin: 0;
-    color: $inside-orange;
-    font-size: clamp(4rem, 11vw, 9.5rem);
-    font-weight: 800;
-    line-height: 0.82;
-    letter-spacing: -0.055em;
-  }
-
-  &__subtitle {
-    margin: 20px 0 0;
-    font-size: clamp(1rem, 2.2vw, 1.55rem);
+  &__inside {
+    color: $gold;
+    font-size: clamp(1.4rem, 2vw, 2.1rem);
+    letter-spacing: 0.5em;
     font-weight: 600;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
+    margin-bottom: 4px;
   }
 
-  &__intro {
-    max-width: 590px;
-    margin: 28px 0 0;
-    font-size: clamp(1rem, 1.6vw, 1.25rem);
-    line-height: 1.65;
+  &__south {
+    color: $dark;
+    font-size: clamp(4rem, 7vw, 7.5rem);
+    line-height: 0.85;
+    font-weight: 800;
+    letter-spacing: -0.04em;
   }
 
-  &__explore {
-    display: inline-flex;
-    align-items: center;
-    gap: 28px;
-    margin-top: 34px;
-    padding: 16px 22px;
-    border: 2px solid $inside-orange;
-    color: $inside-orange;
-    background: transparent;
-    font-size: 0.85rem;
+  &__city {
+    margin-top: 20px;
+    color: $gold;
+    font-size: clamp(2rem, 4vw, 4rem);
     font-weight: 700;
-    letter-spacing: 0.18em;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition:
-      background 180ms ease,
-      color 180ms ease,
-      transform 180ms ease;
+    letter-spacing: 0.12em;
+  }
 
-    &:hover,
-    &:focus-visible {
-      background: $inside-orange;
-      color: $inside-white;
-      transform: translateY(-2px);
+  &__location {
+    margin-top: 8px;
+    color: $dark;
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  &__guide-copy {
+    text-align: center;
+
+    h1 {
+      margin: 0 0 24px;
+      color: $gold;
+      font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+      letter-spacing: 0.45em;
+      font-weight: 600;
     }
   }
 
-  &__arrow {
-    font-size: 1.5rem;
-    line-height: 1;
+  &__tagline {
+    margin: 0 0 18px;
+    color: $gold;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    font-style: italic;
+    font-weight: 600;
   }
 
-  &__footer {
+  &__official {
+    margin: 0;
+    color: $dark;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    font-weight: 700;
+  }
+
+  &__photo-panel {
     position: relative;
-    z-index: 2;
-    color: $inside-orange;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
+    min-width: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  
-
-  &.desktop {
-  padding: 52px 6vw;
-
-  .landing-page__content {
-    width: 48%;
-    max-width: 720px;
-    margin-left: 5vw;
+  &__start {
+    position: absolute;
+    inset: 0;
   }
 }
 
-  &.landscape {
-  padding: 26px 5vw;
-
-  .landing-page__content {
-    width: 48%;
-    max-width: 720px;
-  }
-
-  .landing-page__hero-image {
-    width: 50%;
-  }
-}
-
-  &.portrait {
-  padding: 28px 24px;
-
-  .landing-page__hero-image {
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 38%;
-    opacity: 0.28;
-
-    &::after {
-      background: linear-gradient(
-        180deg,
-        rgba(246, 241, 234, 0.05) 0%,
-        $inside-cream 100%
-      );
-    }
-  }
-
-  .landing-page__content {
-    margin-top: 32vh;
-  }
-}
-}
-
-@media (max-width: 520px) {
+@media (max-width: 900px) {
   .landing-page {
-    padding: 24px 20px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 48% 52%;
 
-    &__brand-south {
-      font-size: 2.6rem;
+    &__brand-panel {
+      padding: 30px 24px;
     }
 
-    &__intro {
-      font-size: 0.98rem;
+    &__south {
+      font-size: clamp(3rem, 12vw, 5rem);
     }
 
-    &__explore {
-      width: 100%;
-      justify-content: space-between;
-      box-sizing: border-box;
+    &__city {
+      margin-top: 10px;
     }
 
-    &__footer {
-      font-size: 0.62rem;
-      letter-spacing: 0.28em;
+    &__guide-copy h1 {
+      margin-bottom: 12px;
+    }
+
+    &__tagline {
+      margin-bottom: 8px;
     }
   }
 }
