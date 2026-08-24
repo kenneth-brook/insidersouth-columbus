@@ -22,6 +22,38 @@ $inside-white: #ffffff;
     $inside-cream;
   color: $inside-dark;
 
+  &__hero-image {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 48%;
+  height: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      $inside-cream 0%,
+      rgba(246, 241, 234, 0.78) 8%,
+      rgba(246, 241, 234, 0.22) 22%,
+      transparent 42%
+    );
+    pointer-events: none;
+  }
+}
+
   &::before {
     content: '';
     position: absolute;
@@ -142,88 +174,54 @@ $inside-white: #ffffff;
     text-transform: uppercase;
   }
 
-  &__river {
-    position: absolute;
-    z-index: 1;
-    width: 42vw;
-    height: 145vh;
-    right: -16vw;
-    top: -20vh;
-    border: clamp(55px, 8vw, 130px) solid rgba(223, 75, 50, 0.09);
-    border-radius: 48% 52% 46% 54%;
-    transform: rotate(17deg);
-    pointer-events: none;
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      border-radius: inherit;
-    }
-
-    &::before {
-      inset: 9%;
-      border: clamp(24px, 4vw, 60px) solid rgba(223, 75, 50, 0.07);
-    }
-
-    &::after {
-      inset: 24%;
-      border: 2px solid rgba(223, 75, 50, 0.15);
-    }
-  }
+  
 
   &.desktop {
-    padding: 52px 6vw;
+  padding: 52px 6vw;
 
-    .landing-page__content {
-      margin-left: 5vw;
-    }
+  .landing-page__content {
+    width: 48%;
+    max-width: 720px;
+    margin-left: 5vw;
   }
+}
 
   &.landscape {
-    padding: 26px 5vw;
+  padding: 26px 5vw;
 
-    .landing-page__content {
-      max-width: 62vw;
-    }
-
-    .landing-page__intro {
-      margin-top: 18px;
-      line-height: 1.5;
-    }
-
-    .landing-page__explore {
-      margin-top: 22px;
-    }
+  .landing-page__content {
+    width: 48%;
+    max-width: 720px;
   }
+
+  .landing-page__hero-image {
+    width: 50%;
+  }
+}
 
   &.portrait {
-    padding: 28px 24px;
+  padding: 28px 24px;
 
-    h1 {
-      font-size: clamp(3.8rem, 18vw, 6.3rem);
-    }
+  .landing-page__hero-image {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 38%;
+    opacity: 0.28;
 
-    .landing-page__subtitle {
-      max-width: 360px;
-      line-height: 1.5;
-    }
-
-    .landing-page__intro {
-      margin-top: 22px;
-      line-height: 1.55;
-    }
-
-    .landing-page__river {
-      width: 82vw;
-      right: -55vw;
-    }
-
-    .landing-page__footer {
-      max-width: 300px;
-      line-height: 1.6;
+    &::after {
+      background: linear-gradient(
+        180deg,
+        rgba(246, 241, 234, 0.05) 0%,
+        $inside-cream 100%
+      );
     }
   }
+
+  .landing-page__content {
+    margin-top: 32vh;
+  }
+}
 }
 
 @media (max-width: 520px) {

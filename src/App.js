@@ -22,6 +22,12 @@ import { ItineraryProvider } from './hooks/ItineraryContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import initializeAnalytics from './analytics';
 
+const isLocalhost =
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '127.0.0.1'
+
+const routerBasename = isLocalhost ? '/' : '/columbus'
+
 function App() {
   initializeAnalytics();
   
@@ -42,7 +48,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename="/columbus">
+    <Router basename={routerBasename}>
       <OrientationProvider>
         <HeightProvider>
           <DataProvider>

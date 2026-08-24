@@ -16,10 +16,15 @@ const LandingPage = () => {
 
   return (
     <main className={`landing-page ${orientationClass}`}>
-      <div className="landing-page__river" aria-hidden="true" />
+      <div className="landing-page__hero-image">
+        <img
+          src={require('../assets/images/columbus-riverfront.png')}
+          alt="Columbus riverfront along the Chattahoochee River"
+        />
+      </div>
 
       <header className="landing-page__brand">
-        <span className="landing-page__brand-inside">INSIDE</span>
+        <span className="landing-page__brand-inside">INSIDER</span>
         <span className="landing-page__brand-south">SOUTH</span>
       </header>
 
