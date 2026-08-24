@@ -12,7 +12,6 @@ import '../../sass/componentsass/Footer.scss';
 import { useHeightContext } from '../../hooks/HeightContext';
 import { useDataContext } from '../../hooks/DataContext';
 import { useViewMode } from '../../hooks/ViewModeContext';
-import { useResettingNavigate } from '../../hooks/useResettingNavigate';
 
 const icons = {
   dine: DineIcon,
@@ -33,9 +32,8 @@ const routeToDataType = {
 
 const Footer = forwardRef(({ showCircles = false }, ref) => {
   const orientation = useOrientation();
-  const navigate = useNavigate(); // Use the navigate hook
+  const navigate = useNavigate();
   const location = useLocation();
-  const { setFooterHeight } = useHeightContext();
   const { updateHeights } = useHeightContext();
   const { data } = useDataContext();
   const { isMapView, setIsMapView } = useViewMode();
@@ -58,9 +56,7 @@ const Footer = forwardRef(({ showCircles = false }, ref) => {
   };
 
   const isHomePage = location.pathname === '/home';
-  const currentRoute = location.pathname.substring(1).split('/')[0];
   const isActive = (key) => location.pathname.startsWith(`/${key}`);
-
   const mapButtonLabel = isMapView ? 'List' : 'Map';
 
   useEffect(() => {
@@ -93,8 +89,8 @@ const Footer = forwardRef(({ showCircles = false }, ref) => {
         <div className="circle-background">
           {isHomePage && (
             <div className="footer-content">
-              <h3>Get Free Info</h3>
-              <p>at our Visitor Information Center</p>
+              <h3>Discover Columbus</h3>
+              <p>Georgia's River City</p>
             </div>
           )}
         </div>
