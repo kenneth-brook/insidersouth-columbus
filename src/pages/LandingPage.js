@@ -1,59 +1,36 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../sass/LandingPage.scss'
-import { useOrientation } from '../hooks/OrientationContext'
+import RoundButton from './components/RoundButton'
+import columbusRiverfront from '../assets/images/columbus-riverfront.png'
 
 const LandingPage = () => {
-  const orientation = useOrientation()
-
-  const orientationClass =
-    orientation === 'landscape-primary' ||
-    orientation === 'landscape-secondary'
-      ? 'landscape'
-      : orientation === 'desktop'
-      ? 'desktop'
-      : 'portrait'
-
   return (
-    <main className={`landing-page ${orientationClass}`}>
-      <div className="landing-page__hero-image">
-        <img
-          src={require('../assets/images/columbus-riverfront.png')}
-          alt="Columbus riverfront along the Chattahoochee River"
-        />
-      </div>
+    <main className="landing-page">
+      <section className="landing-page__brand-panel">
+        <div className="landing-page__brand">
+          <div className="landing-page__inside">INSIDE</div>
+          <div className="landing-page__south">SOUTH</div>
 
-      <header className="landing-page__brand">
-        <span className="landing-page__brand-inside">INSIDER</span>
-        <span className="landing-page__brand-south">SOUTH</span>
-      </header>
+          <div className="landing-page__city">COLUMBUS</div>
+          <div className="landing-page__location">GEORGIA'S RIVER CITY</div>
+        </div>
 
-      <section className="landing-page__content">
-        <p className="landing-page__eyebrow">Explore Georgia</p>
-
-        <h1>COLUMBUS</h1>
-
-        <p className="landing-page__subtitle">
-          Georgia's River City
-        </p>
-
-        <p className="landing-page__intro">
-          Adventure flows through Columbus, where the Chattahoochee River
-          meets a vibrant downtown filled with history, culture and Southern
-          hospitality.
-        </p>
-
-        <Link to="/home" className="landing-page__explore">
-          <span>Explore Columbus</span>
-          <span className="landing-page__arrow" aria-hidden="true">
-            →
-          </span>
-        </Link>
+        <div className="landing-page__guide-copy">
+          <h1>TRIP GUIDE</h1>
+          <p className="landing-page__tagline">Ride the River. Explore the City.</p>
+          <p className="landing-page__official">Official Guide to Columbus, GA</p>
+        </div>
       </section>
 
-      <footer className="landing-page__footer">
-        Go all out in Columbus, GA
-      </footer>
+      <section
+        className="landing-page__photo-panel"
+        style={{ backgroundImage: `url(${columbusRiverfront})` }}
+        aria-label="Columbus riverfront along the Chattahoochee River"
+      >
+        <div className="landing-page__start">
+          <RoundButton />
+        </div>
+      </section>
     </main>
   )
 }
