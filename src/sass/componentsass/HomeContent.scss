@@ -1,127 +1,146 @@
-main {
-    /* Striped background using repeating-linear-gradient */
-    background-image: repeating-linear-gradient(
-        0deg,
-        #D6F5FF 0px,
-        #D6F5FF 4px,
-        #C8DF8E 4px,
-        #C8DF8E 8px
-    );
-    margin-top: -1px;
-    width: 100%;
+$columbus-gold: #b8942f;
+$columbus-dark: #1f2933;
+$columbus-cream: #fbfaf7;
+$columbus-soft-gold: #ead9a9;
+$columbus-white: #ffffff;
+
+main.homePage {
+  background-image: repeating-linear-gradient(
+    0deg,
+    $columbus-cream 0px,
+    $columbus-cream 4px,
+    $columbus-soft-gold 4px,
+    $columbus-soft-gold 8px
+  );
+  margin-top: -1px;
+  width: 100%;
 }
 
-.main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    max-height: 100%;
+.main-content.homePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .homePage {
-    overflow: hidden; /* No scrolling for HomePage */
-  }
-
-#main-container {
+  #main-container {
     position: relative;
     width: 100%;
     height: 100%;
-    margin: auto; /* Center the container */
+    margin: auto;
     display: flex;
-    justify-content: center; /* Center everything inside it horizontally */
-    align-items: center; /* Center everything inside it vertically */
-}
+    justify-content: center;
+    align-items: center;
+  }
 
-.background-circle {
-    width: calc(2 * 1.5 * 125px * 0.75); /* 75% of the full diameter */
-    height: calc(2 * 1.5 * 125px * 0.75); /* Same as width */
-    background-color: rgba(139, 196, 62, 0.3); /* #8BC43E with 50% transparency */
-    border-radius: 50%; /* Makes it a circle */
+  .background-circle {
+    width: calc(2 * 1.5 * 125px * 0.75);
+    height: calc(2 * 1.5 * 125px * 0.75);
+    background-color: rgba(184, 148, 47, 0.28);
+    border-radius: 50%;
     position: absolute;
-}
+  }
 
-.background-circle2 {
-    width: calc(2 * 1.5 * 135px * 0.75); /* 75% of the full diameter */
-    height: calc(2 * 1.5 * 135px * 0.75); /* Same as width */
+  .background-circle2 {
+    width: calc(2 * 1.5 * 135px * 0.75);
+    height: calc(2 * 1.5 * 135px * 0.75);
     background-color: transparent;
-    border-radius: 50%; /* Makes it a circle */
+    border-radius: 50%;
     position: absolute;
-    outline: 4px solid white;
-}
+    outline: 4px solid $columbus-white;
+  }
 
-#circle-container {
-    width: 120px; /* As previously defined */
-    height: 120px; /* As previously defined */
-    background-color: #006837; /* Same as header color */
-    border-radius: 50%; /* Makes it a circle */
-    border: 2px solid white; /* White border */
-    padding: 10px; /* Space from border to image */
-    box-sizing: border-box; /* Border included in width/height */
-    display: flex; /* Keeps child img centered */
-    justify-content: center; /* Centers child img horizontally */
-    align-items: center; /* Centers child img vertically */
-    position: relative; /* Important for stacking */
-     
-}
+  #circle-container {
+    width: 120px;
+    height: 120px;
+    background-color: $columbus-dark;
+    border-radius: 50%;
+    border: 2px solid $columbus-white;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 
-#circle-container::after {
+  #circle-container::after {
     content: '';
     position: absolute;
-    top: 5px; left: 5px;
-    right: 5px; bottom: 5px;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
     border-radius: 50%;
-    border: 2px solid white;
-}
+    border: 2px solid $columbus-gold;
+  }
 
-#circle-container img {
-    max-width: calc(90% - 15px); /* Contains image 15px inside */
-    max-height: calc(90% - 15px); /* Contains image 15px inside */
-    object-fit: contain; /* Keeps the aspect ratio of the image */
-}
+  #circle-container img {
+    max-width: calc(90% - 15px);
+    max-height: calc(90% - 15px);
+    object-fit: contain;
+  }
 
-.white-circle {
-    width: 105px; /* Same size as the green circle */
-    height: 105px; /* Same size as the green circle */
-    background-color: white; /* White background */
-    border-radius: 50%; /* Makes it a circle */
-    position: absolute; /* Positioned absolutely in relation to the #circle-container */
-    border: 5px solid #8BC43E;
-    box-shadow: inset 0 8px 16px rgba(0, 0, 0, 0.7);
+  .white-circle {
+    width: 105px;
+    height: 105px;
+    background-color: $columbus-white;
+    border-radius: 50%;
+    position: absolute;
+    border: 5px solid $columbus-gold;
+    box-shadow: inset 0 8px 16px rgba(0, 0, 0, 0.55);
     display: flex;
-    align-items: center; /* Vertically center the content */
+    align-items: center;
     justify-content: center;
-}
+  }
 
-.icon-svg {
+  .icon-svg {
     width: 67%;
     height: 67%;
-    fill: #E7E7E7;
+    fill: #e7e7e7;
     display: block;
-    max-width: 100%; /* Ensure SVG doesn't exceed its container */
-    max-height: 100%; /* Adjust to ensure the icon fits well */
+    max-width: 100%;
+    max-height: 100%;
     margin: auto;
     position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
+    top: 50%;
+    left: 50%;
     right: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center center;
-}
+  }
 
-.rotated-icon svg{
-    transform: translate(-50%, -50%) rotate(-45deg); /* Rotate first, then translate */
-}
+  .rotated-icon svg {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
 
-.circle-text {
+  .circle-text {
     position: absolute;
     text-align: center;
     white-space: nowrap;
     font-size: 26px;
-    color: #006837;
+    color: $columbus-dark;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     width: auto;
     font-weight: bolder;
+  }
+
+  .exploring-header {
+    color: $columbus-dark;
+  }
+}
+
+.app-container.desktop .homePage {
+  .background-circle {
+    background-color: rgba(184, 148, 47, 0.28);
+  }
+
+  .white-circle {
+    border-color: $columbus-gold;
+  }
 }

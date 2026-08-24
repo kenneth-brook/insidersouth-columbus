@@ -5,12 +5,11 @@ import SortMenu from './SortMenu.js';
 import '../../sass/componentsass/Header.scss';
 import { ReactComponent as EyeIcon } from '../../assets/icos/eye.svg';
 import { ReactComponent as Search } from '../../assets/icos/search.svg';
-import logoDesk from '../../assets/images/logo-desktop.png';
 import { useHeightContext } from '../../hooks/HeightContext.js';
 import { useOrientation } from '../../hooks/OrientationContext';
 import { useDataContext } from '../../hooks/DataContext';
 import { useResettingNavigate } from '../../hooks/useResettingNavigate';
-import { useAuth } from '../../hooks/AuthContext'; // Import AuthContext
+import { useAuth } from '../../hooks/AuthContext';
 
 const Header = forwardRef((props, ref) => {
   const { headerHeight, updateHeights } = useHeightContext();
@@ -24,7 +23,7 @@ const Header = forwardRef((props, ref) => {
   const navigate = useResettingNavigate();
   const [selectedDate, setDate] = useState(null);
   const [dropdownItem, setDropdownItem] = useState(null);
-  const { isAuthenticated, logout } = useAuth(); // Use AuthContext
+  const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     updateHeights();
@@ -32,31 +31,29 @@ const Header = forwardRef((props, ref) => {
 
   const handleKeywordChange = (e) => {
     setKeyword(e.target.value);
-    console.log(`Keyword set to: ${e.target.value}`);
   };
 
   const handleShowAllClick = () => {
-    console.log('Show All clicked');
-    resetKeyword(); // Reset the keyword search
-    resetFilteredData(); // Reset filtered data
+    resetKeyword();
+    resetFilteredData();
     if (keywordInputRef.current) {
-      keywordInputRef.current.value = ''; // Clear the input field
+      keywordInputRef.current.value = '';
     }
-    setSortMenuOpen(false); // Close the sort menu
-    setNearMe(false); // Turn off Near Me functionality
+    setSortMenuOpen(false);
+    setNearMe(false);
   };
 
   const handleAlphabeticalSort = () => {
-    setIsAscending(!isAscending); // Toggle the sorting order
-    sortData(!isAscending); // Sort the data
-    setSortMenuOpen(false); // Close the sort menu
+    setIsAscending(!isAscending);
+    sortData(!isAscending);
+    setSortMenuOpen(false);
   };
 
   const handleDateChange = (event) => {
     const date = new Date(event.target.value);
     setDate(date);
     setSelectedDate(date);
-    setSortMenuOpen(false); // Close the sort menu
+    setSortMenuOpen(false);
   };
 
   const handleNearMeWithClose = () => {
@@ -89,7 +86,7 @@ const Header = forwardRef((props, ref) => {
       default:
         break;
     }
-    setSortMenuOpen(false); // Close the sort menu
+    setSortMenuOpen(false);
   };
 
   const getDropdownLabel = () => {
@@ -115,8 +112,6 @@ const Header = forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    console.log('Location changed:', location.pathname);
-    console.log('Type names:', typeNames);
     const label = getDropdownLabel();
     if (label && typeNames) {
       let typeNamesData;
@@ -166,11 +161,9 @@ const Header = forwardRef((props, ref) => {
 
   const handleAuthClick = () => {
     if (isAuthenticated) {
-      console.log('Logging out'); // Debugging
       logout();
       navigate('/');
     } else {
-      console.log('Navigating to login'); // Debugging
       navigate('/login', { state: { from: location.pathname } });
     }
   };
@@ -183,9 +176,9 @@ const Header = forwardRef((props, ref) => {
     { label: 'Shop', link: '/shop' },
     { label: 'Events', link: '/events' },
     { label: 'View All Map', link: '/all' },
-    { label: 'Follow Us', link: 'https://www.facebook.com/VisitDouglasCoffeeCountyGA' },
-    { label: 'Visitors Guide', link: 'https://365publicationsonline.com/DouglasVG2024/#p=1' },
-    { label: 'Website', link: 'https://visitdouglasga.org/' },
+    { label: 'Follow Us', link: '#' },
+    { label: 'Visitors Guide', link: '#' },
+    { label: 'Website', link: '#' },
   ];
 
   return (
@@ -206,8 +199,13 @@ const Header = forwardRef((props, ref) => {
               : 'portrait'
           }`}
         >
-          <Link to="/home">
-            <img src={logoDesk} alt="Header Image" className="centered-image" />
+          <Link to="/home" className="columbus-brand-link">
+            <div className="columbus-brand" aria-label="Insider South Columbus">
+              <span className="columbus-brand__insider">INSIDER</span>
+              <span className="columbus-brand__south">SOUTH</span>
+              <span className="columbus-brand__city">COLUMBUS</span>
+              <span className="columbus-brand__tagline">Georgia's River City</span>
+            </div>
           </Link>
         </div>
         <button

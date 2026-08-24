@@ -1,15 +1,8 @@
-footer {
-  //   text-align: center;
-  //   color: white;
-  //   height: 100px;
-  //   width: 100%;
-  //   flex-shrink: 0;
-  //   position: relative;
-  //   bottom: 0;
-  //   box-sizing: border-box;
-  //   padding-bottom: 20px;
-  //   display: flex;
+$columbus-gold: #b8942f;
+$columbus-dark: #1f2933;
+$columbus-cream: #fbfaf7;
 
+footer {
   .footer-circles {
     display: flex;
     justify-content: space-around;
@@ -29,7 +22,7 @@ footer {
     position: relative;
     overflow: hidden;
     border: 2px solid #fff;
-    box-shadow: 0 0 0 2px #8bc43e inset;
+    box-shadow: 0 0 0 2px $columbus-gold inset;
     z-index: 2;
   }
 
@@ -40,29 +33,29 @@ footer {
   }
 
   .icon-label {
-    color: #007037;
+    color: $columbus-dark;
     font-size: 16px;
     font-weight: bold;
     position: absolute;
     width: 100%;
     text-align: center;
-    top: 50%; // Centers vertically
-    transform: translateY(-50%); // Offset for exact centering
-    z-index: 1; // Ensures text is above the icon
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
   }
 
   .active {
-    background-color: #8bc43e; // Active background color
+    background-color: $columbus-gold;
     border: 2px solid #fff;
-    box-shadow: 0 0 0 3px #8a957b inset;
+    box-shadow: 0 0 0 3px $columbus-dark inset;
   }
 
   .active-icon {
-    fill: #8a957b; // Active icon fill
+    fill: $columbus-dark;
   }
 
   .active-text {
-    color: white; // Active text color
+    color: white;
   }
 }
 
@@ -91,7 +84,7 @@ footer {
   transform: translateX(-50%);
   width: 484px;
   height: 200px;
-  background-color: #bf772f;
+  background-color: $columbus-gold;
   border-radius: 50%;
   z-index: 1;
 }
@@ -104,13 +97,13 @@ footer {
   transform: translateX(-50%);
   width: 484px;
   height: 200px;
-  background-color: #007037;
+  background-color: $columbus-dark;
   border-radius: 50%;
   z-index: 0;
 }
 
 .circle-background h3 {
-  color: #ffe28e;
+  color: $columbus-cream;
   font-size: 39px;
   font-weight: 600;
   padding-top: 30px;
