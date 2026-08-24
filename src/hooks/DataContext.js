@@ -1,30 +1,67 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { getGoogleReviews } from '../pages/components/googleReviews'; // Adjust the path as necessary
+import eatData from '../data/columbus/eat.json';
+import stayData from '../data/columbus/stay.json';
+import playData from '../data/columbus/play.json';
+import shopData from '../data/columbus/shop.json';
+import eventsData from '../data/columbus/events.json';
 
 const DataContext = createContext();
-
-const stage = "aws-test";
-//const stage = "live";
+const stage = 'static-columbus';
 
 export const useDataContext = () => useContext(DataContext);
 
+const collectTypes = (items, typeKey) => {
+  const counts = {};
+  items.forEach((item) => {
+    (item[typeKey] || []).forEach((type) => {
+      counts[type] = (counts[type] || 0) + 1;
+    });
+  });
+  return counts;
+};
+
+const normalizeData = () => {
+  const addType = (items, type) =>
+    [...items]
+      .map((item) => ({ ...item, type }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+  const eat = addType(eatData, 'eat');
+  const stay = addType(stayData, 'stay');
+  const play = addType(playData, 'play');
+  const shop = addType(shopData, 'shop');
+  const events = [...eventsData]
+    .map((item) => ({
+      ...item,
+      type: 'events',
+      start_date: item.start_date ? new Date(item.start_date) : null,
+    }))
+    .filter((item) => !item.start_date || item.start_date >= new Date())
+    .sort((a, b) => (a.start_date || 0) - (b.start_date || 0));
+
+  return {
+    eat,
+    stay,
+    play,
+    shop,
+    events,
+    combined: [...eat, ...stay, ...play, ...shop].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    ),
+  };
+};
+
 const DataProvider = ({ children }) => {
-  const [data, setData] = useState({
-    eat: [],
-    stay: [],
-    play: [],
-    shop: [],
-    events: [],
-    combined: [],
+  const initialData = normalizeData();
+  const [data] = useState(initialData);
+  const [filteredData, setFilteredData] = useState(initialData);
+  const [typeCounts] = useState({
+    menu_types: collectTypes(initialData.eat, 'menu_types'),
+    play_types: collectTypes(initialData.play, 'play_types'),
+    stay_types: collectTypes(initialData.stay, 'stay_types'),
+    shop_types: collectTypes(initialData.shop, 'shop_types'),
   });
-  const [filteredData, setFilteredData] = useState(data);
-  const [typeCounts, setTypeCounts] = useState({
-    menu_types: {},
-    play_types: {},
-    stay_types: {},
-    shop_types: {},
-  });
-  const [typeNames, setTypeNames] = useState({
+  const [typeNames] = useState({
     menu_types: {},
     play_types: {},
     stay_types: {},
@@ -36,8 +73,8 @@ const DataProvider = ({ children }) => {
     stay_types: [],
     shop_types: [],
   });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading] = useState(false);
+  const [error] = useState(null);
   const [keyword, setKeyword] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
   const [isAscending, setIsAscending] = useState(true);
@@ -47,176 +84,34 @@ const DataProvider = ({ children }) => {
   const isValidCoordinate = (lat, lon) => {
     const latNum = parseFloat(lat);
     const lonNum = parseFloat(lon);
-    const valid = typeof latNum === 'number' && typeof lonNum === 'number' &&
-                  !isNaN(latNum) && !isNaN(lonNum) &&
-                  latNum >= -90 && latNum <= 90 &&
-                  lonNum >= -180 && lonNum <= 180;
-    if (!valid) {
-      console.error(`Invalid coordinates: (${latNum}, ${lonNum})`);
-    }
-    return valid;
+    return (
+      !Number.isNaN(latNum) &&
+      !Number.isNaN(lonNum) &&
+      latNum >= -90 &&
+      latNum <= 90 &&
+      lonNum >= -180 &&
+      lonNum <= 180
+    );
   };
 
   const fetchUserLocation = useCallback(() => {
     return new Promise((resolve, reject) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const userLocation = {
-              lat: parseFloat(position.coords.latitude),
-              lon: parseFloat(position.coords.longitude),
-            };
-            if (isValidCoordinate(userLocation.lat, userLocation.lon)) {
-              resolve(userLocation);
-            } else {
-              reject(new Error('Invalid user coordinates'));
-            }
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-      } else {
+      if (!navigator.geolocation) {
         reject(new Error('Geolocation is not supported by this browser.'));
+        return;
       }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve({
+            lat: parseFloat(position.coords.latitude),
+            lon: parseFloat(position.coords.longitude),
+          });
+        },
+        reject
+      );
     });
   }, []);
-
-  const fetchData = useCallback(async () => {
-    try {
-      const endpoints = {
-        eat: `https://8pz5kzj96d.execute-api.us-east-1.amazonaws.com/${stage}/data/eat`,
-        stay: `https://8pz5kzj96d.execute-api.us-east-1.amazonaws.com/${stage}/data/stay`,
-        play: `https://8pz5kzj96d.execute-api.us-east-1.amazonaws.com/${stage}/data/play`,
-        shop: `https://8pz5kzj96d.execute-api.us-east-1.amazonaws.com/${stage}/data/shop`,
-        events: `https://8pz5kzj96d.execute-api.us-east-1.amazonaws.com/${stage}/get-events`
-      };
-
-      const fetchEndpointData = async (endpoint) => {
-        const response = await fetch(endpoint);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      };
-
-      const removeQuotesFromName = (name) => name.replace(/['"]/g, '');
-
-      const results = await Promise.all(
-        Object.keys(endpoints).map(async (key) => {
-          try {
-            const result = await fetchEndpointData(endpoints[key]);
-            if (key !== 'events') {
-              const updatedData = await Promise.all(
-                result.map(async (item) => {
-                  try {
-                    const details = await getGoogleReviews(stage, item.lat, item.long, item.name);
-                    return { 
-                      ...item, 
-                      ...details, 
-                      type: key, 
-                      name: removeQuotesFromName(item.name)
-                    };
-                  } catch (error) {
-                    console.error(`Failed to fetch Google reviews for ${item.name}`, error);
-                    return { 
-                      ...item, 
-                      type: key, 
-                      name: removeQuotesFromName(item.name)
-                    };
-                  }
-                })
-              );
-              return { key, data: updatedData };
-            } else {
-              const updatedEventsData = result.map((item) => ({
-                ...item,
-                type: 'events',
-                name: removeQuotesFromName(item.name),
-                start_date: new Date(item.start_date),
-              }));
-              return { key, data: updatedEventsData };
-            }
-          } catch (error) {
-            console.error(`Failed to fetch data from ${endpoints[key]}`, error);
-            throw error;
-          }
-        })
-      );
-
-      const dataMap = results.reduce((acc, { key, data }) => {
-        if (key === 'events') {
-          const today = new Date();
-          acc[key] = data
-            .filter((event) => {
-              const startDate = event.start_date;
-              return startDate >= today; // Filter out past events
-            })
-            .sort((a, b) => a.start_date - b.start_date); // Sort events by start_date
-        } else {
-          acc[key] = data.sort((a, b) => a.name.localeCompare(b.name));
-        }
-        return acc;
-      }, {});
-
-      dataMap.combined = [
-        ...dataMap.eat,
-        ...dataMap.stay,
-        ...dataMap.play,
-        ...dataMap.shop,
-      ].sort((a, b) => a.name.localeCompare(b.name));
-
-      const collectTypes = (data, typeKey) => {
-        const typeCounts = {};
-        data.forEach((item) => {
-          if (item[typeKey]) {
-            item[typeKey].forEach((type) => {
-              if (typeCounts[type]) {
-                typeCounts[type]++;
-              } else {
-                typeCounts[type] = 1;
-              }
-            });
-          }
-        });
-        return typeCounts;
-      };
-
-      const newTypeCounts = {
-        menu_types: collectTypes(dataMap.eat, 'menu_types'),
-        play_types: collectTypes(dataMap.play, 'play_types'),
-        stay_types: collectTypes(dataMap.stay, 'stay_types'),
-        shop_types: collectTypes(dataMap.shop, 'shop_types'),
-      };
-
-      setData(dataMap);
-      setFilteredData(dataMap);
-      setTypeCounts(newTypeCounts);
-
-      const response = await fetch(
-        `https://8pz5kzj96d.execute-api.us-east-1.amazonaws.com/${stage}/type-names/fetch-type-names`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ typeCounts: newTypeCounts }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const typeNamesData = await response.json();
-      setTypeNames(typeNamesData);
-    } catch (error) {
-      setError(`Failed to fetch data: ${error.message}`);
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [stage]);
 
   const calculateDistance = (lat1, lon1, lat2, lon2) => {
     const toRad = (value) => (value * Math.PI) / 180;
@@ -225,176 +120,152 @@ const DataProvider = ({ children }) => {
     const dLon = toRad(lon2 - lon1);
     const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      Math.cos(toRad(lat1)) *
+        Math.cos(toRad(lat2)) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
   };
 
-  const sortByProximity = (data, userLocation) => {
-    return data
-      .filter((item) => {
-        const valid = isValidCoordinate(item.lat, item.long);
-        if (!valid) {
-          console.error(
-            `Invalid item coordinates for ${item.name}: (${item.lat}, ${item.long})`
-          );
-        }
-        return valid;
-      })
+  const sortByProximity = (items, location) =>
+    items
+      .filter((item) => isValidCoordinate(item.lat, item.long))
       .map((item) => ({
         ...item,
         distance: calculateDistance(
-          userLocation.lat,
-          userLocation.lon,
+          location.lat,
+          location.lon,
           parseFloat(item.lat),
           parseFloat(item.long)
         ),
       }))
       .sort((a, b) => a.distance - b.distance);
-  };
 
   const handleNearMe = () => {
-    if (userLocation && isValidCoordinate(userLocation.lat, userLocation.lon)) {
-      setNearMe(true);
-      const sortedData = {
-        ...data,
-        eat: sortByProximity(data.eat, userLocation),
-        stay: sortByProximity(data.stay, userLocation),
-        play: sortByProximity(data.play, userLocation),
-        shop: sortByProximity(data.shop, userLocation),
-        combined: sortByProximity(data.combined, userLocation),
-      };
-      setFilteredData(sortedData);
-    } else {
-      console.error('Invalid or missing user coordinates:', userLocation);
+    if (!userLocation || !isValidCoordinate(userLocation.lat, userLocation.lon)) {
+      return;
     }
+
+    setNearMe(true);
+    setFilteredData({
+      ...data,
+      eat: sortByProximity(data.eat, userLocation),
+      stay: sortByProximity(data.stay, userLocation),
+      play: sortByProximity(data.play, userLocation),
+      shop: sortByProximity(data.shop, userLocation),
+      combined: sortByProximity(data.combined, userLocation),
+    });
   };
 
-  const resetFilteredData = () => {
+  const resetFilteredData = useCallback(() => {
     setFilteredData(data);
-  };
+  }, [data]);
 
   const filterDataByTypes = useCallback(() => {
-    const filterByTypes = (data, typeKey) => {
-      if (selectedTypes[typeKey]?.length > 0) {
-        return data.filter((item) =>
-          item[typeKey]?.some((type) =>
-            selectedTypes[typeKey].includes(parseInt(type))
-          )
-        );
-      }
-      return data;
+    const filterByTypes = (items, typeKey) => {
+      if (!selectedTypes[typeKey]?.length) return items;
+      return items.filter((item) =>
+        item[typeKey]?.some((type) =>
+          selectedTypes[typeKey].includes(parseInt(type, 10))
+        )
+      );
     };
 
-    const filtered = {
-      eat: filterByTypes(data.eat, 'menu_types'),
-      stay: filterByTypes(data.stay, 'stay_types'),
-      play: filterByTypes(data.play, 'play_types'),
-      shop: filterByTypes(data.shop, 'shop_types'),
+    const eat = filterByTypes(data.eat, 'menu_types');
+    const stay = filterByTypes(data.stay, 'stay_types');
+    const play = filterByTypes(data.play, 'play_types');
+    const shop = filterByTypes(data.shop, 'shop_types');
+
+    setFilteredData({
+      eat,
+      stay,
+      play,
+      shop,
       events: data.events,
-      combined: [
-        ...filterByTypes(data.eat, 'menu_types'),
-        ...filterByTypes(data.stay, 'stay_types'),
-        ...filterByTypes(data.play, 'play_types'),
-        ...filterByTypes(data.shop, 'shop_types'),
-      ],
-    };
-    setFilteredData(filtered);
+      combined: [...eat, ...stay, ...play, ...shop],
+    });
   }, [selectedTypes, data]);
 
   const filterDataByKeyword = useCallback(() => {
-    const filterByKeyword = (data) => {
-      return data.filter((item) =>
+    if (!keyword.trim()) {
+      setFilteredData(data);
+      return;
+    }
+
+    const filterByKeyword = (items) =>
+      items.filter((item) =>
         Object.values(item).some(
           (value) =>
             typeof value === 'string' &&
             value.toLowerCase().includes(keyword.toLowerCase())
         )
       );
-    };
 
-    const filtered = {
-      eat: filterByKeyword(data.eat),
-      stay: filterByKeyword(data.stay),
-      play: filterByKeyword(data.play),
-      shop: filterByKeyword(data.shop),
+    const eat = filterByKeyword(data.eat);
+    const stay = filterByKeyword(data.stay);
+    const play = filterByKeyword(data.play);
+    const shop = filterByKeyword(data.shop);
+
+    setFilteredData({
+      eat,
+      stay,
+      play,
+      shop,
       events: filterByKeyword(data.events),
-      combined: [
-        ...filterByKeyword(data.eat),
-        ...filterByKeyword(data.stay),
-        ...filterByKeyword(data.play),
-        ...filterByKeyword(data.shop),
-      ],
-    };
-    setFilteredData(filtered);
+      combined: [...eat, ...stay, ...play, ...shop],
+    });
   }, [keyword, data]);
 
   useEffect(() => {
     fetchUserLocation()
-      .then((location) => {
-        setUserLocation(location);
-        // If you want to automatically sort by proximity after fetching location:
-        // handleNearMe();
-      })
-      .catch((error) => console.error('Failed to fetch user location:', error));
+      .then(setUserLocation)
+      .catch(() => {});
   }, [fetchUserLocation]);
 
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  useEffect(() => {
-    resetFilteredData(); // Reset the data to original before filtering
     filterDataByTypes();
   }, [selectedTypes, filterDataByTypes]);
 
   useEffect(() => {
-    resetFilteredData(); // Reset the data to original before filtering
     filterDataByKeyword();
   }, [keyword, filterDataByKeyword]);
 
   useEffect(() => {
-    if (selectedDate) {
-      const filterEventsByDate = (events, date) => {
-        return events
-          .filter((event) => {
-            if (!event.start_date) return false;
-            const startDate = new Date(event.start_date);
-            const endDate = event.end_date ? new Date(event.end_date) : null;
-            return endDate
-              ? startDate <= date && endDate >= date
-              : startDate.toDateString() === date.toDateString();
-          })
-          .sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
-      };
+    if (!selectedDate) return;
 
-      const filtered = {
-        ...data,
-        events: filterEventsByDate(data.events, selectedDate),
-      };
-      setFilteredData(filtered);
-    } else {
-      setFilteredData(data);
-    }
-  }, [selectedDate, data]);
+    const filteredEvents = data.events
+      .filter((event) => {
+        if (!event.start_date) return false;
+        const startDate = new Date(event.start_date);
+        const endDate = event.end_date ? new Date(event.end_date) : null;
+        return endDate
+          ? startDate <= selectedDate && endDate >= selectedDate
+          : startDate.toDateString() === selectedDate.toDateString();
+      })
+      .sort((a, b) => new Date(a.start_date) - new Date(b.start_date));
 
-  const resetKeyword = () => {
-    setKeyword('');
-  };
+    setFilteredData((current) => ({ ...current, events: filteredEvents }));
+  }, [selectedDate, data.events]);
+
+  const resetKeyword = () => setKeyword('');
 
   const sortData = useCallback(
     (ascending) => {
       const sortOrder = ascending ? 1 : -1;
-      const sortedData = {
+      setFilteredData({
         eat: [...data.eat].sort((a, b) => a.name.localeCompare(b.name) * sortOrder),
         stay: [...data.stay].sort((a, b) => a.name.localeCompare(b.name) * sortOrder),
         play: [...data.play].sort((a, b) => a.name.localeCompare(b.name) * sortOrder),
         shop: [...data.shop].sort((a, b) => a.name.localeCompare(b.name) * sortOrder),
-        events: [...data.events].sort((a, b) => (new Date(a.start_date) - new Date(b.start_date)) * sortOrder),
-        combined: [...data.combined].sort((a, b) => a.name.localeCompare(b.name) * sortOrder),
-      };
-      setFilteredData(sortedData);
+        events: [...data.events].sort(
+          (a, b) =>
+            (new Date(a.start_date) - new Date(b.start_date)) * sortOrder
+        ),
+        combined: [...data.combined].sort(
+          (a, b) => a.name.localeCompare(b.name) * sortOrder
+        ),
+      });
     },
     [data]
   );
