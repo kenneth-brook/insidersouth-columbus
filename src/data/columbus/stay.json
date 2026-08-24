@@ -1,0 +1,50 @@
+[
+  {
+    "id": "camp-david-rv-park-and-resort",
+    "name": "Camp David RV Park & Resort",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "stay_types": []
+  },
+  {
+    "id": "clarion-pointe",
+    "name": "Clarion Pointe",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "stay_types": []
+  },
+  {
+    "id": "lake-pines-rv-park-and-campground",
+    "name": "Lake Pines RV Park & Campground",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "stay_types": []
+  },
+  {
+    "id": "valley-hospitality-columbus",
+    "name": "Valley Hospitality, Columbus",
+    "description": "",
+    "images": [],
+    "rating": null,
+    "web": "",
+    "phone": "",
+    "lat": null,
+    "long": null,
+    "stay_types": []
+  }
+]
