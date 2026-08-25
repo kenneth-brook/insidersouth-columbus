@@ -21,6 +21,7 @@ import { AuthProvider, useAuth } from './hooks/AuthContext'; // Import the AuthP
 import { ItineraryProvider } from './hooks/ItineraryContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './sass/componentsass/Theme.scss';
+import './sass/componentsass/ImageOverrides.scss';
 import initializeAnalytics from './analytics';
 
 const isLocalhost =
