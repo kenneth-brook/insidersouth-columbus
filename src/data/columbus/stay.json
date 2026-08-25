@@ -11,8 +11,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.3769,
+    "long": -84.9579,
+    "source_category": "Accommodations",
     "stay_types": []
   },
   {
@@ -27,8 +28,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.5367203,
+    "long": -84.9677277,
+    "source_category": "Accommodations",
     "stay_types": []
   },
   {
@@ -43,8 +45,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.53804,
+    "long": -84.82728,
+    "source_category": "Accommodations",
     "stay_types": []
   },
   {
@@ -59,8 +62,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.53387,
+    "long": -84.97757,
+    "source_category": "Accommodations",
     "stay_types": []
   }
 ]
