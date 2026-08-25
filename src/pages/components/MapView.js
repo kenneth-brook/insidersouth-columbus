@@ -66,14 +66,13 @@ const centerMap = (map, data, userLocation, nearMe) => {
   if (!bounds.isEmpty()) {
     map.fitBounds(bounds, {
       padding,
-      maxZoom: 14, // Ensure the zoom isn't too close
+      maxZoom: 14,
       duration: 500,
     });
   } else {
     console.error('Bounds are empty, cannot fit map to bounds.');
   }
 };
-
 
 const addMarkers = (data, handleMarkerClick) => {
   return data.map((item) => {
@@ -107,7 +106,7 @@ const addMarkers = (data, handleMarkerClick) => {
 const renderPopup = (selectedPlace, setSelectedPlace, addToItinerary, navigate, setIsMapView) => {
   const handleAddToItinerary = () => {
     addToItinerary(selectedPlace);
-    setIsMapView(false);  // Turn off map view
+    setIsMapView(false);
     navigate('/itinerary');
   };
 
@@ -173,7 +172,7 @@ const renderPopup = (selectedPlace, setSelectedPlace, addToItinerary, navigate, 
 };
 
 const MapView = ({ data, type, selectedLocation }) => {
-  const { setIsMapView } = useViewMode();  // Directly access the context
+  const { setIsMapView } = useViewMode();
 
   const [selectedPlace, setSelectedPlace] = useState(selectedLocation || null);
   const mapRef = useRef();
@@ -183,7 +182,7 @@ const MapView = ({ data, type, selectedLocation }) => {
   const { addToItinerary } = useItineraryContext();
   const navigate = useNavigate();
 
-  const [mapHeight, setMapHeight] = useState('70vh'); // Default to 70vh
+  const [mapHeight, setMapHeight] = useState('70vh');
 
   const validatedData = data.map((item) => ({
     ...item,
@@ -193,15 +192,13 @@ const MapView = ({ data, type, selectedLocation }) => {
   useEffect(() => {
     const updateMapHeight = () => {
       if (window.innerWidth > window.innerHeight) {
-        // Landscape mode
-        setMapHeight('85vh'); // Adjust to your preferred height in landscape
+        setMapHeight('85vh');
       } else {
-        // Portrait mode
-        setMapHeight('70vh'); // Adjust to your preferred height in portrait
+        setMapHeight('70vh');
       }
     };
 
-    updateMapHeight(); // Set initial height
+    updateMapHeight();
     window.addEventListener('resize', updateMapHeight);
 
     return () => {
@@ -215,9 +212,7 @@ const MapView = ({ data, type, selectedLocation }) => {
       if (selectedLocation && isValidCoordinate(selectedLocation.lat, selectedLocation.long)) {
         const lat = parseFloat(selectedLocation.lat);
         const lon = parseFloat(selectedLocation.long);
-
-        // Adjust offset based on screen orientation and size
-        const offsetY = window.innerHeight * 0.25; // Push markers up by 25% of screen height
+        const offsetY = window.innerHeight * 0.25;
 
         map.flyTo({
           center: [lon, lat],
@@ -250,8 +245,7 @@ const MapView = ({ data, type, selectedLocation }) => {
     if (mapRef.current) {
       const map = mapRef.current.getMap();
       if (item.valid) {
-        // Adjust offset based on screen orientation and size
-        const offsetY = window.innerHeight * 0.25; // Push markers up by 25% of screen height
+        const offsetY = window.innerHeight * 0.25;
 
         map.flyTo({
           center: [parseFloat(item.long), parseFloat(item.lat)],
@@ -276,9 +270,9 @@ const MapView = ({ data, type, selectedLocation }) => {
           latitude: userLocation?.lat || 40,
           zoom: 5,
         }}
-        style={{ width: '100%', height: mapHeight }}  // Dynamically adjust height
+        style={{ width: '100%', height: mapHeight }}
         mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxAccessToken=""
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onLoad={() => setMapLoaded(true)}
       >
         {addMarkers(validatedData, handleMarkerClick)}
@@ -297,5 +291,3 @@ const MapView = ({ data, type, selectedLocation }) => {
 };
 
 export default MapView;
-
-   
