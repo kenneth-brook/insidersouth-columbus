@@ -19,11 +19,31 @@ import '../../sass/componentsass/DetailView.scss';
 import { useViewMode } from '../../hooks/ViewModeContext';
 import ShareModal from './ShareModal';
 
+const resolveImageUrl = (value) => {
+  if (!value) return '';
+
+  let rawUrl = String(value)
+    .replace(/^\{+|\}+$/g, '')
+    .replace(/^"+|"+$/g, '')
+    .trim();
+
+  if (rawUrl.startsWith('https://') || rawUrl.startsWith('http://')) {
+    return rawUrl;
+  }
+
+  const publicUrl = process.env.PUBLIC_URL || '';
+  const localPath = rawUrl.startsWith('/')
+    ? rawUrl
+    : `/images/columbus/${rawUrl}`;
+
+  return `${publicUrl}${localPath}`;
+};
+
 const formatDate = (dateTime) => {
   if (!dateTime) return 'N/A';
 
   const date = new Date(dateTime);
-  const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
   const day = String(date.getUTCDate()).padStart(2, '0');
   const year = date.getUTCFullYear();
 
@@ -95,15 +115,11 @@ const DetailView = () => {
     return (
       <>
         {Array.from({ length: fullStars }, (_, i) => (
-          <span key={i} className="star full">
-            ★
-          </span>
+          <span key={i} className="star full">★</span>
         ))}
         {halfStar === 1 && <span className="star half">☆</span>}
         {Array.from({ length: emptyStars }, (_, i) => (
-          <span key={i} className="star empty">
-            ☆
-          </span>
+          <span key={i} className="star empty">☆</span>
         ))}
       </>
     );
@@ -122,11 +138,6 @@ const DetailView = () => {
 
   const handleMapView = () => {
     setIsMapView(true);
-    navigate(`/${category}/${item.id}`, { state: { location: item } });
-  };
-
-  const handleListView = () => {
-    setIsMapView(false);
     navigate(`/${category}/${item.id}`, { state: { location: item } });
   };
 
@@ -162,31 +173,13 @@ const DetailView = () => {
           <div className="view-card content-item">
             <div className="top-image">
               <div className="img-back">
-              {item.images && item.images.length > 0 && (() => {
-                let rawUrl = item.images[0] || "";
-
-                // Remove leading/trailing braces:
-                rawUrl = rawUrl.replace(/^\{+|\}+$/g, "").trim();
-
-                // Remove leading/trailing quotes:
-                rawUrl = rawUrl.replace(/^"+|"+$/g, "").trim();
-
-                // Now check if it's already a full URL:
-                const isAbsolute =
-                  rawUrl.startsWith("https://") || rawUrl.startsWith("http://");
-
-                const finalUrl = isAbsolute
-                  ? rawUrl
-                  : `https://douglas.365easyflow.com/easyflow-images/${rawUrl}`;
-
-                return (
+                {item.images && item.images.length > 0 && (
                   <img
-                    src={finalUrl}
+                    src={resolveImageUrl(item.images[0])}
                     alt={item.name}
                     className="content-image"
                   />
-                );
-              })()}
+                )}
                 {orientation === 'landscape-primary' ? (
                   <a onClick={handleBack} className="web-button-landscape">
                     <BackArrow />
