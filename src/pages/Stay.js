@@ -10,7 +10,7 @@ import { useViewMode } from '../hooks/ViewModeContext';
 import MapView from './components/MapView';
 import { useNavigate } from 'react-router-dom';
 import DetailViewCard from './components/DetailViewCard';
-import ShareModal from './components/ShareModal'; // Import ShareModal
+import ShareModal from './components/ShareModal';
 
 const Stay = ({ pageTitle }) => {
   const { headerRef, footerRef, headerHeight, footerHeight, updateHeights } = useHeightContext();
@@ -25,55 +25,47 @@ const Stay = ({ pageTitle }) => {
   const [shareTitle, setShareTitle] = useState('');
 
   const displayOrder = [
-    "Fairfield Inn & Suites", "Hampton Inn",
-    "Holiday Inn Express", "Jameson Inn",
-    "Super 8 By Wyndham", "Western Inn and Suites",
-    "General Coffee State Park Cabin Rentals", "Blueberry Pointe",
-    "Econo Lodge", "Comfortel Suites",
-    "Benton’s Motel", "OYO Hotel"
-];
+    'Fairfield Inn & Suites', 'Hampton Inn',
+    'Holiday Inn Express', 'Jameson Inn',
+    'Super 8 By Wyndham', 'Western Inn and Suites',
+    'General Coffee State Park Cabin Rentals', 'Blueberry Pointe',
+    'Econo Lodge', 'Comfortel Suites',
+    'Benton’s Motel', 'OYO Hotel'
+  ];
 
-const sortedStayData = useMemo(() => {
-  if (!Array.isArray(stayData)) return [];
-
-  const mapped = displayOrder
-    .map(name => stayData.find(item => item.name === name))
-    .filter(Boolean);
-
-  const remaining = stayData.filter(item => !displayOrder.includes(item.name));
-  
-  return [...mapped, ...remaining];
-}, [stayData]);
+  const sortedStayData = useMemo(() => {
+    if (!Array.isArray(stayData)) return [];
+    const mapped = displayOrder.map(name => stayData.find(item => item.name === name)).filter(Boolean);
+    const remaining = stayData.filter(item => !displayOrder.includes(item.name));
+    return [...mapped, ...remaining];
+  }, [stayData]);
 
   useEffect(() => {
     updateHeights();
   }, [headerRef, footerRef, updateHeights]);
 
   const handleShare = (url, title) => {
-    console.log('handleShare called with:', { url, title }); // Log the URL and title
     setShareUrl(url);
     setShareTitle(title);
     setModalIsOpen(true);
+  };
+
+  const resolveImageUrl = (image) => {
+    if (!image) return '';
+    if (image.startsWith('http://') || image.startsWith('https://')) return image;
+    const cleanPath = image.startsWith('/') ? image : `/images/columbus/${image}`;
+    return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
   };
 
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 !== 0 ? 1 : 0;
     const emptyStars = 5 - fullStars - halfStar;
-
     return (
       <>
-        {Array.from({ length: fullStars }, (_, i) => (
-          <span key={i} className="star full">
-            ★
-          </span>
-        ))}
+        {Array.from({ length: fullStars }, (_, i) => <span key={i} className="star full">★</span>)}
         {halfStar === 1 && <span className="star half">☆</span>}
-        {Array.from({ length: emptyStars }, (_, i) => (
-          <span key={i} className="star empty">
-            ☆
-          </span>
-        ))}
+        {Array.from({ length: emptyStars }, (_, i) => <span key={i} className="star empty">☆</span>)}
       </>
     );
   };
@@ -81,9 +73,7 @@ const sortedStayData = useMemo(() => {
   const pageTitleContent = (
     <div className="page-title">
       <StayIcon className="stay-icon" />
-      <h1>
-        {pageTitle} {isMapView && 'Map'}
-      </h1>
+      <h1>{pageTitle} {isMapView && 'Map'}</h1>
       {isMapView && <MapsIcon className="icon-svg" />}
     </div>
   );
@@ -94,13 +84,9 @@ const sortedStayData = useMemo(() => {
         <div key={item.id} className="content-item">
           <h2>{item.name}</h2>
           <div className="content-box">
-            <div className='box-top'>
+            <div className="box-top">
               {item.images && item.images.length > 0 && (
-                <img
-                  src={`https://douglas.365easyflow.com/easyflow-images/${item.images[0]}`}
-                  alt={item.name}
-                  className="content-image"
-                />
+                <img src={resolveImageUrl(item.images[0])} alt={item.name} className="content-image" />
               )}
               <div className="text-box">
                 <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
@@ -110,17 +96,10 @@ const sortedStayData = useMemo(() => {
               {item.rating && (
                 <div className="reviews-block">
                   <div className="stars">{renderStars(item.rating)}</div>
-                  <p className="reviews-text">
-                    {item.rating.toFixed(1)} Google review
-                  </p>
+                  <p className="reviews-text">{item.rating.toFixed(1)} Google review</p>
                 </div>
               )}
-              <button
-                className="more-button"
-                onClick={() => navigate(`/stay/${item.id}`)}
-              >
-                more
-              </button>
+              <button className="more-button" onClick={() => navigate(`/stay/${item.id}`)}>more</button>
             </div>
           </div>
         </div>
@@ -131,58 +110,26 @@ const sortedStayData = useMemo(() => {
   const renderStayDesktopContent = () => (
     <div className="two-column-layout-desk">
       {sortedStayData.map((item) => (
-        <DetailViewCard
-          key={item.id}
-          item={item}
-          category="stay"
-          navigate={navigate}
-          handleShare={orientation === 'desktop' ? handleShare : null} // Pass handleShare function conditionally
-        />
+        <DetailViewCard key={item.id} item={item} category="stay" navigate={navigate} handleShare={orientation === 'desktop' ? handleShare : null} />
       ))}
     </div>
   );
 
   return (
-    <div
-      className={`app-container ${
-        orientation === 'landscape-primary' ||
-        orientation === 'landscape-secondary'
-          ? 'landscape'
-          : orientation === 'desktop'
-          ? 'desktop internal-desktop'
-          : 'portrait'
-      }`}
-    >
+    <div className={`app-container ${orientation === 'landscape-primary' || orientation === 'landscape-secondary' ? 'landscape' : orientation === 'desktop' ? 'desktop internal-desktop' : 'portrait'}`}>
       <Header ref={headerRef} />
-      <main
-        className="internal-content"
-        style={{
-          paddingTop: `calc(${headerHeight}px + 30px)`,
-          paddingBottom: `calc(${footerHeight}px + 50px)`,
-        }}
-      >
+      <main className="internal-content" style={{ paddingTop: `calc(${headerHeight}px + 30px)`, paddingBottom: `calc(${footerHeight}px + 50px)` }}>
         {pageTitleContent}
         {loading && <div className="loader"></div>}
         {error && <p>{error}</p>}
         {!loading && !error && (
           <div className="content">
-            {isMapView ? (
-              <MapView data={stayData} type="stay" />
-            ) : orientation === 'desktop' ? (
-              renderStayDesktopContent()
-            ) : (
-              renderStayContent()
-            )}
+            {isMapView ? <MapView data={stayData} type="stay" /> : orientation === 'desktop' ? renderStayDesktopContent() : renderStayContent()}
           </div>
         )}
       </main>
       <Footer ref={footerRef} showCircles={true} />
-      <ShareModal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        url={shareUrl}
-        title={shareTitle}
-      />
+      <ShareModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} url={shareUrl} title={shareTitle} />
     </div>
   );
 };

@@ -35,15 +35,11 @@ const DetailViewCard = ({ item, category, handleShare }) => {
     return (
       <>
         {Array.from({ length: fullStars }, (_, i) => (
-          <span key={i} className="star full">
-            ★
-          </span>
+          <span key={i} className="star full">★</span>
         ))}
         {halfStar === 1 && <span className="star half">☆</span>}
         {Array.from({ length: emptyStars }, (_, i) => (
-          <span key={i} className="star empty">
-            ☆
-          </span>
+          <span key={i} className="star empty">☆</span>
         ))}
       </>
     );
@@ -58,40 +54,35 @@ const DetailViewCard = ({ item, category, handleShare }) => {
     const date = new Date(dateString);
     const [year, month, day] = [
       date.getUTCFullYear(),
-      date.getUTCMonth() + 1, // Months are zero-indexed
+      date.getUTCMonth() + 1,
       date.getUTCDate(),
     ];
     return `${month}/${day}/${year}`;
   };
 
+  const resolveImageUrl = (image) => {
+    let rawUrl = image || '';
+    rawUrl = rawUrl.replace(/^\{+|\}+$/g, '').trim();
+    rawUrl = rawUrl.replace(/^"+|"+$/g, '').trim();
+
+    if (rawUrl.startsWith('https://') || rawUrl.startsWith('http://')) {
+      return rawUrl;
+    }
+
+    const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/images/columbus/${rawUrl}`;
+    return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
+  };
+
   return (
     <div className="content-item">
       <div className="top-container">
-      {item.images && item.images.length > 0 && (() => {
-                let rawUrl = item.images[0] || "";
-
-                // Remove leading/trailing braces:
-                rawUrl = rawUrl.replace(/^\{+|\}+$/g, "").trim();
-
-                // Remove leading/trailing quotes:
-                rawUrl = rawUrl.replace(/^"+|"+$/g, "").trim();
-
-                // Now check if it's already a full URL:
-                const isAbsolute =
-                  rawUrl.startsWith("https://") || rawUrl.startsWith("http://");
-
-                const finalUrl = isAbsolute
-                  ? rawUrl
-                  : `https://douglas.365easyflow.com/easyflow-images/${rawUrl}`;
-
-                return (
-                  <img
-                    src={finalUrl}
-                    alt={item.name}
-                    className="content-image"
-                  />
-                );
-              })()}
+        {item.images && item.images.length > 0 && (
+          <img
+            src={resolveImageUrl(item.images[0])}
+            alt={item.name}
+            className="content-image"
+          />
+        )}
         <div className="text-container">
           <h2>{item.name}</h2>
           {item.start_date && <h3>{formatDate(item.start_date)}</h3>}

@@ -10,19 +10,15 @@ import { useViewMode } from '../hooks/ViewModeContext';
 import MapView from './components/MapView';
 import { useNavigate } from 'react-router-dom';
 import DetailViewCard from './components/DetailViewCard';
-import ShareModal from './components/ShareModal'; // Import ShareModal
+import ShareModal from './components/ShareModal';
 
-// Define the formatDate function
 function formatDate(dateString) {
-  if (!dateString) return ''; // Defensive check for undefined or null dateString
+  if (!dateString) return '';
   const date = new Date(dateString);
-  if (isNaN(date)) return ''; // Check for invalid date
-
-  // Extract the date components in UTC to avoid timezone issues
-  const month = date.getUTCMonth() + 1; // Months are zero-indexed
+  if (isNaN(date)) return '';
+  const month = date.getUTCMonth() + 1;
   const day = date.getUTCDate();
   const year = date.getUTCFullYear();
-
   return `${month}/${day}/${year}`;
 }
 
@@ -44,13 +40,10 @@ const Events = ({ pageTitle }) => {
 
   const sortedEventsData = useMemo(() => {
     if (!data || !data.events) return [];
-    const specialEventName = "Wings & Things Festival and Fly-in";
+    const specialEventName = 'Wings & Things Festival and Fly-in';
     return data.events.slice().sort((a, b) => {
-      // Check if one of the events is the special event.
       if (a.name === specialEventName && b.name !== specialEventName) return -1;
       if (b.name === specialEventName && a.name !== specialEventName) return 1;
-      
-      // If neither (or both) are the special event, sort by date.
       const dateA = new Date(a.start_date);
       const dateB = new Date(b.start_date);
       return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
@@ -58,24 +51,29 @@ const Events = ({ pageTitle }) => {
   }, [data, sortOrder]);
 
   const handleShare = (url, title) => {
-    console.log('handleShare called with:', { url, title }); // Log the URL and title
     setShareUrl(url);
     setShareTitle(title);
     setModalIsOpen(true);
   };
 
+  const resolveImageUrl = (image) => {
+    if (!image) return '';
+    let rawUrl = image.replace(/^\{+|\}+$/g, '').trim().replace(/^"+|"+$/g, '').trim();
+    if (rawUrl.startsWith('http://') || rawUrl.startsWith('https://')) return rawUrl;
+    const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/images/columbus/${rawUrl}`;
+    return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
+  };
+
   const pageTitleContent = (
     <div className="page-title">
       <EventsIcon />
-      <h1>
-        {pageTitle} {isMapView && 'Map'}
-      </h1>
+      <h1>{pageTitle} {isMapView && 'Map'}</h1>
       {isMapView && <MapsIcon className="icon-svg" />}
     </div>
   );
 
   const renderEventsContent = () => {
-    if (!sortedEventsData || sortedEventsData.length === 0) return null; // Defensive check before rendering
+    if (!sortedEventsData || sortedEventsData.length === 0) return null;
     return (
       <div className="two-column-layout">
         {sortedEventsData.map((item) => (
@@ -84,43 +82,15 @@ const Events = ({ pageTitle }) => {
             <p>{formatDate(item.start_date)}</p>
             <div className="content-box">
               <div className="box-top">
-              {item.images && item.images.length > 0 && (() => {
-                let rawUrl = item.images[0] || "";
-
-                // Remove leading/trailing braces:
-                rawUrl = rawUrl.replace(/^\{+|\}+$/g, "").trim();
-
-                // Remove leading/trailing quotes:
-                rawUrl = rawUrl.replace(/^"+|"+$/g, "").trim();
-
-                // Now check if it's already a full URL:
-                const isAbsolute =
-                  rawUrl.startsWith("https://") || rawUrl.startsWith("http://");
-
-                const finalUrl = isAbsolute
-                  ? rawUrl
-                  : `https://douglas.365easyflow.com/easyflow-images/${rawUrl}`;
-
-                return (
-                  <img
-                    src={finalUrl}
-                    alt={item.name}
-                    className="content-image"
-                  />
-                );
-              })()}
-
+                {item.images && item.images.length > 0 && (
+                  <img src={resolveImageUrl(item.images[0])} alt={item.name} className="content-image" />
+                )}
                 <div className="text-box">
                   <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                 </div>
               </div>
               <div className="reviews-container">
-                <button
-                  className="more-button"
-                  onClick={() => navigate(`/events/${item.id}`)}
-                >
-                  more
-                </button>
+                <button className="more-button" onClick={() => navigate(`/events/${item.id}`)}>more</button>
               </div>
             </div>
           </div>
@@ -130,63 +100,31 @@ const Events = ({ pageTitle }) => {
   };
 
   const renderEventsDesktopContent = () => {
-    if (!sortedEventsData || sortedEventsData.length === 0) return null; // Defensive check before rendering
+    if (!sortedEventsData || sortedEventsData.length === 0) return null;
     return (
       <div className="two-column-layout-desk">
         {sortedEventsData.map((item) => (
-          <DetailViewCard
-            key={item.id}
-            item={item}
-            category="events"
-            navigate={navigate}
-            handleShare={orientation === 'desktop' ? handleShare : null} // Pass handleShare function conditionally
-          />
+          <DetailViewCard key={item.id} item={item} category="events" navigate={navigate} handleShare={orientation === 'desktop' ? handleShare : null} />
         ))}
       </div>
     );
   };
 
   return (
-    <div
-      className={`app-container ${
-        orientation === 'landscape-primary' ||
-        orientation === 'landscape-secondary'
-          ? 'landscape'
-          : orientation === 'desktop'
-          ? 'desktop internal-desktop'
-          : 'portrait'
-      }`}
-    >
+    <div className={`app-container ${orientation === 'landscape-primary' || orientation === 'landscape-secondary' ? 'landscape' : orientation === 'desktop' ? 'desktop internal-desktop' : 'portrait'}`}>
       <Header ref={headerRef} />
-      <main
-        className="internal-content"
-        style={{
-          paddingTop: `calc(${headerHeight}px + 30px)`,
-          paddingBottom: `calc(${footerHeight}px + 50px)`,
-        }}
-      >
+      <main className="internal-content" style={{ paddingTop: `calc(${headerHeight}px + 30px)`, paddingBottom: `calc(${footerHeight}px + 50px)` }}>
         {pageTitleContent}
         {loading && <div className="loader"></div>}
         {error && <p>{error}</p>}
         {!loading && !error && sortedEventsData.length > 0 && (
           <div className="content">
-            {isMapView ? (
-              <MapView data={sortedEventsData} type="events" />
-            ) : orientation === 'desktop' ? (
-              renderEventsDesktopContent()
-            ) : (
-              renderEventsContent()
-            )}
+            {isMapView ? <MapView data={sortedEventsData} type="events" /> : orientation === 'desktop' ? renderEventsDesktopContent() : renderEventsContent()}
           </div>
         )}
       </main>
       <Footer ref={footerRef} showCircles={true} />
-      <ShareModal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        url={shareUrl}
-        title={shareTitle}
-      />
+      <ShareModal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} url={shareUrl} title={shareTitle} />
     </div>
   );
 };
