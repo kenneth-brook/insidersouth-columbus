@@ -11,8 +11,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.4687532,
+    "long": -84.9908829,
+    "source_category": "Restaurant",
     "menu_types": []
   },
   {
@@ -27,8 +28,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.4839,
+    "long": -84.9776,
+    "source_category": "Restaurant",
     "menu_types": []
   },
   {
@@ -43,8 +45,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.4645351,
+    "long": -84.9879364,
+    "source_category": "Restaurant",
     "menu_types": []
   }
 ]
