@@ -9,7 +9,6 @@ import { ReactComponent as Share } from '../../assets/icos/share-icon2.svg';
 import { ReactComponent as AddItinerary } from '../../assets/icos/add-itinerary2.svg';
 import { useViewMode } from '../../hooks/ViewModeContext';
 
-// Import PNG markers
 import eatPin from '../../assets/icos/eatPin.png';
 import shopPin from '../../assets/icos/shopPin.png';
 import stayPin from '../../assets/icos/stayPin.png';
@@ -22,6 +21,26 @@ const markerIcons = {
   stay: stayPin,
   play: playPin,
   events: eventPin,
+};
+
+const resolveImageUrl = (value) => {
+  if (!value) return '';
+
+  let rawUrl = String(value)
+    .replace(/^\{+|\}+$/g, '')
+    .replace(/^"+|"+$/g, '')
+    .trim();
+
+  if (rawUrl.startsWith('https://') || rawUrl.startsWith('http://')) {
+    return rawUrl;
+  }
+
+  const publicUrl = process.env.PUBLIC_URL || '';
+  const localPath = rawUrl.startsWith('/')
+    ? rawUrl
+    : `/images/columbus/${rawUrl}`;
+
+  return `${publicUrl}${localPath}`;
 };
 
 const isValidCoordinate = (lat, lon) => {
@@ -41,10 +60,11 @@ const isValidCoordinate = (lat, lon) => {
 };
 
 const centerMap = (map, data, userLocation, nearMe) => {
-  const padding = window.innerWidth < 768 ? { top: 50, bottom: 150, left: 50, right: 50 } : { top: 50, bottom: 50, left: 50, right: 50 };
+  const padding = window.innerWidth < 768
+    ? { top: 50, bottom: 150, left: 50, right: 50 }
+    : { top: 50, bottom: 50, left: 50, right: 50 };
   const bounds = new mapboxgl.LngLatBounds();
 
-  // Include user location in the bounds
   if (nearMe && userLocation) {
     const userLat = parseFloat(userLocation.lat);
     const userLon = parseFloat(userLocation.lon);
@@ -54,7 +74,6 @@ const centerMap = (map, data, userLocation, nearMe) => {
     }
   }
 
-  // Include all valid location pins in the bounds
   data.forEach((item) => {
     if (item.valid) {
       const itemLat = parseFloat(item.lat);
@@ -94,12 +113,12 @@ const addMarkers = (data, handleMarkerClick) => {
           />
         </Marker>
       );
-    } else {
-      console.error(
-        `Skipping marker for ${item.name} due to invalid coordinates: lat=${lat}, lon=${lon}`
-      );
-      return null;
     }
+
+    console.error(
+      `Skipping marker for ${item.name} due to invalid coordinates: lat=${lat}, lon=${lon}`
+    );
+    return null;
   });
 };
 
@@ -128,7 +147,7 @@ const renderPopup = (selectedPlace, setSelectedPlace, addToItinerary, navigate, 
           <div className="popTop">
             {selectedPlace.images && selectedPlace.images.length > 0 && (
               <img
-                src={`https://douglas.365easyflow.com/easyflow-images/${selectedPlace.images[0]}`}
+                src={resolveImageUrl(selectedPlace.images[0])}
                 alt={selectedPlace.name}
               />
             )}
@@ -165,15 +184,14 @@ const renderPopup = (selectedPlace, setSelectedPlace, addToItinerary, navigate, 
         </div>
       </Popup>
     );
-  } else {
-    console.error(`Invalid coordinates for popup: lat=${lat}, lon=${lon}`);
-    return null;
   }
+
+  console.error(`Invalid coordinates for popup: lat=${lat}, lon=${lon}`);
+  return null;
 };
 
 const MapView = ({ data, type, selectedLocation }) => {
   const { setIsMapView } = useViewMode();
-
   const [selectedPlace, setSelectedPlace] = useState(selectedLocation || null);
   const mapRef = useRef();
   const { nearMe, userLocation } = useDataContext();
@@ -181,7 +199,6 @@ const MapView = ({ data, type, selectedLocation }) => {
   const [mapLoaded, setMapLoaded] = useState(false);
   const { addToItinerary } = useItineraryContext();
   const navigate = useNavigate();
-
   const [mapHeight, setMapHeight] = useState('70vh');
 
   const validatedData = data.map((item) => ({
@@ -276,7 +293,13 @@ const MapView = ({ data, type, selectedLocation }) => {
         onLoad={() => setMapLoaded(true)}
       >
         {addMarkers(validatedData, handleMarkerClick)}
-        {selectedPlace && renderPopup(selectedPlace, setSelectedPlace, addToItinerary, navigate, setIsMapView)}
+        {selectedPlace && renderPopup(
+          selectedPlace,
+          setSelectedPlace,
+          addToItinerary,
+          navigate,
+          setIsMapView
+        )}
         {userPin && (
           <Marker
             longitude={userPin.lon}
