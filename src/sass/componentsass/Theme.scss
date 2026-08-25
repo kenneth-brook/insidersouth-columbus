@@ -1,0 +1,429 @@
+:root {
+  --is-dark: #1f2933;
+  --is-dark-deep: #111820;
+  --is-gold: #b8942f;
+  --is-gold-light: #e7dbb7;
+  --is-cream: #f6f1ea;
+  --is-white: #ffffff;
+  --is-muted: #756f66;
+  --is-border: #cfc4af;
+  --is-soft-gold: rgba(184, 148, 47, 0.12);
+  --is-soft-dark: rgba(31, 41, 51, 0.12);
+}
+
+/*
+ * Insider South Columbus color layer.
+ * Layout, sizing, positioning and behavior deliberately remain in the
+ * existing component styles. This file only replaces the Douglas palette.
+ */
+
+body,
+html,
+#root,
+.mainWrap {
+  background-color: var(--is-cream);
+  color: var(--is-dark);
+}
+
+/* General content */
+.main-content,
+main.main-content {
+  background-image: repeating-linear-gradient(
+    0deg,
+    var(--is-cream) 0,
+    var(--is-cream) 4px,
+    var(--is-gold-light) 4px,
+    var(--is-gold-light) 8px
+  );
+}
+
+.internal-content {
+  color: var(--is-dark);
+}
+
+.page-title {
+  background-color: var(--is-dark);
+  color: var(--is-white);
+  box-shadow: inset 0 0 0 2px var(--is-gold);
+}
+
+.page-title svg {
+  fill: var(--is-white);
+}
+
+.content-item:nth-child(odd) {
+  background-color: var(--is-soft-gold);
+}
+
+.content-item h2,
+.text-container h2,
+.date-container,
+.events-text,
+.right-side h3 {
+  color: var(--is-dark);
+}
+
+.content-item h2,
+.text-container h2 {
+  border-color: var(--is-border);
+}
+
+.stars,
+.star.half::before {
+  color: var(--is-gold) !important;
+}
+
+.more-button {
+  background-color: var(--is-gold) !important;
+  color: var(--is-dark) !important;
+}
+
+.more-button:hover,
+.more-button:focus-visible {
+  background-color: var(--is-dark) !important;
+  color: var(--is-white) !important;
+}
+
+.loader {
+  border-top-color: var(--is-gold);
+}
+
+/* Header */
+header,
+header .header-container,
+header .search-container {
+  background-color: var(--is-cream);
+}
+
+header .header-container,
+header .search-container,
+.header-container,
+.search-container {
+  box-shadow: 0 1px 0 0 var(--is-gold-light);
+}
+
+header .square-button {
+  background-color: var(--is-gold);
+  color: var(--is-white);
+  fill: var(--is-white);
+}
+
+header .circle-button {
+  background-color: var(--is-dark);
+  color: var(--is-white);
+}
+
+header .search-container button.sort-button {
+  background-color: var(--is-gold-light);
+  color: var(--is-dark);
+  border: 1px solid var(--is-gold);
+}
+
+header .search-container input.search-box,
+header .centerWrap .search-box {
+  background-color: var(--is-white);
+  color: var(--is-dark);
+  border: 1px solid var(--is-gold-light);
+}
+
+header .search-container svg {
+  fill: var(--is-dark);
+}
+
+/* Sliding navigation */
+.sliding-menu {
+  background-color: var(--is-dark);
+  box-shadow: -4px 4px 8px rgba(17, 24, 32, 0.45);
+}
+
+.sliding-menu .menu-item {
+  color: var(--is-white);
+  fill: var(--is-white);
+  border-bottom-color: rgba(231, 219, 183, 0.45);
+}
+
+.sliding-menu .menu-item:hover,
+.sliding-menu .menu-item:focus-visible {
+  background-color: rgba(184, 148, 47, 0.22);
+}
+
+.sliding-menu .menu-close-button {
+  color: var(--is-white);
+}
+
+/* Sort menu */
+.sort-menu {
+  background-color: var(--is-cream);
+  color: var(--is-dark);
+  border: 1px solid var(--is-gold-light);
+  box-shadow: -4px 4px 8px rgba(17, 24, 32, 0.3);
+}
+
+.sort-menu .s-menu-item {
+  color: var(--is-dark);
+  border-bottom-color: var(--is-gold-light);
+}
+
+.sort-menu .s-menu-item:hover {
+  background-color: var(--is-soft-gold);
+}
+
+.sort-menu button {
+  background-color: var(--is-cream);
+  color: var(--is-dark);
+}
+
+.sort-menu select,
+.sort-menu input {
+  color: var(--is-dark);
+  background-color: var(--is-white);
+  border-color: var(--is-border);
+}
+
+/* Home navigation wheel */
+.background-circle {
+  background-color: rgba(184, 148, 47, 0.22) !important;
+}
+
+.background-circle2 {
+  outline-color: var(--is-white);
+}
+
+#circle-container {
+  background-color: var(--is-dark) !important;
+  border-color: var(--is-white);
+}
+
+.white-circle {
+  background-color: var(--is-white);
+  border-color: var(--is-gold) !important;
+}
+
+.circle-text,
+.exploring-header {
+  color: var(--is-dark) !important;
+}
+
+.homePage .icon-svg {
+  fill: var(--is-gold-light) !important;
+}
+
+/* Footer navigation */
+footer .footer-icon {
+  background-color: var(--is-white);
+  border-color: var(--is-white);
+  box-shadow: 0 0 0 2px var(--is-gold) inset;
+}
+
+footer .footer-icon .icon-svg {
+  fill: var(--is-gold-light);
+}
+
+footer .icon-label {
+  color: var(--is-dark);
+}
+
+footer .footer-icon.active {
+  background-color: var(--is-gold);
+  border-color: var(--is-white);
+  box-shadow: 0 0 0 3px var(--is-dark) inset;
+}
+
+footer .active-icon {
+  fill: var(--is-dark) !important;
+}
+
+footer .active-text {
+  color: var(--is-white);
+}
+
+.circle-background::before {
+  background-color: var(--is-gold) !important;
+}
+
+.circle-background::after {
+  background-color: var(--is-dark) !important;
+}
+
+.circle-background h3 {
+  color: var(--is-gold-light) !important;
+}
+
+.circle-background p {
+  color: var(--is-white);
+}
+
+/* Listing/detail controls */
+.web-button,
+.web-button-landscape,
+.app-container.desktop.internal-desktop .web-button {
+  background-color: var(--is-dark) !important;
+  color: var(--is-white) !important;
+}
+
+.contact-btn a,
+.phone-button,
+.app-container.desktop.internal-desktop .contact-container a:not(.web-button) {
+  background-color: var(--is-gold-light) !important;
+  color: var(--is-dark) !important;
+}
+
+.contact-btn svg,
+.phone-button svg,
+.contact-container svg {
+  fill: var(--is-dark) !important;
+}
+
+.web-button svg,
+.web-button-landscape svg {
+  fill: var(--is-white) !important;
+}
+
+.bottom-button button {
+  background: linear-gradient(
+    0deg,
+    var(--is-dark) 70%,
+    var(--is-gold) 100%
+  ) !important;
+  color: var(--is-white);
+}
+
+.bottom-button button:hover,
+.bottom-button button:focus-visible {
+  background: var(--is-gold) !important;
+  color: var(--is-dark);
+}
+
+.bottom-button button:hover svg,
+.bottom-button button:focus-visible svg {
+  fill: var(--is-dark);
+}
+
+.date-container svg,
+.text-container svg {
+  fill: var(--is-gold) !important;
+}
+
+/* Itinerary */
+.location-item:nth-child(even) {
+  background-color: var(--is-soft-gold) !important;
+}
+
+.day-box {
+  background-color: var(--is-dark);
+}
+
+.date-value,
+.time-value,
+.edit-button {
+  color: var(--is-gold) !important;
+}
+
+.edit-button svg {
+  fill: var(--is-gold) !important;
+}
+
+.right-button button,
+.cBut {
+  background-color: var(--is-gold) !important;
+  color: var(--is-white);
+}
+
+.button-group button,
+.itinerary-select-button,
+.itinerary-save-button,
+.uBut {
+  background-color: var(--is-dark) !important;
+  color: var(--is-white) !important;
+}
+
+.button-group button:hover,
+.itinerary-select-button:hover,
+.itinerary-save-button:hover,
+.uBut:hover {
+  background-color: var(--is-gold) !important;
+  color: var(--is-dark) !important;
+}
+
+.button-group button:hover svg,
+.itinerary-select-button:hover svg,
+.itinerary-save-button:hover svg {
+  fill: var(--is-dark) !important;
+}
+
+.details-button {
+  color: var(--is-dark);
+  border-color: var(--is-border);
+  box-shadow: 2px 4px 8px rgba(31, 41, 51, 0.15);
+}
+
+.details-button svg {
+  fill: var(--is-dark);
+}
+
+.edit-box,
+.itinerary-modal {
+  background-color: var(--is-white);
+  border-color: var(--is-border);
+}
+
+/* Login / forms */
+.login-container input,
+.itinerary-modal input,
+.itinHeaderRow input,
+.itinHeaderRow select {
+  border: 1px solid var(--is-border);
+  background-color: var(--is-white);
+  color: var(--is-dark);
+}
+
+.login-container form button {
+  background-color: var(--is-dark);
+  color: var(--is-white);
+  border: 1px solid var(--is-dark);
+  border-radius: 5px;
+}
+
+.login-container form button:hover,
+.login-container form button:focus-visible {
+  background-color: var(--is-gold);
+  color: var(--is-dark);
+  border-color: var(--is-gold);
+}
+
+.login-container .register-link {
+  color: var(--is-gold) !important;
+}
+
+/* Map popup chrome */
+.popCard .popWrap,
+.mapboxgl-popup-content {
+  color: var(--is-dark);
+}
+
+.popCard .popButton,
+.popButtonsWrap .popButton {
+  background-color: var(--is-dark);
+  color: var(--is-white);
+}
+
+.popCard .popButton svg,
+.popButtonsWrap .popButton svg {
+  fill: var(--is-white);
+}
+
+/* Preserve semantic destructive actions in red, but harmonize the shade. */
+.rBut,
+.itinerary-cancel-button,
+.login-container .reset-link {
+  color: var(--is-white);
+}
+
+.rBut,
+.itinerary-cancel-button {
+  background-color: #a94442 !important;
+}
+
+.login-container .reset-link {
+  color: #a94442 !important;
+}

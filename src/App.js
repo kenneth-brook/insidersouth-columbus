@@ -20,6 +20,7 @@ import { ViewModeProvider } from './hooks/ViewModeContext';
 import { AuthProvider, useAuth } from './hooks/AuthContext'; // Import the AuthProvider and useAuth hook
 import { ItineraryProvider } from './hooks/ItineraryContext';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import './sass/componentsass/Theme.scss';
 import initializeAnalytics from './analytics';
 
 const isLocalhost =
