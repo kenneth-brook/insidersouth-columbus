@@ -11,8 +11,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.4676,
+    "long": -84.9927,
+    "source_category": "Retail",
     "shop_types": []
   },
   {
@@ -27,8 +28,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.46745,
+    "long": -84.99265,
+    "source_category": "Retail",
     "shop_types": []
   },
   {
@@ -43,8 +45,9 @@
     "description": "",
     "images": [],
     "rating": null,
-    "lat": null,
-    "long": null,
+    "lat": 32.46883,
+    "long": -84.99093,
+    "source_category": "Retail",
     "shop_types": []
   }
 ]
