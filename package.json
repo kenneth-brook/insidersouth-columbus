@@ -26,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "geocode:columbus": "node scripts/geocode-columbus.js",
+    "geocode:columbus:write": "node scripts/geocode-columbus.js --write"
   },
   "eslintConfig": {
     "extends": [
