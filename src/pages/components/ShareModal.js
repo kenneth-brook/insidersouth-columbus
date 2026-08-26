@@ -11,6 +11,10 @@ import {
   EmailIcon,
 } from 'react-share';
 
+const GOLD = '#B8924A';
+const BLACK = '#2D2D2D';
+const CREAM = '#F8F2EC';
+
 const customStyles = {
   content: {
     top: '50%',
@@ -22,49 +26,85 @@ const customStyles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    zIndex: 1000, // Ensure the modal is on top
+    gap: '20px',
+    minWidth: '250px',
+    padding: '28px 30px 24px',
+    background: CREAM,
+    color: BLACK,
+    border: `2px solid ${BLACK}`,
+    borderRadius: '12px',
+    boxShadow: '0 14px 40px rgba(45, 45, 45, 0.28)',
+    zIndex: 1000,
   },
   overlay: {
-    zIndex: 1000, // Ensure the overlay is on top
+    backgroundColor: 'rgba(45, 45, 45, 0.45)',
+    zIndex: 1000,
   },
 };
 
-const ShareModal = ({ isOpen, onRequestClose, url, title }) => {
-  console.log('ShareModal rendered with:', { isOpen, url, title }); // Log modal render details
+const iconProps = {
+  size: 38,
+  round: true,
+  bgStyle: { fill: GOLD },
+  iconFillColor: BLACK,
+};
 
+const ShareModal = ({ isOpen, onRequestClose, url, title }) => {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       style={customStyles}
       contentLabel="Share Modal"
-      ariaHideApp={false} // Ensure this is set correctly
+      ariaHideApp={false}
     >
-      <h2 style={{ color: '#006837' }}>Share this page</h2>
-      <div className="share-buttons">
+      <h2
+        style={{
+          margin: 0,
+          color: BLACK,
+          fontFamily: 'var(--font-display)',
+          fontWeight: 600,
+          fontSize: '30px',
+        }}
+      >
+        Share this page
+      </h2>
+
+      <div
+        className="share-buttons"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '12px',
+        }}
+      >
         <FacebookShareButton url={url} quote={title} className="share-button">
-          <FacebookIcon size={32} round />
+          <FacebookIcon {...iconProps} />
         </FacebookShareButton>
         <TwitterShareButton url={url} title={title} className="share-button">
-          <TwitterIcon size={32} round />
+          <TwitterIcon {...iconProps} />
         </TwitterShareButton>
         <LinkedinShareButton url={url} title={title} source={url} className="share-button">
-          <LinkedinIcon size={32} round />
+          <LinkedinIcon {...iconProps} />
         </LinkedinShareButton>
         <EmailShareButton url={url} subject={title} body="Check out this site!" className="share-button">
-          <EmailIcon size={32} round />
+          <EmailIcon {...iconProps} />
         </EmailShareButton>
       </div>
+
       <button
         onClick={onRequestClose}
         className="close-button"
         style={{
-          backgroundColor: '#006837',
-          color: '#fff',
-          padding: '10px 20px',
-          border: 'none',
-          borderRadius: '4px',
+          backgroundColor: GOLD,
+          color: BLACK,
+          padding: '10px 26px',
+          border: `2px solid ${BLACK}`,
+          borderRadius: '7px',
           cursor: 'pointer',
+          fontWeight: 700,
+          fontFamily: 'var(--font-body)',
         }}
       >
         Close
@@ -74,4 +114,3 @@ const ShareModal = ({ isOpen, onRequestClose, url, title }) => {
 };
 
 export default ShareModal;
-
