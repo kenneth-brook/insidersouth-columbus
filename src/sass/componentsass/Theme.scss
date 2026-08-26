@@ -1,21 +1,15 @@
 :root {
-  --is-dark: #1f2933;
-  --is-dark-deep: #111820;
-  --is-gold: #b8942f;
+  --is-dark: #2D2D2D;
+  --is-dark-deep: #2D2D2D;
+  --is-gold: #B8924A;
   --is-gold-light: #e7dbb7;
   --is-cream: #F8F2EC;
   --is-white: #ffffff;
   --is-muted: #756f66;
   --is-border: #cfc4af;
-  --is-soft-gold: rgba(184, 148, 47, 0.12);
-  --is-soft-dark: rgba(31, 41, 51, 0.12);
+  --is-soft-gold: rgba(184, 146, 74, 0.12);
+  --is-soft-dark: rgba(45, 45, 45, 0.12);
 }
-
-/*
- * Insider South Columbus color layer.
- * Layout, sizing, positioning and behavior deliberately remain in the
- * existing component styles. This file only replaces the Douglas palette.
- */
 
 body,
 html,
@@ -25,7 +19,6 @@ html,
   color: var(--is-dark);
 }
 
-/* General content */
 .main-content,
 main.main-content {
   background-image: repeating-linear-gradient(
@@ -41,14 +34,21 @@ main.main-content {
   color: var(--is-dark);
 }
 
+/* Content page title bar */
 .page-title {
-  background-color: var(--is-dark);
-  color: var(--is-white);
-  box-shadow: inset 0 0 0 2px var(--is-gold);
+  background-color: var(--is-gold) !important;
+  color: var(--is-dark) !important;
+  border: 2px solid var(--is-dark) !important;
+  box-shadow: none !important;
+  box-sizing: border-box;
+}
+
+.page-title h1 {
+  color: var(--is-dark) !important;
 }
 
 .page-title svg {
-  fill: var(--is-white);
+  fill: var(--is-dark) !important;
 }
 
 .content-item:nth-child(odd) {
@@ -81,7 +81,7 @@ main.main-content {
 .more-button:hover,
 .more-button:focus-visible {
   background-color: var(--is-dark) !important;
-  color: var(--is-white) !important;
+  color: var(--is-gold) !important;
 }
 
 .loader {
@@ -102,8 +102,6 @@ header .search-container,
   box-shadow: 0 1px 0 0 var(--is-gold-light);
 }
 
-/* Desktop split view only occupies the left half; suppress the inherited
-   divider there so it cannot stop abruptly at the center seam. */
 .app-container.desktop.internal-desktop header .header-container,
 .app-container.desktop.internal-desktop header .search-container {
   box-shadow: none !important;
@@ -140,7 +138,7 @@ header .search-container svg {
 /* Sliding navigation */
 .sliding-menu {
   background-color: var(--is-dark);
-  box-shadow: -4px 4px 8px rgba(17, 24, 32, 0.45);
+  box-shadow: -4px 4px 8px rgba(45, 45, 45, 0.45);
 }
 
 .sliding-menu .menu-item {
@@ -151,7 +149,7 @@ header .search-container svg {
 
 .sliding-menu .menu-item:hover,
 .sliding-menu .menu-item:focus-visible {
-  background-color: rgba(184, 148, 47, 0.22);
+  background-color: rgba(184, 146, 74, 0.22);
 }
 
 .sliding-menu .menu-close-button {
@@ -163,7 +161,7 @@ header .search-container svg {
   background-color: var(--is-cream);
   color: var(--is-dark);
   border: 1px solid var(--is-gold-light);
-  box-shadow: -4px 4px 8px rgba(17, 24, 32, 0.3);
+  box-shadow: -4px 4px 8px rgba(45, 45, 45, 0.3);
 }
 
 .sort-menu .s-menu-item {
@@ -189,7 +187,7 @@ header .search-container svg {
 
 /* Home navigation wheel */
 .background-circle {
-  background-color: rgba(184, 148, 47, 0.22) !important;
+  background-color: rgba(184, 146, 74, 0.22) !important;
 }
 
 .background-circle2 {
@@ -260,50 +258,50 @@ footer .active-text {
   color: var(--is-white);
 }
 
-/* Listing/detail controls */
+/* Location card primary controls: Website / phone / directions */
 .web-button,
 .web-button-landscape,
-.app-container.desktop.internal-desktop .web-button {
-  background-color: var(--is-dark) !important;
-  color: var(--is-white) !important;
-}
-
-.contact-btn a,
 .phone-button,
-.app-container.desktop.internal-desktop .contact-container a:not(.web-button) {
-  background-color: var(--is-gold-light) !important;
+.contact-btn a,
+.app-container.desktop.internal-desktop .web-button,
+.app-container.desktop.internal-desktop .contact-container a {
+  background: var(--is-gold) !important;
+  background-color: var(--is-gold) !important;
   color: var(--is-dark) !important;
 }
 
-.contact-btn svg,
-.phone-button svg,
-.contact-container svg {
-  fill: var(--is-dark) !important;
-}
-
 .web-button svg,
-.web-button-landscape svg {
-  fill: var(--is-white) !important;
+.web-button-landscape svg,
+.phone-button svg,
+.contact-btn svg,
+.contact-container svg,
+.app-container.desktop.internal-desktop .contact-container svg {
+  fill: var(--is-dark) !important;
+  color: var(--is-dark) !important;
 }
 
+/* Location card action controls: Share / Map / Add to Itinerary */
 .bottom-button button {
-  background: linear-gradient(
-    0deg,
-    var(--is-dark) 70%,
-    var(--is-gold) 100%
-  ) !important;
-  color: var(--is-white);
+  background: var(--is-dark) !important;
+  background-image: none !important;
+  color: var(--is-gold) !important;
+}
+
+.bottom-button button svg {
+  fill: var(--is-gold) !important;
+  color: var(--is-gold) !important;
 }
 
 .bottom-button button:hover,
 .bottom-button button:focus-visible {
   background: var(--is-gold) !important;
-  color: var(--is-dark);
+  color: var(--is-dark) !important;
 }
 
 .bottom-button button:hover svg,
 .bottom-button button:focus-visible svg {
-  fill: var(--is-dark);
+  fill: var(--is-dark) !important;
+  color: var(--is-dark) !important;
 }
 
 .date-container svg,
@@ -361,7 +359,7 @@ footer .active-text {
 .details-button {
   color: var(--is-dark);
   border-color: var(--is-border);
-  box-shadow: 2px 4px 8px rgba(31, 41, 51, 0.15);
+  box-shadow: 2px 4px 8px rgba(45, 45, 45, 0.15);
 }
 
 .details-button svg {
@@ -411,15 +409,14 @@ footer .active-text {
 .popCard .popButton,
 .popButtonsWrap .popButton {
   background-color: var(--is-dark);
-  color: var(--is-white);
+  color: var(--is-gold);
 }
 
 .popCard .popButton svg,
 .popButtonsWrap .popButton svg {
-  fill: var(--is-white);
+  fill: var(--is-gold);
 }
 
-/* Preserve semantic destructive actions in red, but harmonize the shade. */
 .rBut,
 .itinerary-cancel-button,
 .login-container .reset-link {
