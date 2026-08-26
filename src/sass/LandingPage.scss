@@ -24,39 +24,17 @@ $white: #ffffff;
   }
 
   &__brand {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     text-align: center;
   }
 
-  &__inside {
-    color: $gold;
-    font-size: clamp(1.4rem, 2vw, 2.1rem);
-    letter-spacing: 0.5em;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
-
-  &__south {
-    color: $dark;
-    font-size: clamp(4rem, 7vw, 7.5rem);
-    line-height: 0.85;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-  }
-
-  &__city {
-    margin-top: 20px;
-    color: $gold;
-    font-size: clamp(2rem, 4vw, 4rem);
-    font-weight: 700;
-    letter-spacing: 0.12em;
-  }
-
-  &__location {
-    margin-top: 8px;
-    color: $dark;
-    font-size: clamp(0.8rem, 1.2vw, 1.1rem);
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
+  &__brand-image {
+    display: block;
+    width: min(420px, 82%);
+    height: auto;
+    object-fit: contain;
   }
 
   &__guide-copy {
@@ -109,12 +87,8 @@ $white: #ffffff;
       padding: 30px 24px;
     }
 
-    &__south {
-      font-size: clamp(3rem, 12vw, 5rem);
-    }
-
-    &__city {
-      margin-top: 10px;
+    &__brand-image {
+      width: min(340px, 76%);
     }
 
     &__guide-copy h1 {
