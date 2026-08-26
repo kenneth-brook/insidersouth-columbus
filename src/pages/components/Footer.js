@@ -34,7 +34,7 @@ const Footer = forwardRef(({ showCircles = false }, ref) => {
   const orientation = useOrientation();
   const navigate = useNavigate();
   const location = useLocation();
-  const { updateHeights } = useHeightContext();
+  const { headerHeight, updateHeights } = useHeightContext();
   const { data } = useDataContext();
   const { isMapView, setIsMapView } = useViewMode();
   const previousPath = useRef(location.pathname);
@@ -58,13 +58,17 @@ const Footer = forwardRef(({ showCircles = false }, ref) => {
   const isHomePage = location.pathname === '/home';
   const isActive = (key) => location.pathname.startsWith(`/${key}`);
   const mapButtonLabel = isMapView ? 'List' : 'Map';
+  const desktopContentNavStyle =
+    orientation === 'desktop' && showCircles
+      ? { '--content-nav-height': `${headerHeight}px` }
+      : undefined;
 
   useEffect(() => {
     updateHeights();
   }, [updateHeights]);
 
   return (
-    <footer ref={ref}>
+    <footer ref={ref} style={desktopContentNavStyle}>
       {showCircles && (
         <div className="footer-circles">
           {Object.keys(icons).map((key, index) => {
