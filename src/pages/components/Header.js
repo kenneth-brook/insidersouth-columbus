@@ -200,15 +200,12 @@ const Header = forwardRef((props, ref) => {
           }`}
         >
           <Link to="/home" className="columbus-brand-link" aria-label="Visit Georgia Columbus home">
-            <img
-              className="columbus-brand-image"
-              src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
-              alt=""
-              aria-label="Visit Georgia Columbus"
-              onError={(event) => {
-                event.currentTarget.style.display = 'none';
-              }}
-            />
+            <div className="visit-georgia-lockup visit-georgia-lockup--header">
+              <span className="visit-georgia-lockup__visit">VISIT</span>
+              <span className="visit-georgia-lockup__georgia">GEORGIA</span>
+              <span className="visit-georgia-lockup__city">COLUMBUS</span>
+              <span className="visit-georgia-lockup__tagline">GEORGIA'S RIVER CITY</span>
+            </div>
           </Link>
         </div>
         <button
