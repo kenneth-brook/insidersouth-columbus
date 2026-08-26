@@ -43,8 +43,12 @@ const HomeContent = () => {
         <div className="homePage__brand">
           <img
             src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
-            alt="Visit Georgia"
+            alt=""
+            aria-label="Visit Georgia"
             className="homePage__brand-image"
+            onError={(event) => {
+              event.currentTarget.style.display = 'none';
+            }}
           />
         </div>
         <div id="main-container">
