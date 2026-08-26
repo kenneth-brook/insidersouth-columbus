@@ -8,8 +8,8 @@ const LandingPage = () => {
     <main className="landing-page">
       <section className="landing-page__brand-panel">
         <div className="landing-page__brand">
-          <div className="landing-page__inside">INSIDER</div>
-          <div className="landing-page__south">SOUTH</div>
+          <div className="landing-page__inside">VISIT</div>
+          <div className="landing-page__south">GEORGIA</div>
 
           <div className="landing-page__city">COLUMBUS</div>
           <div className="landing-page__location">GEORGIA'S RIVER CITY</div>
