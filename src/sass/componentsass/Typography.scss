@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-display: 'Bodoni Moda', 'Didot', 'GFS Didot', 'Bodoni 72', 'Bodoni MT', serif;
+  --font-body: 'Montserrat', 'Avenir Next', 'Avenir', 'Segoe UI', sans-serif;
+  --tracking-editorial: 0.24em;
+  --tracking-wide: 0.32em;
+}
+
+/*
+ * Insider South typography layer.
+ * This deliberately sits after the inherited Town Tripping/Douglas styles
+ * so every screen speaks the same editorial language as the concept PDF.
+ */
+
+html,
+body,
+#root,
+.mainWrap,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-body) !important;
+}
+
+/* Editorial / destination display typography */
+h1,
+h2,
+h3,
+.page-title h1,
+.content-item h2,
+.text-container h2,
+.circle-background h3,
+.exploring-header,
+.landing-brand,
+.landing-brand-name,
+.landing-city,
+.brand-city,
+.header-city {
+  font-family: var(--font-display) !important;
+  font-weight: 400;
+}
+
+/* Utility, body and interactive copy */
+p,
+a,
+button,
+label,
+input,
+select,
+textarea,
+.content-box,
+.text-box,
+.reviews-text,
+.contact-container,
+.bottom-button,
+.sliding-menu,
+.sort-menu,
+.footer-circles,
+.popCard,
+.mapboxgl-popup-content {
+  font-family: var(--font-body) !important;
+}
+
+/* Recurring editorial all-caps treatment from the concept */
+.page-title h1,
+.circle-background h3,
+.landing-kicker,
+.landing-tagline,
+.brand-tagline,
+.header-tagline,
+.footer-tagline,
+.editorial-kicker,
+.editorial-label,
+.section-kicker {
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-editorial);
+}
+
+/* Navigation stays restrained so smaller labels remain readable. */
+.sliding-menu .menu-item,
+footer .icon-label,
+.bottom-button button,
+.contact-container a,
+.more-button {
+  letter-spacing: 0.05em;
+}
+
+/* Large destination names carry the airy magazine treatment. */
+.landing-city,
+.brand-city,
+.header-city,
+.exploring-header {
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --tracking-editorial: 0.18em;
+    --tracking-wide: 0.24em;
+  }
+}
