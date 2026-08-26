@@ -18,7 +18,8 @@ main.homePage {
 
 .main-content.homePage {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   flex-grow: 1;
   max-height: 100%;
@@ -26,6 +27,23 @@ main.homePage {
 }
 
 .homePage {
+  .homePage__brand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 34px 24px 10px;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+  }
+
+  .homePage__brand-image {
+    display: block;
+    width: min(360px, 70%);
+    max-height: 130px;
+    object-fit: contain;
+  }
+
   #main-container {
     position: relative;
     width: 100%;
@@ -34,6 +52,7 @@ main.homePage {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1 1 auto;
   }
 
   .background-circle {
@@ -76,12 +95,6 @@ main.homePage {
     bottom: 5px;
     border-radius: 50%;
     border: 2px solid $columbus-gold;
-  }
-
-  #circle-container img {
-    max-width: calc(90% - 15px);
-    max-height: calc(90% - 15px);
-    object-fit: contain;
   }
 
   .white-circle {
@@ -129,10 +142,6 @@ main.homePage {
     width: auto;
     font-weight: bolder;
   }
-
-  .exploring-header {
-    color: $columbus-dark;
-  }
 }
 
 .app-container.desktop .homePage {
@@ -142,5 +151,14 @@ main.homePage {
 
   .white-circle {
     border-color: $columbus-gold;
+  }
+
+  .homePage__brand {
+    padding-top: 42px;
+  }
+
+  .homePage__brand-image {
+    width: min(420px, 68%);
+    max-height: 150px;
   }
 }
