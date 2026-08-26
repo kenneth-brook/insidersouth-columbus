@@ -102,6 +102,13 @@ header .search-container,
   box-shadow: 0 1px 0 0 var(--is-gold-light);
 }
 
+/* Desktop split view only occupies the left half; suppress the inherited
+   divider there so it cannot stop abruptly at the center seam. */
+.app-container.desktop.internal-desktop header .header-container,
+.app-container.desktop.internal-desktop header .search-container {
+  box-shadow: none !important;
+}
+
 header .square-button {
   background-color: var(--is-gold);
   color: var(--is-white);
