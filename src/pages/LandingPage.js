@@ -1,6 +1,7 @@
 import React from 'react'
 import '../sass/LandingPage.scss'
 import RoundButton from './components/RoundButton'
+import GeorgiaStateIcon from './components/GeorgiaStateIcon'
 import columbusRiverfront from '../assets/images/columbus-riverfront.png'
 
 const LandingPage = () => {
@@ -14,6 +15,10 @@ const LandingPage = () => {
           </div>
           <div className="landing-page__city">COLUMBUS</div>
           <div className="landing-page__location">GEORGIA'S RIVER CITY</div>
+        </div>
+
+        <div className="landing-page__state-wrap" aria-hidden="true">
+          <GeorgiaStateIcon className="landing-page__state" decorative />
         </div>
 
         <div className="landing-page__guide-copy">
