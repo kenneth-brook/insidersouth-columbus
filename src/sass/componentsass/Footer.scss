@@ -1,27 +1,30 @@
-$columbus-gold: #b8942f;
-$columbus-dark: #1f2933;
-$columbus-cream: #ffffff;
+$columbus-gold: #B8924A;
+$columbus-dark: #2D2D2D;
+$columbus-cream: #F8F2EC;
 
 footer {
+  background-color: $columbus-cream;
+
   .footer-circles {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    background-color: $columbus-cream;
   }
 
   .footer-icon {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: white;
+    background-color: $columbus-cream;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
-    border: 2px solid #fff;
+    border: 2px solid $columbus-cream;
     box-shadow: 0 0 0 2px $columbus-gold inset;
     z-index: 2;
   }
@@ -46,7 +49,7 @@ footer {
 
   .active {
     background-color: $columbus-gold;
-    border: 2px solid #fff;
+    border: 2px solid $columbus-cream;
     box-shadow: 0 0 0 3px $columbus-dark inset;
   }
 
@@ -97,22 +100,32 @@ footer {
 }
 
 /*
- * Internal desktop pages use the footer as the six-button navigation strip.
- * Keep that strip to its actual visual height so the fixed footer cannot
- * create a large invisible block over the listing content.
+ * Desktop content pages use the footer component as the right-side sticky
+ * navigation bar. Match the measured left header height so both halves form
+ * one continuous top edge while page content scrolls behind them.
  */
 .app-container.desktop.internal-desktop > footer {
-  height: 76px !important;
-  min-height: 76px !important;
-  max-height: 76px !important;
-  overflow: visible;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 50% !important;
+  height: var(--content-nav-height, 180px) !important;
+  min-height: var(--content-nav-height, 180px) !important;
+  max-height: var(--content-nav-height, 180px) !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: $columbus-cream;
+  z-index: 200;
 }
 
 .app-container.desktop.internal-desktop > footer .footer-circles {
-  height: 76px;
+  height: 100%;
   box-sizing: border-box;
-  padding: 8px 18px;
+  padding: 0 18px;
+  background: $columbus-cream;
 }
 
 .app-container.desktop.internal-desktop > footer .footer-container {
