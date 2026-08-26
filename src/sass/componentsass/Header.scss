@@ -98,44 +98,11 @@ header {
     display: block;
   }
 
-  .columbus-brand {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 0.9;
-  }
-
-  .columbus-brand__insider {
-    color: $columbus-gold;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.35em;
-    padding-left: 0.35em;
-  }
-
-  .columbus-brand__south {
-    color: $columbus-dark;
-    font-size: 36px;
-    font-weight: 800;
-    letter-spacing: -0.04em;
-  }
-
-  .columbus-brand__city {
-    margin-top: 8px;
-    color: $columbus-gold;
-    font-size: 18px;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    padding-left: 0.16em;
-  }
-
-  .columbus-brand__tagline {
-    margin-top: 5px;
-    color: $columbus-dark;
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+  .columbus-brand-image {
+    display: block;
+    width: clamp(180px, 18vw, 280px);
+    max-height: 110px;
+    object-fit: contain;
   }
 
   .square-button,
