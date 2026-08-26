@@ -87,6 +87,17 @@ main.homePage {
     bottom: 5px;
     border-radius: 50%;
     border: 2px solid $columbus-gold;
+    pointer-events: none;
+  }
+
+  .home-nav-center__icon {
+    width: 46px;
+    height: auto;
+    color: $columbus-gold;
+    display: block;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
   }
 
   .white-circle {
@@ -147,5 +158,9 @@ main.homePage {
 
   .homePage__brand {
     padding-top: 42px;
+  }
+
+  .home-nav-center__icon {
+    width: 54px;
   }
 }
