@@ -1,7 +1,6 @@
 // src/pages/components/HomeContent.js
 import React, { useEffect, useState } from 'react';
 import Circle from './Circle';
-import chair from '../../assets/images/chair.png';
 import { useOrientation } from '../../hooks/OrientationContext';
 import { useHeightContext } from '../../hooks/HeightContext';
 import Header from './Header'
@@ -10,7 +9,7 @@ import '../../sass/componentsass/HomeContent.scss'
 const HomeContent = () => {
   const [circles, setCircles] = useState([]);
   const orientation = useOrientation();
-  const { headerRef, footerRef, headerHeight, footerHeight, updateHeights } = useHeightContext();
+  const { headerRef, footerRef, updateHeights } = useHeightContext();
 
   useEffect(() => {
     updateHeights();
@@ -41,24 +40,17 @@ const HomeContent = () => {
     <>
       <Header ref={headerRef} />
       <main className="main-content homePage">
-        <h1 className="exploring-header">Tap to begin exploring Columbus</h1>
+        <div className="homePage__brand">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
+            alt="Visit Georgia"
+            className="homePage__brand-image"
+          />
+        </div>
         <div id="main-container">
           <div className="background-circle2"></div>
           <div className="background-circle"></div>
           <div id="circle-container">
-            <img
-              src={chair}
-              alt="Columbus guide"
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                maxWidth: '78%',
-                maxHeight: '78%',
-                zIndex: 1,
-              }}
-            />
             {circles.map((circle, index) => (
               <Circle
                 key={index}
