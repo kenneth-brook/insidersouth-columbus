@@ -3,6 +3,8 @@ $columbus-dark: #1f2933;
 $columbus-cream: #fbfaf7;
 
 footer {
+  position: relative;
+
   .footer-circles {
     display: flex;
     justify-content: space-around;
@@ -59,74 +61,56 @@ footer {
   }
 }
 
-.footer-container {
-  position: relative;
-  padding: 20px;
-}
-
-.circle-background {
+/* Home page destination copy. This deliberately does not use the old
+   circle-background class so inherited Douglas oval pseudo-elements cannot
+   be applied to it. */
+.home-footer-copy {
   position: absolute;
-  top: -110px;
   left: 50%;
+  bottom: 32px;
   transform: translateX(-50%);
-  width: min(92vw, 760px);
-  height: auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  pointer-events: none;
-}
-
-.circle-background::before,
-.circle-background::after {
-  display: none !important;
-  content: none !important;
-}
-
-.footer-content {
-  position: relative;
-  z-index: 3;
-  width: 100%;
-  max-width: 760px;
-  padding: 0 24px;
+  width: min(88vw, 700px);
   box-sizing: border-box;
+  padding: 0 20px;
+  text-align: center;
+  pointer-events: none;
+  z-index: 5;
 }
 
-.circle-background h3 {
+.home-footer-copy h3 {
   color: $columbus-gold !important;
-  font-size: clamp(42px, 5.2vw, 72px);
+  font-size: clamp(34px, 4.5vw, 60px);
   font-weight: 400;
   line-height: 1;
-  letter-spacing: 0.07em !important;
-  padding: 0;
+  letter-spacing: 0.025em !important;
   margin: 0;
+  padding: 0;
   text-shadow: none;
   white-space: nowrap;
 }
 
-.circle-background p {
+.home-footer-copy p {
   color: $columbus-dark !important;
-  font-size: clamp(18px, 2vw, 28px);
+  font-size: clamp(17px, 1.7vw, 24px);
   line-height: 1.2;
-  letter-spacing: 0.02em !important;
-  margin: 12px 0 0;
+  letter-spacing: 0.01em !important;
+  margin: 10px 0 0;
   text-shadow: none;
   font-weight: 500;
 }
 
 @media (max-width: 700px) {
-  .circle-background {
-    top: -96px;
-    width: 96vw;
+  .home-footer-copy {
+    bottom: 24px;
+    width: 94vw;
   }
 
-  .circle-background h3 {
-    font-size: clamp(34px, 9vw, 54px);
-    letter-spacing: 0.04em !important;
+  .home-footer-copy h3 {
+    font-size: clamp(30px, 8vw, 46px);
+    letter-spacing: 0.015em !important;
   }
 
-  .circle-background p {
-    font-size: clamp(16px, 4.5vw, 22px);
+  .home-footer-copy p {
+    font-size: clamp(16px, 4.2vw, 21px);
   }
 }
