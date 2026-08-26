@@ -10,9 +10,11 @@ const LandingPage = () => {
         <div className="landing-page__brand">
           <img
             src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
-            alt="Visit Georgia Columbus"
+            alt="Visit Georgia"
             className="landing-page__brand-image"
           />
+          <div className="landing-page__city">COLUMBUS</div>
+          <div className="landing-page__location">GEORGIA'S RIVER CITY</div>
         </div>
 
         <div className="landing-page__guide-copy">
