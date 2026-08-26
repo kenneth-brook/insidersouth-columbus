@@ -5,6 +5,8 @@
   --font-body: 'Aktiv Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --tracking-editorial: 0.24em;
   --tracking-wide: 0.32em;
+  --brand-gold: #B8924A;
+  --brand-black: #2D2D2D;
 }
 
 html,
@@ -86,6 +88,82 @@ footer .icon-label,
 .header-city,
 .exploring-header {
   letter-spacing: 0.08em;
+}
+
+.visit-georgia-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display) !important;
+  line-height: 0.82;
+  color: var(--brand-black);
+  text-align: center;
+}
+
+.visit-georgia-lockup span {
+  display: block;
+  font-family: var(--font-display) !important;
+}
+
+.visit-georgia-lockup__visit {
+  color: var(--brand-gold);
+  font-weight: 500;
+  letter-spacing: 0.48em;
+  padding-left: 0.48em;
+}
+
+.visit-georgia-lockup__georgia {
+  color: var(--brand-black);
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  padding-left: 0.10em;
+}
+
+.visit-georgia-lockup__city {
+  color: var(--brand-gold);
+  font-family: var(--font-body) !important;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  padding-left: 0.18em;
+}
+
+.visit-georgia-lockup__tagline {
+  color: var(--brand-black);
+  font-family: var(--font-body) !important;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  padding-left: 0.20em;
+}
+
+.visit-georgia-lockup--landing {
+  width: min(420px, 82%);
+  min-height: 152px;
+}
+.visit-georgia-lockup--landing .visit-georgia-lockup__visit { font-size: clamp(34px, 4vw, 56px); }
+.visit-georgia-lockup--landing .visit-georgia-lockup__georgia { font-size: clamp(64px, 7.3vw, 104px); }
+
+.visit-georgia-lockup--home {
+  width: min(360px, 70%);
+  min-height: 130px;
+}
+.visit-georgia-lockup--home .visit-georgia-lockup__visit { font-size: clamp(26px, 3vw, 40px); }
+.visit-georgia-lockup--home .visit-georgia-lockup__georgia { font-size: clamp(50px, 5.6vw, 76px); }
+
+.visit-georgia-lockup--header {
+  width: clamp(180px, 18vw, 280px);
+  min-height: 110px;
+}
+.visit-georgia-lockup--header .visit-georgia-lockup__visit { font-size: clamp(14px, 1.35vw, 21px); }
+.visit-georgia-lockup--header .visit-georgia-lockup__georgia { font-size: clamp(28px, 2.8vw, 44px); }
+.visit-georgia-lockup--header .visit-georgia-lockup__city { margin-top: 10px; font-size: clamp(12px, 1.25vw, 18px); }
+.visit-georgia-lockup--header .visit-georgia-lockup__tagline { margin-top: 6px; font-size: clamp(7px, 0.65vw, 10px); }
+
+@media (max-width: 900px) {
+  .visit-georgia-lockup--landing {
+    width: min(340px, 76%);
+    min-height: 120px;
+  }
 }
 
 @media (max-width: 768px) {
