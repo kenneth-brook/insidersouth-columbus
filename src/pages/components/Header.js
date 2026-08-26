@@ -203,7 +203,11 @@ const Header = forwardRef((props, ref) => {
             <img
               className="columbus-brand-image"
               src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
-              alt="Visit Georgia Columbus"
+              alt=""
+              aria-label="Visit Georgia Columbus"
+              onError={(event) => {
+                event.currentTarget.style.display = 'none';
+              }}
             />
           </Link>
         </div>
