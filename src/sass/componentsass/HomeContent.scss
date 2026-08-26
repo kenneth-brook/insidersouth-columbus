@@ -1,11 +1,11 @@
-$columbus-gold: #b8942f;
-$columbus-dark: #1f2933;
-$columbus-cream: #ffffff;
+$columbus-gold: #B8924A;
+$columbus-dark: #2D2D2D;
+$columbus-cream: #F8F2EC;
 $columbus-soft-gold: #ead9a9;
 $columbus-white: #ffffff;
 
 main.homePage {
-  background: #ffffff;
+  background: $columbus-cream;
   background-image: none !important;
   margin-top: -1px;
   width: 100%;
@@ -19,7 +19,7 @@ main.homePage {
   flex-grow: 1;
   max-height: 100%;
   overflow: hidden;
-  background: #ffffff !important;
+  background: $columbus-cream !important;
   background-image: none !important;
 }
 
@@ -32,14 +32,7 @@ main.homePage {
     padding: 34px 24px 10px;
     box-sizing: border-box;
     flex: 0 0 auto;
-    background: #ffffff;
-  }
-
-  .homePage__brand-image {
-    display: block;
-    width: min(360px, 70%);
-    max-height: 130px;
-    object-fit: contain;
+    background: $columbus-cream;
   }
 
   #main-container {
@@ -51,13 +44,13 @@ main.homePage {
     justify-content: center;
     align-items: center;
     flex: 1 1 auto;
-    background: #ffffff;
+    background: $columbus-cream;
   }
 
   .background-circle {
     width: calc(2 * 1.5 * 125px * 0.75);
     height: calc(2 * 1.5 * 125px * 0.75);
-    background-color: rgba(184, 148, 47, 0.28);
+    background-color: rgba(184, 146, 74, 0.28);
     border-radius: 50%;
     position: absolute;
   }
@@ -145,7 +138,7 @@ main.homePage {
 
 .app-container.desktop .homePage {
   .background-circle {
-    background-color: rgba(184, 148, 47, 0.28);
+    background-color: rgba(184, 146, 74, 0.28);
   }
 
   .white-circle {
@@ -154,10 +147,5 @@ main.homePage {
 
   .homePage__brand {
     padding-top: 42px;
-  }
-
-  .homePage__brand-image {
-    width: min(420px, 68%);
-    max-height: 150px;
   }
 }
