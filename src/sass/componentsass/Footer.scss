@@ -96,27 +96,35 @@ footer {
   font-weight: 500;
 }
 
-/*
- * Internal desktop pages use the footer as the six-button navigation strip.
- * Keep that strip to its actual visual height so the fixed footer cannot
- * create a large invisible block over the listing content.
- */
+/* Internal desktop uses this footer component as the TOP navigation strip. */
 .app-container.desktop.internal-desktop > footer {
-  height: 76px !important;
-  min-height: 76px !important;
-  max-height: 76px !important;
-  overflow: visible;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 50% !important;
+  height: 88px !important;
+  min-height: 88px !important;
+  max-height: 88px !important;
+  overflow: hidden;
   background: $columbus-cream;
+  z-index: 200;
 }
 
 .app-container.desktop.internal-desktop > footer .footer-circles {
-  height: 76px;
+  height: 88px;
   box-sizing: border-box;
-  padding: 8px 18px;
+  padding: 6px 18px;
 }
 
 .app-container.desktop.internal-desktop > footer .footer-container {
   display: none;
+}
+
+/* The desktop main pane is absolutely positioned, so reserve space for the top nav. */
+.app-container.desktop.internal-desktop > main.internal-content {
+  padding-top: 98px !important;
+  box-sizing: border-box;
 }
 
 @media (max-width: 700px) {
