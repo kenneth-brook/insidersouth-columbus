@@ -1,10 +1,8 @@
 $columbus-gold: #b8942f;
 $columbus-dark: #1f2933;
-$columbus-cream: #fbfaf7;
+$columbus-cream: #ffffff;
 
 footer {
-  position: relative;
-
   .footer-circles {
     display: flex;
     justify-content: space-around;
@@ -61,56 +59,78 @@ footer {
   }
 }
 
-/* Home page destination copy. This deliberately does not use the old
-   circle-background class so inherited Douglas oval pseudo-elements cannot
-   be applied to it. */
+.footer-container {
+  position: relative;
+  padding: 20px;
+}
+
 .home-footer-copy {
   position: absolute;
+  top: -110px;
   left: 50%;
-  bottom: 32px;
   transform: translateX(-50%);
-  width: min(88vw, 700px);
-  box-sizing: border-box;
-  padding: 0 20px;
+  width: min(92vw, 760px);
   text-align: center;
   pointer-events: none;
-  z-index: 5;
 }
 
 .home-footer-copy h3 {
-  color: $columbus-gold !important;
-  font-size: clamp(34px, 4.5vw, 60px);
+  color: $columbus-gold;
+  font-size: clamp(38px, 4.4vw, 64px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: 0.025em !important;
-  margin: 0;
   padding: 0;
+  margin: 0;
   text-shadow: none;
   white-space: nowrap;
 }
 
 .home-footer-copy p {
-  color: $columbus-dark !important;
-  font-size: clamp(17px, 1.7vw, 24px);
+  color: $columbus-dark;
+  font-size: clamp(18px, 2vw, 28px);
   line-height: 1.2;
   letter-spacing: 0.01em !important;
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   text-shadow: none;
   font-weight: 500;
 }
 
+/*
+ * Internal desktop pages use the footer as the six-button navigation strip.
+ * Keep that strip to its actual visual height so the fixed footer cannot
+ * create a large invisible block over the listing content.
+ */
+.app-container.desktop.internal-desktop > footer {
+  height: 76px !important;
+  min-height: 76px !important;
+  max-height: 76px !important;
+  overflow: visible;
+  background: $columbus-cream;
+}
+
+.app-container.desktop.internal-desktop > footer .footer-circles {
+  height: 76px;
+  box-sizing: border-box;
+  padding: 8px 18px;
+}
+
+.app-container.desktop.internal-desktop > footer .footer-container {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .home-footer-copy {
-    bottom: 24px;
-    width: 94vw;
+    top: -96px;
+    width: 96vw;
   }
 
   .home-footer-copy h3 {
-    font-size: clamp(30px, 8vw, 46px);
+    font-size: clamp(32px, 8vw, 48px);
     letter-spacing: 0.015em !important;
   }
 
   .home-footer-copy p {
-    font-size: clamp(16px, 4.2vw, 21px);
+    font-size: clamp(16px, 4.5vw, 22px);
   }
 }
