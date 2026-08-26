@@ -18,8 +18,10 @@ $white: #ffffff;
   &__brand-panel {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 7vh 6vw 9vh;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(24px, 4vh, 48px);
+    padding: 5vh 5vw 6vh;
     background: $cream;
   }
 
@@ -47,6 +49,21 @@ $white: #ffffff;
     font-size: clamp(0.8rem, 1.2vw, 1.1rem);
     letter-spacing: 0.28em;
     text-transform: uppercase;
+  }
+
+  &__state-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 auto;
+  }
+
+  &__state {
+    display: block;
+    width: clamp(92px, 9vw, 150px);
+    height: auto;
+    color: $gold;
   }
 
   &__guide-copy {
@@ -96,7 +113,12 @@ $white: #ffffff;
     grid-template-rows: 48% 52%;
 
     &__brand-panel {
-      padding: 30px 24px;
+      padding: 26px 22px;
+      gap: 18px;
+    }
+
+    &__state {
+      width: clamp(64px, 16vw, 96px);
     }
 
     &__city {
