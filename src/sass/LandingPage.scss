@@ -1,6 +1,6 @@
 $gold: #b8942f;
 $dark: #1f2933;
-$cream: #fbfaf7;
+$cream: #F8F2EC;
 $white: #ffffff;
 
 .landing-page {
@@ -12,7 +12,7 @@ $white: #ffffff;
   overflow: hidden;
   border: 2px solid $gold;
   border-radius: 22px;
-  background-color: $cream !important;
+  background: $cream;
   box-sizing: border-box;
 
   &__brand-panel {
@@ -20,16 +20,16 @@ $white: #ffffff;
     flex-direction: column;
     justify-content: space-between;
     padding: 7vh 6vw 9vh;
-    background-color: $cream !important;
+    background: $cream;
   }
 
   &__brand {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
-    background-color: $cream;
+    background: $cream;
   }
 
   &__brand-image {
@@ -37,14 +37,13 @@ $white: #ffffff;
     width: min(420px, 82%);
     height: auto;
     object-fit: contain;
-    background-color: $cream;
   }
 
   &__city {
-    margin-top: 12px;
+    margin-top: 18px;
     color: $gold;
     font-size: clamp(2rem, 4vw, 4rem);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.12em;
     line-height: 1;
   }
@@ -112,13 +111,7 @@ $white: #ffffff;
     }
 
     &__city {
-      margin-top: 8px;
-      font-size: clamp(2rem, 9vw, 3.5rem);
-    }
-
-    &__location {
-      margin-top: 6px;
-      letter-spacing: 0.2em;
+      margin-top: 10px;
     }
 
     &__guide-copy h1 {
