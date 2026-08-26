@@ -1,6 +1,7 @@
 // src/pages/components/HomeContent.js
 import React, { useEffect, useState } from 'react';
 import Circle from './Circle';
+import GeorgiaStateIcon from './GeorgiaStateIcon';
 import { useOrientation } from '../../hooks/OrientationContext';
 import { useHeightContext } from '../../hooks/HeightContext';
 import Header from './Header'
@@ -50,6 +51,7 @@ const HomeContent = () => {
           <div className="background-circle2"></div>
           <div className="background-circle"></div>
           <div id="circle-container">
+            <GeorgiaStateIcon className="home-nav-center__icon" decorative />
             {circles.map((circle, index) => (
               <Circle
                 key={index}
