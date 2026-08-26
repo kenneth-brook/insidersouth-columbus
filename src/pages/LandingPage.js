@@ -18,7 +18,7 @@ const LandingPage = () => {
         <div className="landing-page__guide-copy">
           <h1>TRIP GUIDE</h1>
           <p className="landing-page__tagline">Ride the River. Explore the City.</p>
-          <p className="landing-page__official">Official Guide to Columbus, GA</p>
+          <p className="landing-page__official">Interactive Guide to Columbus, GA</p>
         </div>
       </section>
 
