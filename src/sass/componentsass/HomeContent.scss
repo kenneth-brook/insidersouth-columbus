@@ -1,17 +1,12 @@
 $columbus-gold: #b8942f;
 $columbus-dark: #1f2933;
-$columbus-cream: #fbfaf7;
+$columbus-cream: #ffffff;
 $columbus-soft-gold: #ead9a9;
 $columbus-white: #ffffff;
 
 main.homePage {
-  background-image: repeating-linear-gradient(
-    0deg,
-    $columbus-cream 0px,
-    $columbus-cream 4px,
-    $columbus-soft-gold 4px,
-    $columbus-soft-gold 8px
-  );
+  background: #ffffff;
+  background-image: none !important;
   margin-top: -1px;
   width: 100%;
 }
@@ -24,6 +19,8 @@ main.homePage {
   flex-grow: 1;
   max-height: 100%;
   overflow: hidden;
+  background: #ffffff !important;
+  background-image: none !important;
 }
 
 .homePage {
@@ -35,6 +32,7 @@ main.homePage {
     padding: 34px 24px 10px;
     box-sizing: border-box;
     flex: 0 0 auto;
+    background: #ffffff;
   }
 
   .homePage__brand-image {
@@ -53,6 +51,7 @@ main.homePage {
     justify-content: center;
     align-items: center;
     flex: 1 1 auto;
+    background: #ffffff;
   }
 
   .background-circle {
