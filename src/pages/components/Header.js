@@ -200,9 +200,9 @@ const Header = forwardRef((props, ref) => {
           }`}
         >
           <Link to="/home" className="columbus-brand-link">
-            <div className="columbus-brand" aria-label="Insider South Columbus">
-              <span className="columbus-brand__insider">INSIDER</span>
-              <span className="columbus-brand__south">SOUTH</span>
+            <div className="columbus-brand" aria-label="Visit Georgia Columbus">
+              <span className="columbus-brand__insider">VISIT</span>
+              <span className="columbus-brand__south">GEORGIA</span>
               <span className="columbus-brand__city">COLUMBUS</span>
               <span className="columbus-brand__tagline">Georgia's River City</span>
             </div>
