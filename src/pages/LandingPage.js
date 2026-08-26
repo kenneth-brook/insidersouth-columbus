@@ -8,11 +8,10 @@ const LandingPage = () => {
     <main className="landing-page">
       <section className="landing-page__brand-panel">
         <div className="landing-page__brand">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
-            alt="Visit Georgia"
-            className="landing-page__brand-image"
-          />
+          <div className="visit-georgia-lockup visit-georgia-lockup--landing" aria-label="Visit Georgia Columbus">
+            <span className="visit-georgia-lockup__visit">VISIT</span>
+            <span className="visit-georgia-lockup__georgia">GEORGIA</span>
+          </div>
           <div className="landing-page__city">COLUMBUS</div>
           <div className="landing-page__location">GEORGIA'S RIVER CITY</div>
         </div>
