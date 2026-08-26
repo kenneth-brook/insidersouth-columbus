@@ -199,13 +199,12 @@ const Header = forwardRef((props, ref) => {
               : 'portrait'
           }`}
         >
-          <Link to="/home" className="columbus-brand-link">
-            <div className="columbus-brand" aria-label="Visit Georgia Columbus">
-              <span className="columbus-brand__insider">VISIT</span>
-              <span className="columbus-brand__south">GEORGIA</span>
-              <span className="columbus-brand__city">COLUMBUS</span>
-              <span className="columbus-brand__tagline">Georgia's River City</span>
-            </div>
+          <Link to="/home" className="columbus-brand-link" aria-label="Visit Georgia Columbus home">
+            <img
+              className="columbus-brand-image"
+              src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
+              alt="Visit Georgia Columbus"
+            />
           </Link>
         </div>
         <button
