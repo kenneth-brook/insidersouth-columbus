@@ -85,16 +85,12 @@ const Footer = forwardRef(({ showCircles = false }, ref) => {
         </div>
       )}
 
-      <div className="footer-container">
-        <div className="circle-background">
-          {isHomePage && (
-            <div className="footer-content">
-              <h3>Discover Columbus</h3>
-              <p>Georgia's River City</p>
-            </div>
-          )}
+      {isHomePage && (
+        <div className="home-footer-copy">
+          <h3>Discover Columbus</h3>
+          <p>Georgia's River City</p>
         </div>
-      </div>
+      )}
     </footer>
   );
 });
