@@ -41,15 +41,10 @@ const HomeContent = () => {
       <Header ref={headerRef} />
       <main className="main-content homePage">
         <div className="homePage__brand">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/visit-georgia.png`}
-            alt=""
-            aria-label="Visit Georgia"
-            className="homePage__brand-image"
-            onError={(event) => {
-              event.currentTarget.style.display = 'none';
-            }}
-          />
+          <div className="visit-georgia-lockup visit-georgia-lockup--home" aria-label="Visit Georgia">
+            <span className="visit-georgia-lockup__visit">VISIT</span>
+            <span className="visit-georgia-lockup__georgia">GEORGIA</span>
+          </div>
         </div>
         <div id="main-container">
           <div className="background-circle2"></div>
