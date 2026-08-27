@@ -469,16 +469,43 @@ footer .active-text {
   color: var(--is-dark);
 }
 
+/* Force the marker popup controls onto the current Visit Georgia palette.
+   Older App.scss rules still target these elements with the original green. */
 .popCard .popButton,
-.popButtonsWrap .popButton {
-  background-color: var(--is-dark);
-  color: var(--is-white);
+.popCard .popButtonsWrap .popButton,
+.mapboxgl-popup-content .popButton,
+.mapboxgl-popup-content .popButtonsWrap .popButton {
+  background: var(--is-dark) !important;
+  background-color: var(--is-dark) !important;
+  background-image: none !important;
+  color: var(--is-white) !important;
+  border-color: var(--is-dark) !important;
 }
 
 .popCard .popButton svg,
-.popButtonsWrap .popButton svg {
+.popCard .popButton svg path,
+.popCard .popButtonsWrap .popButton svg,
+.popCard .popButtonsWrap .popButton svg path,
+.mapboxgl-popup-content .popButton svg,
+.mapboxgl-popup-content .popButton svg path {
   fill: var(--is-white) !important;
   color: var(--is-white) !important;
+}
+
+.popCard .popButtonDevide p,
+.mapboxgl-popup-content .popButtonDevide p,
+.popCard .popButtonLink,
+.mapboxgl-popup-content .popButtonLink {
+  color: var(--is-dark) !important;
+}
+
+.popCard .popButton:hover,
+.popCard .popButton:focus-visible,
+.mapboxgl-popup-content .popButton:hover,
+.mapboxgl-popup-content .popButton:focus-visible {
+  background: var(--is-gold) !important;
+  background-color: var(--is-gold) !important;
+  border-color: var(--is-gold) !important;
 }
 
 .rBut,
