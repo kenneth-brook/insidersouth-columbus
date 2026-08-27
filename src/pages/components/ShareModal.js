@@ -11,7 +11,7 @@ import {
   EmailIcon,
 } from 'react-share';
 
-const GOLD = '#B8924A';
+const GOLD = '#D9C193';
 const BLACK = '#2D2D2D';
 const CREAM = '#F8F2EC';
 
