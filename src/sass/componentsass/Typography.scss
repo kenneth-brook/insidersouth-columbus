@@ -186,6 +186,30 @@ footer .icon-label,
   font-size: clamp(22px, 2.4vw, 34px);
 }
 
+/* Match the home logo's lower two lines to the landing-page logo exactly. */
+.visit-georgia-lockup--home .visit-georgia-lockup__city {
+  margin-top: 16px;
+  color: var(--brand-logo-gold) !important;
+  font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif !important;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  padding-left: 0;
+}
+
+.visit-georgia-lockup--home .visit-georgia-lockup__tagline {
+  margin-top: 10px;
+  color: #3C3C3C;
+  font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif !important;
+  font-size: clamp(0.8rem, 1.2vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  line-height: normal;
+  padding-left: 0;
+  text-transform: uppercase;
+}
+
 .visit-georgia-lockup--header {
   width: clamp(180px, 18vw, 280px);
   min-height: 110px;
@@ -211,6 +235,10 @@ footer .icon-label,
   .visit-georgia-lockup--home .visit-georgia-lockup__georgia {
     margin-top: 16px;
     font-size: clamp(18px, 5vw, 25px);
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__city {
+    margin-top: 10px;
   }
 }
 
