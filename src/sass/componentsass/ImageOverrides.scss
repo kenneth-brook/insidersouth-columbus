@@ -1,32 +1,38 @@
 /* Columbus demo image sizing.
-   Keep source images uncropped and let width control their rendered size. */
+   Preserve the full source image, but reserve a consistent image slot so
+   location cards do not change height just because source aspect ratios vary. */
 
 .content-image {
   width: 42%;
   max-width: 280px;
   min-width: 180px;
-  height: auto;
+  height: 200px;
+  max-height: 200px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-/* Full detail view gets substantially more room than listing cards. */
+/* Full detail view gets substantially more room than listing cards and should
+   remain naturally sized rather than inheriting the fixed card image slot. */
 .view-card .img-back .content-image {
   width: 100%;
   max-width: 720px;
   min-width: 0;
   height: auto;
+  max-height: 520px;
   object-fit: contain;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Desktop listing cards still need room for the business copy beside the image. */
+/* Desktop listing cards use one fixed-height image window. The image is never
+   cropped, but every card reserves the same vertical space. */
 .app-container.desktop.internal-desktop .top-container .content-image {
   width: 40%;
   max-width: 300px;
   min-width: 200px;
-  height: auto;
+  height: 220px;
+  max-height: 220px;
   object-fit: contain;
 }
 
@@ -35,11 +41,15 @@
     width: 46%;
     max-width: 240px;
     min-width: 150px;
+    height: 170px;
+    max-height: 170px;
   }
 
   .view-card .img-back .content-image {
     width: 100%;
     max-width: 100%;
     min-width: 0;
+    height: auto;
+    max-height: 420px;
   }
 }
