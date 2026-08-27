@@ -42,12 +42,13 @@ const HomeContent = () => {
       <Header ref={headerRef} />
       <main className="main-content homePage">
         <div className="homePage__brand">
-          <div className="visit-georgia-lockup visit-georgia-lockup--home" aria-label="Visit Georgia">
+          <div className="visit-georgia-lockup visit-georgia-lockup--landing" aria-label="Visit Georgia">
             <span className="visit-georgia-lockup__visit">VISIT</span>
             <span className="visit-georgia-lockup__georgia">GEORGIA</span>
           </div>
         </div>
         <div id="main-container">
+          <div className="exploring-header">Tap to begin exploring</div>
           <div className="background-circle2"></div>
           <div className="background-circle"></div>
           <div id="circle-container">
