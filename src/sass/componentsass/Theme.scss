@@ -19,6 +19,36 @@ html,
   color: var(--is-dark);
 }
 
+/* Make every interactive surface read as clickable on pointer devices. */
+button,
+a,
+[role='button'],
+.menu-item,
+.s-menu-item,
+.footer-icon,
+.white-circle,
+.popButtonDevide,
+.mapboxgl-marker,
+.more-button,
+.details-button,
+.edit-button,
+.web-button,
+.web-button-landscape,
+.phone-button,
+.map-button,
+.contact-container a,
+.bottom-button button,
+.circle-button,
+.square-button,
+.sort-button {
+  cursor: pointer !important;
+}
+
+button:disabled,
+[aria-disabled='true'] {
+  cursor: not-allowed !important;
+}
+
 .main-content,
 main.main-content {
   background-image: repeating-linear-gradient(
