@@ -49,22 +49,5 @@
     "long": -84.82728,
     "source_category": "Accommodations",
     "stay_types": []
-  },
-  {
-    "id": "valley-hospitality-columbus",
-    "name": "Valley Hospitality, Columbus",
-    "street_address": "600 Brookstone Centre Pkwy",
-    "city": "Columbus",
-    "state": "GA",
-    "zip": "31904",
-    "phone": "706-327-0763",
-    "web": "https://valleyhospitality.com/",
-    "description": "A Columbus-based hospitality company operating hotels, restaurants, and event venues designed to serve business, leisure, and group travelers.",
-    "images": ["/images/35dcf7_35d6d53f8e3748ce832e775e28bfe798~mv2.avif"],
-    "rating": null,
-    "lat": 32.53387,
-    "long": -84.97757,
-    "source_category": "Accommodations",
-    "stay_types": []
   }
 ]
