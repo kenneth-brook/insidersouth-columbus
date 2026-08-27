@@ -18,7 +18,8 @@ const Header = forwardRef((props, ref) => {
   const { setKeyword, resetKeyword, sortData, isAscending, setIsAscending, setSelectedDate, handleNearMe, setNearMe, resetFilteredData, typeNames, setSelectedTypes } = useDataContext();
   const orientation = useOrientation();
   const location = useLocation();
-  const isNotHomePage = location.pathname !== '/home' && location.pathname !== '/itinerary';
+  const isHomePage = location.pathname === '/home';
+  const isNotHomePage = !isHomePage && location.pathname !== '/itinerary';
   const keywordInputRef = useRef(null);
   const navigate = useResettingNavigate();
   const [selectedDate, setDate] = useState(null);
@@ -91,16 +92,11 @@ const Header = forwardRef((props, ref) => {
 
   const getDropdownLabel = () => {
     switch (location.pathname) {
-      case '/dine':
-        return 'Cuisine Type';
-      case '/play':
-        return 'Play Type';
-      case '/stay':
-        return 'Stay Type';
-      case '/shop':
-        return 'Shop Type';
-      default:
-        return '';
+      case '/dine': return 'Cuisine Type';
+      case '/play': return 'Play Type';
+      case '/stay': return 'Stay Type';
+      case '/shop': return 'Shop Type';
+      default: return '';
     }
   };
 
@@ -116,20 +112,11 @@ const Header = forwardRef((props, ref) => {
     if (label && typeNames) {
       let typeNamesData;
       switch (location.pathname) {
-        case '/dine':
-          typeNamesData = typeNames.menu_types;
-          break;
-        case '/play':
-          typeNamesData = typeNames.play_types;
-          break;
-        case '/stay':
-          typeNamesData = typeNames.stay_types;
-          break;
-        case '/shop':
-          typeNamesData = typeNames.shop_types;
-          break;
-        default:
-          typeNamesData = {};
+        case '/dine': typeNamesData = typeNames.menu_types; break;
+        case '/play': typeNamesData = typeNames.play_types; break;
+        case '/stay': typeNamesData = typeNames.stay_types; break;
+        case '/shop': typeNamesData = typeNames.shop_types; break;
+        default: typeNamesData = {};
       }
 
       if (typeNamesData && Object.keys(typeNamesData).length > 0) {
@@ -200,7 +187,7 @@ const Header = forwardRef((props, ref) => {
           }`}
         >
           <Link to="/home" className="columbus-brand-link" aria-label="Visit Georgia Columbus home">
-            <div className="visit-georgia-lockup visit-georgia-lockup--header">
+            <div className={`visit-georgia-lockup ${isHomePage ? 'visit-georgia-lockup--landing' : 'visit-georgia-lockup--header'}`}>
               <span className="visit-georgia-lockup__visit">VISIT</span>
               <span className="visit-georgia-lockup__georgia">GEORGIA</span>
               <span className="visit-georgia-lockup__city">COLUMBUS</span>
