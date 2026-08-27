@@ -164,8 +164,8 @@ const Header = forwardRef((props, ref) => {
     { label: 'Events', link: '/events' },
     { label: 'View All Map', link: '/all' },
     { label: 'Follow Us', link: '#' },
-    { label: 'Visitors Guide', link: '#' },
-    { label: 'Website', link: '#' },
+    { label: 'Visitors Guide', link: 'https://365publicationsonline.com/ColumbusVG2026' },
+    { label: 'Website', link: 'https://visitcolumbusga.com/' },
   ];
 
   return (
