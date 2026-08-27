@@ -24,7 +24,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "mkdir -p public/images/columbus && tar -xzf image-assets/columbus-images.tar.gz -C public/images/columbus",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
