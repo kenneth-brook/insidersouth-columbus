@@ -1,11 +1,11 @@
 $columbus-gold: #D9C193;
 $columbus-dark: #2D2D2D;
-$columbus-cream: #F8F2EC;
+$columbus-cream: #ffffff;
 $columbus-soft-gold: #ead9a9;
 $columbus-white: #ffffff;
 
 main.homePage {
-  background: $columbus-cream;
+  background: $columbus-white;
   background-image: none !important;
   margin-top: -1px;
   width: 100%;
@@ -19,7 +19,7 @@ main.homePage {
   flex-grow: 1;
   max-height: 100%;
   overflow: hidden;
-  background: $columbus-cream !important;
+  background: $columbus-white !important;
   background-image: none !important;
 }
 
@@ -32,7 +32,7 @@ main.homePage {
     padding: 34px 24px 10px;
     box-sizing: border-box;
     flex: 0 0 auto;
-    background: $columbus-cream;
+    background: $columbus-white;
   }
 
   .homePage__explore-prompt {
@@ -56,7 +56,7 @@ main.homePage {
     justify-content: center;
     align-items: center;
     flex: 1 1 auto;
-    background: $columbus-cream;
+    background: $columbus-white;
   }
 
   .background-circle {
