@@ -160,6 +160,11 @@ footer .icon-label,
   color: #3C3C3C;
 }
 
+/* Home left-side tagline uses the serif display face. */
+.visit-georgia-lockup--home .visit-georgia-lockup__tagline {
+  font-family: var(--font-display) !important;
+}
+
 .visit-georgia-lockup--landing .visit-georgia-lockup__visit,
 .visit-georgia-lockup--home .visit-georgia-lockup__visit {
   font-size: clamp(68px, 8.2vw, 112px);
