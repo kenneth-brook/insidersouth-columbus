@@ -69,6 +69,11 @@ textarea,
   font-family: var(--font-body) !important;
 }
 
+/* Home footer tagline is a <p>, so override the global paragraph rule directly. */
+.home-footer-copy p {
+  font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif !important;
+}
+
 .page-title h1,
 .landing-kicker,
 .brand-tagline,
