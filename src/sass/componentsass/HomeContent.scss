@@ -1,4 +1,4 @@
-$columbus-gold: #B8924A;
+$columbus-gold: #D9C193;
 $columbus-dark: #2D2D2D;
 $columbus-cream: #F8F2EC;
 $columbus-soft-gold: #ead9a9;
@@ -62,7 +62,7 @@ main.homePage {
   .background-circle {
     width: calc(2 * 1.5 * 125px * 0.75);
     height: calc(2 * 1.5 * 125px * 0.75);
-    background-color: rgba(184, 146, 74, 0.28);
+    background-color: rgba(217, 193, 147, 0.28);
     border-radius: 50%;
     position: absolute;
   }
@@ -161,7 +161,7 @@ main.homePage {
 
 .app-container.desktop .homePage {
   .background-circle {
-    background-color: rgba(184, 146, 74, 0.28);
+    background-color: rgba(217, 193, 147, 0.28);
   }
 
   .white-circle {
