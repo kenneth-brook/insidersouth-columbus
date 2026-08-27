@@ -6,6 +6,7 @@
   --tracking-editorial: 0.24em;
   --tracking-wide: 0.32em;
   --brand-gold: #D9C193;
+  --brand-logo-gold: #B8924A;
   --brand-black: #2D2D2D;
   --is-gold: #D9C193;
   --is-dark: #2D2D2D;
@@ -116,10 +117,15 @@ footer .icon-label,
   font-family: var(--font-display) !important;
 }
 
+/* Only the VISIT and COLUMBUS logo text use the darker logo gold. */
+.visit-georgia-lockup__visit,
+.visit-georgia-lockup__city {
+  color: var(--brand-logo-gold) !important;
+}
+
 /* The source logo makes VISIT the dominant line and GEORGIA the small,
    widely tracked line below it. Preserve that proportion at every size. */
 .visit-georgia-lockup__visit {
-  color: var(--brand-gold);
   font-weight: 500;
   line-height: 0.78;
   letter-spacing: 0.28em;
@@ -135,7 +141,6 @@ footer .icon-label,
 }
 
 .visit-georgia-lockup__city {
-  color: var(--brand-gold);
   font-family: var(--font-body) !important;
   font-weight: 600;
   letter-spacing: 0.18em;
