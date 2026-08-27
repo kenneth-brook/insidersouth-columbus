@@ -324,6 +324,21 @@ footer .active-text {
   fill: var(--is-gold) !important;
 }
 
+/* Mobile cards should not introduce separate blue/white panels around the
+   review / More control. Let the card's own alternating background show
+   straight through every nested wrapper. */
+@media only screen and (max-width: 600px) {
+  .content-item .content-box,
+  .content-item .text-box,
+  .content-item .reviews-container,
+  .content-item .reviews-block {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+  }
+}
+
 /* Itinerary */
 .location-item:nth-child(even) {
   background-color: var(--is-soft-gold) !important;
