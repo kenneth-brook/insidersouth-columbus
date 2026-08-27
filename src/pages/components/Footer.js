@@ -57,7 +57,7 @@ const Footer = forwardRef(({ showCircles = false }, ref) => {
 
   const isHomePage = location.pathname === '/home';
   const isActive = (key) => location.pathname.startsWith(`/${key}`);
-  const mapButtonLabel = isMapView ? 'List' : 'Map';
+  const mapButtonLabel = isMapView ? 'View List' : 'View Map';
   const desktopContentNavStyle =
     orientation === 'desktop' && showCircles
       ? { '--content-nav-height': `${headerHeight}px` }
@@ -73,14 +73,15 @@ const Footer = forwardRef(({ showCircles = false }, ref) => {
         <div className="footer-circles">
           {Object.keys(icons).map((key, index) => {
             const Icon = icons[key];
+            const active = key !== 'maps' && isActive(key);
             return (
               <div
                 key={index}
-                className={`footer-icon ${isActive(key) || (key === 'maps' && isMapView) ? 'active' : ''}`}
+                className={`footer-icon ${active ? 'active' : ''}`}
                 onClick={() => handleNavigate(key)}
               >
-                <Icon className={`icon-svg ${isActive(key) || (key === 'maps' && isMapView) ? 'active-icon' : ''}`} />
-                <span className={`icon-label ${isActive(key) || (key === 'maps' && isMapView) ? 'active-text' : ''}`}>
+                <Icon className={`icon-svg ${active ? 'active-icon' : ''}`} />
+                <span className={`icon-label ${active ? 'active-text' : ''}`}>
                   {key === 'maps' ? mapButtonLabel : key.charAt(0).toUpperCase() + key.slice(1)}
                 </span>
               </div>
