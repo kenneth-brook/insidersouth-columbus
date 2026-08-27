@@ -37,18 +37,19 @@ main.main-content {
 /* Content page title bar */
 .page-title {
   background-color: var(--is-gold) !important;
-  color: var(--is-dark) !important;
+  color: var(--is-white) !important;
   border: 2px solid var(--is-dark) !important;
   box-shadow: none !important;
   box-sizing: border-box;
 }
 
 .page-title h1 {
-  color: var(--is-dark) !important;
+  color: var(--is-white) !important;
 }
 
 .page-title svg {
-  fill: var(--is-dark) !important;
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .content-item:nth-child(odd) {
@@ -75,13 +76,13 @@ main.main-content {
 
 .more-button {
   background-color: var(--is-gold) !important;
-  color: var(--is-dark) !important;
+  color: var(--is-white) !important;
 }
 
 .more-button:hover,
 .more-button:focus-visible {
   background-color: var(--is-dark) !important;
-  color: var(--is-gold) !important;
+  color: var(--is-white) !important;
 }
 
 .loader {
@@ -113,9 +114,19 @@ header .square-button {
   fill: var(--is-white);
 }
 
+header .square-button svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
+}
+
 header .circle-button {
   background-color: var(--is-dark);
   color: var(--is-white);
+}
+
+header .circle-button svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 header .search-container button.sort-button {
@@ -145,6 +156,11 @@ header .search-container svg {
   color: var(--is-white);
   fill: var(--is-white);
   border-bottom-color: rgba(231, 219, 183, 0.45);
+}
+
+.sliding-menu .menu-item svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .sliding-menu .menu-item:hover,
@@ -234,12 +250,14 @@ footer .footer-icon.active {
   box-shadow: 0 0 0 3px var(--is-dark) inset;
 }
 
+footer .footer-icon.active .icon-svg,
 footer .active-icon {
-  fill: var(--is-dark) !important;
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 footer .active-text {
-  color: var(--is-white);
+  color: var(--is-white) !important;
 }
 
 .circle-background::before {
@@ -250,12 +268,9 @@ footer .active-text {
   background-color: var(--is-dark) !important;
 }
 
-.circle-background h3 {
-  color: var(--is-gold-light) !important;
-}
-
+.circle-background h3,
 .circle-background p {
-  color: var(--is-white);
+  color: var(--is-white) !important;
 }
 
 /* Location card primary controls: Website / phone / directions */
@@ -267,7 +282,7 @@ footer .active-text {
 .app-container.desktop.internal-desktop .contact-container a {
   background: var(--is-gold) !important;
   background-color: var(--is-gold) !important;
-  color: var(--is-dark) !important;
+  color: var(--is-white) !important;
 }
 
 .web-button svg,
@@ -276,32 +291,32 @@ footer .active-text {
 .contact-btn svg,
 .contact-container svg,
 .app-container.desktop.internal-desktop .contact-container svg {
-  fill: var(--is-dark) !important;
-  color: var(--is-dark) !important;
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 /* Location card action controls: Share / Map / Add to Itinerary */
 .bottom-button button {
   background: var(--is-dark) !important;
   background-image: none !important;
-  color: var(--is-gold) !important;
+  color: var(--is-white) !important;
 }
 
 .bottom-button button svg {
-  fill: var(--is-gold) !important;
-  color: var(--is-gold) !important;
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .bottom-button button:hover,
 .bottom-button button:focus-visible {
   background: var(--is-gold) !important;
-  color: var(--is-dark) !important;
+  color: var(--is-white) !important;
 }
 
 .bottom-button button:hover svg,
 .bottom-button button:focus-visible svg {
-  fill: var(--is-dark) !important;
-  color: var(--is-dark) !important;
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .date-container svg,
@@ -316,6 +331,12 @@ footer .active-text {
 
 .day-box {
   background-color: var(--is-dark);
+  color: var(--is-white) !important;
+}
+
+.day-box svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .date-value,
@@ -331,7 +352,13 @@ footer .active-text {
 .right-button button,
 .cBut {
   background-color: var(--is-gold) !important;
-  color: var(--is-white);
+  color: var(--is-white) !important;
+}
+
+.right-button button svg,
+.cBut svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .button-group button,
@@ -342,18 +369,28 @@ footer .active-text {
   color: var(--is-white) !important;
 }
 
+.button-group button svg,
+.itinerary-select-button svg,
+.itinerary-save-button svg,
+.uBut svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
+}
+
 .button-group button:hover,
 .itinerary-select-button:hover,
 .itinerary-save-button:hover,
 .uBut:hover {
   background-color: var(--is-gold) !important;
-  color: var(--is-dark) !important;
+  color: var(--is-white) !important;
 }
 
 .button-group button:hover svg,
 .itinerary-select-button:hover svg,
-.itinerary-save-button:hover svg {
-  fill: var(--is-dark) !important;
+.itinerary-save-button:hover svg,
+.uBut:hover svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .details-button {
@@ -389,11 +426,22 @@ footer .active-text {
   border-radius: 5px;
 }
 
+.login-container form button svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
+}
+
 .login-container form button:hover,
 .login-container form button:focus-visible {
   background-color: var(--is-gold);
-  color: var(--is-dark);
+  color: var(--is-white);
   border-color: var(--is-gold);
+}
+
+.login-container form button:hover svg,
+.login-container form button:focus-visible svg {
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .login-container .register-link {
@@ -409,12 +457,13 @@ footer .active-text {
 .popCard .popButton,
 .popButtonsWrap .popButton {
   background-color: var(--is-dark);
-  color: var(--is-gold);
+  color: var(--is-white);
 }
 
 .popCard .popButton svg,
 .popButtonsWrap .popButton svg {
-  fill: var(--is-gold);
+  fill: var(--is-white) !important;
+  color: var(--is-white) !important;
 }
 
 .rBut,
