@@ -145,19 +145,22 @@ footer .icon-label,
   padding-left: 0.20em;
 }
 
-.visit-georgia-lockup--landing {
+.visit-georgia-lockup--landing,
+.visit-georgia-lockup--home {
   width: min(420px, 82%);
   min-height: 152px;
 }
-.visit-georgia-lockup--landing .visit-georgia-lockup__visit { font-size: clamp(68px, 8.2vw, 112px); }
-.visit-georgia-lockup--landing .visit-georgia-lockup__georgia { margin-top: 22px; font-size: clamp(22px, 2.4vw, 34px); }
 
-.visit-georgia-lockup--home {
-  width: min(360px, 70%);
-  min-height: 130px;
+.visit-georgia-lockup--landing .visit-georgia-lockup__visit,
+.visit-georgia-lockup--home .visit-georgia-lockup__visit {
+  font-size: clamp(68px, 8.2vw, 112px);
 }
-.visit-georgia-lockup--home .visit-georgia-lockup__visit { font-size: clamp(50px, 6vw, 82px); }
-.visit-georgia-lockup--home .visit-georgia-lockup__georgia { margin-top: 16px; font-size: clamp(16px, 1.8vw, 24px); }
+
+.visit-georgia-lockup--landing .visit-georgia-lockup__georgia,
+.visit-georgia-lockup--home .visit-georgia-lockup__georgia {
+  margin-top: 22px;
+  font-size: clamp(22px, 2.4vw, 34px);
+}
 
 .visit-georgia-lockup--header {
   width: clamp(180px, 18vw, 280px);
@@ -169,16 +172,19 @@ footer .icon-label,
 .visit-georgia-lockup--header .visit-georgia-lockup__tagline { margin-top: 6px; font-size: clamp(7px, 0.65vw, 10px); }
 
 @media (max-width: 900px) {
-  .visit-georgia-lockup--landing {
+  .visit-georgia-lockup--landing,
+  .visit-georgia-lockup--home {
     width: min(340px, 76%);
     min-height: 120px;
   }
 
-  .visit-georgia-lockup--landing .visit-georgia-lockup__visit {
+  .visit-georgia-lockup--landing .visit-georgia-lockup__visit,
+  .visit-georgia-lockup--home .visit-georgia-lockup__visit {
     font-size: clamp(54px, 15vw, 82px);
   }
 
-  .visit-georgia-lockup--landing .visit-georgia-lockup__georgia {
+  .visit-georgia-lockup--landing .visit-georgia-lockup__georgia,
+  .visit-georgia-lockup--home .visit-georgia-lockup__georgia {
     margin-top: 16px;
     font-size: clamp(18px, 5vw, 25px);
   }
