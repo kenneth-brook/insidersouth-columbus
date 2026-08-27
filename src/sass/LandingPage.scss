@@ -1,6 +1,6 @@
 $gold: #D9C193;
 $dark: #2D2D2D;
-$cream: #F8F2EC;
+$cream: #ffffff;
 $white: #ffffff;
 
 .landing-page {
@@ -12,7 +12,7 @@ $white: #ffffff;
   overflow: hidden;
   border: 2px solid $gold;
   border-radius: 22px;
-  background: $cream;
+  background: $white;
   box-sizing: border-box;
 
   &__brand-panel {
@@ -22,7 +22,7 @@ $white: #ffffff;
     align-items: center;
     gap: clamp(24px, 4vh, 48px);
     padding: 5vh 5vw 6vh;
-    background: $cream;
+    background: $white;
   }
 
   &__brand {
@@ -31,7 +31,7 @@ $white: #ffffff;
     justify-content: flex-start;
     align-items: center;
     text-align: center;
-    background: $cream;
+    background: $white;
   }
 
   &__city {
