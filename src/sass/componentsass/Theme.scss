@@ -3,7 +3,7 @@
   --is-dark-deep: #2D2D2D;
   --is-gold: #D9C193;
   --is-gold-light: #e7dbb7;
-  --is-cream: #F8F2EC;
+  --is-cream: #ffffff;
   --is-white: #ffffff;
   --is-muted: #756f66;
   --is-border: #cfc4af;
@@ -15,7 +15,7 @@ body,
 html,
 #root,
 .mainWrap {
-  background-color: var(--is-cream);
+  background-color: var(--is-white);
   color: var(--is-dark);
 }
 
@@ -51,17 +51,13 @@ button:disabled,
 
 .main-content,
 main.main-content {
-  background-image: repeating-linear-gradient(
-    0deg,
-    var(--is-cream) 0,
-    var(--is-cream) 4px,
-    var(--is-gold-light) 4px,
-    var(--is-gold-light) 8px
-  );
+  background: var(--is-white) !important;
+  background-image: none !important;
 }
 
 .internal-content {
   color: var(--is-dark);
+  background-color: var(--is-white);
 }
 
 /* Content page title bar */
@@ -123,7 +119,7 @@ main.main-content {
 header,
 header .header-container,
 header .search-container {
-  background-color: var(--is-cream);
+  background-color: var(--is-white) !important;
 }
 
 header .header-container,
@@ -204,7 +200,7 @@ header .search-container svg {
 
 /* Sort menu */
 .sort-menu {
-  background-color: var(--is-cream);
+  background-color: var(--is-white);
   color: var(--is-dark);
   border: 1px solid var(--is-gold-light);
   box-shadow: -4px 4px 8px rgba(45, 45, 45, 0.3);
@@ -220,7 +216,7 @@ header .search-container svg {
 }
 
 .sort-menu button {
-  background-color: var(--is-cream);
+  background-color: var(--is-white);
   color: var(--is-dark);
 }
 
@@ -260,6 +256,11 @@ header .search-container svg {
 }
 
 /* Footer navigation */
+footer,
+footer .footer-circles {
+  background-color: var(--is-white) !important;
+}
+
 footer .footer-icon {
   background-color: var(--is-white);
   border-color: var(--is-white);
