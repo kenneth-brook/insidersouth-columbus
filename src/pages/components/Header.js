@@ -187,7 +187,7 @@ const Header = forwardRef((props, ref) => {
           }`}
         >
           <Link to="/home" className="columbus-brand-link" aria-label="Visit Georgia Columbus home">
-            <div className={`visit-georgia-lockup ${isHomePage ? 'visit-georgia-lockup--landing' : 'visit-georgia-lockup--header'}`}>
+            <div className={`visit-georgia-lockup ${isHomePage ? 'visit-georgia-lockup--home' : 'visit-georgia-lockup--header'}`}>
               <span className="visit-georgia-lockup__visit">VISIT</span>
               <span className="visit-georgia-lockup__georgia">GEORGIA</span>
               <span className="visit-georgia-lockup__city">COLUMBUS</span>
