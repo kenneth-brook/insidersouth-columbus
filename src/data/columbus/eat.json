@@ -1,7 +1,7 @@
 [
   {
     "id": "black-cow",
-    "name": "Black Cow",
+    "name": "The Black Cow",
     "street_address": "115A 12th Street",
     "city": "Columbus",
     "state": "GA",
@@ -35,7 +35,7 @@
   },
   {
     "id": "ruth-anns-family-restaurant",
-    "name": "Ruth Anns Family Restaurant",
+    "name": "Ruth Ann's Restaurant",
     "street_address": "941 Veterans Parkway",
     "city": "Columbus",
     "state": "GA",
