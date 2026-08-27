@@ -1,13 +1,13 @@
 :root {
   --is-dark: #2D2D2D;
   --is-dark-deep: #2D2D2D;
-  --is-gold: #B8924A;
+  --is-gold: #D9C193;
   --is-gold-light: #e7dbb7;
   --is-cream: #F8F2EC;
   --is-white: #ffffff;
   --is-muted: #756f66;
   --is-border: #cfc4af;
-  --is-soft-gold: rgba(184, 146, 74, 0.12);
+  --is-soft-gold: rgba(217, 193, 147, 0.12);
   --is-soft-dark: rgba(45, 45, 45, 0.12);
 }
 
@@ -165,7 +165,7 @@ header .search-container svg {
 
 .sliding-menu .menu-item:hover,
 .sliding-menu .menu-item:focus-visible {
-  background-color: rgba(184, 146, 74, 0.22);
+  background-color: rgba(217, 193, 147, 0.22);
 }
 
 .sliding-menu .menu-close-button {
@@ -203,7 +203,7 @@ header .search-container svg {
 
 /* Home navigation wheel */
 .background-circle {
-  background-color: rgba(184, 146, 74, 0.22) !important;
+  background-color: rgba(217, 193, 147, 0.22) !important;
 }
 
 .background-circle2 {
