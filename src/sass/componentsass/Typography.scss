@@ -151,6 +151,15 @@ footer .icon-label,
   min-height: 152px;
 }
 
+/* Only the dark text in the landing/home Visit Georgia lockup uses #3C3C3C.
+   Other site text keeps the standard brand black. */
+.visit-georgia-lockup--landing .visit-georgia-lockup__georgia,
+.visit-georgia-lockup--landing .visit-georgia-lockup__tagline,
+.visit-georgia-lockup--home .visit-georgia-lockup__georgia,
+.visit-georgia-lockup--home .visit-georgia-lockup__tagline {
+  color: #3C3C3C;
+}
+
 .visit-georgia-lockup--landing .visit-georgia-lockup__visit,
 .visit-georgia-lockup--home .visit-georgia-lockup__visit {
   font-size: clamp(68px, 8.2vw, 112px);
