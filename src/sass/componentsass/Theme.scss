@@ -270,8 +270,10 @@ footer .footer-icon .icon-svg {
   fill: var(--is-gold-light);
 }
 
-footer .icon-label {
-  color: var(--is-dark);
+footer .icon-label,
+footer .active-text {
+  color: #464646 !important;
+  font-family: var(--font-display) !important;
 }
 
 footer .footer-icon.active {
@@ -284,10 +286,6 @@ footer .footer-icon.active .icon-svg,
 footer .active-icon {
   fill: var(--is-white) !important;
   color: var(--is-white) !important;
-}
-
-footer .active-text {
-  color: var(--is-dark) !important;
 }
 
 .circle-background::before {
