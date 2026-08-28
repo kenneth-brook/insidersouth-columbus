@@ -7,7 +7,6 @@ import { ReactComponent as StayIcon } from '../../assets/icos/stay.svg';
 import { ReactComponent as MapsIcon } from '../../assets/icos/maps.svg';
 import { ReactComponent as EventsIcon } from '../../assets/icos/events.svg';
 import { ReactComponent as ShopIcon } from '../../assets/icos/shop.svg';
-import { useOrientation } from '../../hooks/OrientationContext';
 import { useViewMode } from '../../hooks/ViewModeContext';
 
 const icons = {
@@ -19,35 +18,29 @@ const icons = {
   shop: ShopIcon,
 };
 
-const Circle = ({ icon, text, angle, distance, className }) => {
+const Circle = ({ icon, text, angle, distance, size = 105, className }) => {
   const navigate = useNavigate();
   const IconComponent = icons[icon];
-  const orientation = useOrientation();
   const { setIsMapView } = useViewMode();
 
   const positionCircle = () => {
     const radian = (angle * Math.PI) / 180;
     const offsetLeft = distance * Math.cos(radian);
     const offsetTop = distance * Math.sin(radian);
+    const radius = size / 2;
 
-    let styles = {
+    return {
       position: 'absolute',
+      width: `${size}px`,
+      height: `${size}px`,
+      left: `calc(50% + ${offsetLeft}px - ${radius}px)`,
+      top: `calc(50% - ${offsetTop}px - ${radius}px)`,
     };
-
-    if (orientation === 'desktop') {
-      styles.left = `calc(50% + ${offsetLeft}px - 78px)`;
-      styles.top = `calc(50% - ${offsetTop}px - 78px)`;
-    } else {
-      styles.left = `calc(50% + ${offsetLeft}px - 58px)`;
-      styles.top = `calc(50% - ${offsetTop}px - 58px)`;
-    }
-
-    return styles;
   };
 
   const handleNavigation = () => {
     if (icon === 'maps') {
-      setIsMapView(true); // Set the view mode to map before navigating
+      setIsMapView(true);
       navigate('/all');
     } else {
       navigate(`/${icon}`);
