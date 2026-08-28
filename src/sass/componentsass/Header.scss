@@ -157,6 +157,57 @@ header {
   }
 }
 
+/* On the home page the logo owns the true horizontal center. The side
+   controls are taken out of the flex flow so neither can push or overlap it. */
+header.home-header .header-container {
+  padding-left: 88px;
+  padding-right: 88px;
+}
+
+header.home-header .centerWrap {
+  width: 100% !important;
+  max-width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header.home-header .square-button-link,
+header.home-header .circle-button {
+  position: absolute;
+  top: 30px;
+  z-index: 2;
+}
+
+header.home-header .square-button-link {
+  left: 14px;
+}
+
+header.home-header .circle-button {
+  right: 14px;
+  margin-left: 0;
+}
+
+header.home-header .square-button {
+  margin-right: 0;
+}
+
+@media (max-width: 480px) {
+  header.home-header .header-container {
+    padding-left: 78px;
+    padding-right: 78px;
+  }
+
+  header.home-header .square-button-link {
+    left: 10px;
+  }
+
+  header.home-header .circle-button {
+    right: 10px;
+  }
+}
+
 .centerWrap svg {
   padding: 0 0 0 5px;
 }
