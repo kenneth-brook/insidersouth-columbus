@@ -134,7 +134,8 @@ footer {
 
 @media (max-width: 700px) {
   .home-footer-copy {
-    top: -130px;
+    top: auto;
+    bottom: 10px;
     width: 96vw;
   }
 
@@ -145,5 +146,6 @@ footer {
 
   .home-footer-copy p {
     font-size: clamp(16px, 4.5vw, 22px);
+    margin-top: 8px;
   }
 }
