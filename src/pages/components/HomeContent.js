@@ -34,23 +34,25 @@ const HomeContent = () => {
     const iconsKeys = ['dine', 'play', 'stay', 'maps', 'events', 'shop'];
     const texts = ['Dine', 'Play', 'Stay', 'Maps', 'Events', 'Shop'];
 
+    const compactMobile = orientation !== 'desktop' && viewport.height <= 740;
+    const circleSize = orientation === 'desktop' ? 147 : compactMobile ? 88 : 96;
+
     const calculateDistance = () => {
       if (orientation === 'desktop') {
         return 200;
       }
 
-      // Mobile home must remain a single-screen kiosk-style composition.
-      // Tighten the radial menu on short/narrow devices instead of allowing
-      // the circles to collide with the logo or footer copy.
-      const widthDistance = Math.max(92, Math.min(118, (viewport.width - 112) / 2));
-      const heightDistance = viewport.height <= 650 ? 100 : viewport.height <= 740 ? 108 : 118;
+      // Keep the whole wheel inside the visible viewport. Width limits protect
+      // narrow phones while height limits protect short kiosk/mobile screens.
+      const widthDistance = Math.max(88, Math.min(114, (viewport.width - circleSize - 16) / 2));
+      const heightDistance = viewport.height <= 650 ? 98 : viewport.height <= 740 ? 104 : 112;
       return Math.min(widthDistance, heightDistance);
     };
 
     const newCircles = texts.map((text, index) => {
       const angle = index * 60;
       const distance = calculateDistance();
-      return { icon: iconsKeys[index], text, angle, distance };
+      return { icon: iconsKeys[index], text, angle, distance, size: circleSize };
     });
 
     setCircles(newCircles);
@@ -75,6 +77,7 @@ const HomeContent = () => {
                 text={circle.text}
                 angle={circle.angle}
                 distance={circle.distance}
+                size={circle.size}
                 className={circle.icon === 'play' ? 'rotated-icon' : ''}
               />
             ))}
