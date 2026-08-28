@@ -25,24 +25,35 @@
   margin-right: auto;
 }
 
-/* Desktop/kiosk detail view does not place contact controls beside the image,
-   so the image wrapper should span the full card instead of inheriting the
-   50% landscape column width from DetailView.scss. */
-.app-container.desktop .view-card .top-image,
-.app-container.desktop .view-card .img-back {
-  width: 100%;
-}
-
-.app-container.desktop .view-card .img-back {
+/* Single-view pages in every non-landscape layout, including large portrait
+   kiosks, use the full card width for the image. DetailView.scss gives
+   .img-back a 50% width by default, which made the image look left-aligned on
+   kiosk displays that are classified as portrait rather than desktop. */
+.app-container:not(.landscape) .view-card .top-image {
   display: flex;
-  align-items: center;
+  width: 100% !important;
   justify-content: center;
+  align-items: center;
 }
 
-.app-container.desktop .view-card .img-back .content-image {
+.app-container:not(.landscape) .view-card .img-back {
+  display: flex;
+  width: 100% !important;
+  max-width: 100% !important;
+  flex: 0 0 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-container:not(.landscape) .view-card .img-back .content-image {
   display: block;
+  width: auto !important;
+  max-width: min(720px, 100%) !important;
+  min-width: 0;
+  height: auto;
   margin-left: auto !important;
   margin-right: auto !important;
+  align-self: center;
   object-position: center center;
 }
 
@@ -79,24 +90,8 @@
     width: 100%;
   }
 
-  /* More-info / single-location view: center both the image wrapper and the
-     image itself so inherited flex alignment cannot pull it to one side. */
-  .view-card .img-back {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
-
   .view-card .img-back .content-image {
-    display: block;
-    width: auto;
-    max-width: 100%;
-    min-width: 0;
-    height: auto;
+    max-width: 100% !important;
     max-height: 420px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    object-position: center center;
   }
 }
