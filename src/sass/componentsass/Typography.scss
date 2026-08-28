@@ -70,7 +70,6 @@ textarea,
   font-family: var(--font-body) !important;
 }
 
-/* Home footer tagline is a <p>, so override the global paragraph rule directly. */
 .home-footer-copy p {
   font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif !important;
 }
@@ -117,14 +116,11 @@ footer .icon-label,
   font-family: var(--font-display) !important;
 }
 
-/* Only the VISIT and COLUMBUS logo text use the darker logo gold. */
 .visit-georgia-lockup__visit,
 .visit-georgia-lockup__city {
   color: var(--brand-logo-gold) !important;
 }
 
-/* The source logo makes VISIT the dominant line and GEORGIA the small,
-   widely tracked line below it. Preserve that proportion at every size. */
 .visit-georgia-lockup__visit {
   font-weight: 500;
   line-height: 0.78;
@@ -161,8 +157,6 @@ footer .icon-label,
   min-height: 152px;
 }
 
-/* Only the dark text in the landing/home Visit Georgia lockup uses #3C3C3C.
-   Other site text keeps the standard brand black. */
 .visit-georgia-lockup--landing .visit-georgia-lockup__georgia,
 .visit-georgia-lockup--landing .visit-georgia-lockup__tagline,
 .visit-georgia-lockup--home .visit-georgia-lockup__georgia,
@@ -170,7 +164,6 @@ footer .icon-label,
   color: #3C3C3C;
 }
 
-/* Home left-side tagline uses Cormorant Garamond specifically. */
 .visit-georgia-lockup--home .visit-georgia-lockup__tagline {
   font-family: 'Cormorant Garamond', Garamond, 'Times New Roman', serif !important;
 }
@@ -186,7 +179,6 @@ footer .icon-label,
   font-size: clamp(22px, 2.4vw, 34px);
 }
 
-/* Match the home logo's lower two lines to the landing-page logo exactly. */
 .visit-georgia-lockup--home .visit-georgia-lockup__city {
   margin-top: 16px;
   color: var(--brand-logo-gold) !important;
@@ -239,6 +231,58 @@ footer .icon-label,
 
   .visit-georgia-lockup--home .visit-georgia-lockup__city {
     margin-top: 10px;
+  }
+}
+
+/* Home alone compresses on phones so the centered logo stays entirely
+   between the itinerary and menu controls. Landing keeps its approved scale. */
+@media (max-width: 700px) {
+  .visit-georgia-lockup--home {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__visit {
+    font-size: clamp(38px, 12vw, 48px);
+    letter-spacing: 0.22em;
+    padding-left: 0.22em;
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__georgia {
+    margin-top: 10px;
+    font-size: clamp(13px, 4vw, 16px);
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__city {
+    margin-top: 8px;
+    font-size: clamp(24px, 8vw, 30px);
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__tagline {
+    margin-top: 7px;
+    font-size: clamp(8px, 2.7vw, 10px);
+    letter-spacing: 0.22em;
+  }
+}
+
+@media (max-width: 700px) and (max-height: 650px) {
+  .visit-georgia-lockup--home .visit-georgia-lockup__visit {
+    font-size: 36px;
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__georgia {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__city {
+    margin-top: 6px;
+    font-size: 22px;
+  }
+
+  .visit-georgia-lockup--home .visit-georgia-lockup__tagline {
+    margin-top: 5px;
+    font-size: 8px;
   }
 }
 
