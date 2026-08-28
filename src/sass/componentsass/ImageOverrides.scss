@@ -58,11 +58,24 @@
     width: 100%;
   }
 
-  .view-card .img-back .content-image {
+  /* More-info / single-location view: center both the image wrapper and the
+     image itself so inherited flex alignment cannot pull it to one side. */
+  .view-card .img-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+  }
+
+  .view-card .img-back .content-image {
+    display: block;
+    width: auto;
     max-width: 100%;
     min-width: 0;
     height: auto;
     max-height: 420px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    object-position: center center;
   }
 }
