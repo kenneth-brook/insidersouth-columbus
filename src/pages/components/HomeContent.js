@@ -9,6 +9,10 @@ import '../../sass/componentsass/HomeContent.scss'
 
 const HomeContent = () => {
   const [circles, setCircles] = useState([]);
+  const [viewport, setViewport] = useState({
+    width: typeof window !== 'undefined' ? window.innerWidth : 1200,
+    height: typeof window !== 'undefined' ? window.innerHeight : 800,
+  });
   const orientation = useOrientation();
   const { headerRef, footerRef, updateHeights } = useHeightContext();
 
@@ -17,15 +21,30 @@ const HomeContent = () => {
   }, [headerRef, footerRef, updateHeights]);
 
   useEffect(() => {
+    const handleResize = () => {
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
+      updateHeights();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [updateHeights]);
+
+  useEffect(() => {
     const iconsKeys = ['dine', 'play', 'stay', 'maps', 'events', 'shop'];
     const texts = ['Dine', 'Play', 'Stay', 'Maps', 'Events', 'Shop'];
 
     const calculateDistance = () => {
       if (orientation === 'desktop') {
         return 200;
-      } else {
-        return 128;
       }
+
+      // Mobile home must remain a single-screen kiosk-style composition.
+      // Tighten the radial menu on short/narrow devices instead of allowing
+      // the circles to collide with the logo or footer copy.
+      const widthDistance = Math.max(92, Math.min(118, (viewport.width - 112) / 2));
+      const heightDistance = viewport.height <= 650 ? 100 : viewport.height <= 740 ? 108 : 118;
+      return Math.min(widthDistance, heightDistance);
     };
 
     const newCircles = texts.map((text, index) => {
@@ -35,7 +54,7 @@ const HomeContent = () => {
     });
 
     setCircles(newCircles);
-  }, [orientation]);
+  }, [orientation, viewport]);
 
   return (
     <>
