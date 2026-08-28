@@ -25,6 +25,27 @@
   margin-right: auto;
 }
 
+/* Desktop/kiosk detail view does not place contact controls beside the image,
+   so the image wrapper should span the full card instead of inheriting the
+   50% landscape column width from DetailView.scss. */
+.app-container.desktop .view-card .top-image,
+.app-container.desktop .view-card .img-back {
+  width: 100%;
+}
+
+.app-container.desktop .view-card .img-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-container.desktop .view-card .img-back .content-image {
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  object-position: center center;
+}
+
 /* Desktop listing cards use one fixed-height image window. The image is never
    cropped, but every card reserves the same vertical space. */
 .app-container.desktop.internal-desktop .top-container .content-image {
