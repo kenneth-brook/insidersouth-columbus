@@ -169,7 +169,7 @@ const Header = forwardRef((props, ref) => {
   ];
 
   return (
-    <header ref={ref}>
+    <header ref={ref} className={isHomePage ? 'home-header' : undefined}>
       <div className="header-container">
         <Link to="/itinerary" className="square-button-link">
           <button className="square-button" to="/itinerary">
