@@ -135,7 +135,7 @@ footer {
 @media (max-width: 700px) {
   .home-footer-copy {
     top: auto;
-    bottom: 10px;
+    bottom: clamp(58px, 11vh, 76px);
     width: 96vw;
   }
 
