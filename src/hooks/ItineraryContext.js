@@ -13,36 +13,26 @@ export const ItineraryProvider = ({ children }) => {
   }, []);
 
   const updateItinerary = useCallback(async (itineraryId, itineraryData, itineraryName = null) => {
-    let updatedItinerary = null;
+    const currentItinerary = itineraries.find((itinerary) => itinerary.id === itineraryId)
+      || (selectedItinerary?.id === itineraryId ? selectedItinerary : null);
+
+    if (!currentItinerary) return null;
+
+    const updatedItinerary = {
+      ...currentItinerary,
+      itinerary_data: itineraryData,
+      itinerary_name: itineraryName || currentItinerary.itinerary_name,
+    };
 
     setItineraries((prevItineraries) =>
-      prevItineraries.map((itinerary) => {
-        if (itinerary.id !== itineraryId) return itinerary;
-
-        updatedItinerary = {
-          ...itinerary,
-          itinerary_data: itineraryData,
-          itinerary_name: itineraryName || itinerary.itinerary_name,
-        };
-
-        return updatedItinerary;
-      })
+      prevItineraries.map((itinerary) =>
+        itinerary.id === itineraryId ? updatedItinerary : itinerary
+      )
     );
-
-    if (!updatedItinerary && selectedItinerary?.id === itineraryId) {
-      updatedItinerary = {
-        ...selectedItinerary,
-        itinerary_data: itineraryData,
-        itinerary_name: itineraryName || selectedItinerary.itinerary_name,
-      };
-    }
-
-    if (updatedItinerary) {
-      setSelectedItinerary(updatedItinerary);
-    }
+    setSelectedItinerary(updatedItinerary);
 
     return updatedItinerary;
-  }, [selectedItinerary]);
+  }, [itineraries, selectedItinerary]);
 
   const saveItinerary = useCallback(async (userId, itineraryName, itineraryData = []) => {
     const newItinerary = {
