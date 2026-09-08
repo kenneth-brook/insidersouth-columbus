@@ -11,6 +11,24 @@
   scrollbar-width: none;
 }
 
+.itin::before {
+  content: "DEMO MODE  •  Temporary itinerary data clears when this page is refreshed";
+  display: block;
+  width: min(760px, calc(100% - 32px));
+  margin: 0 auto 14px;
+  padding: 10px 14px;
+  border: 1px solid #d9c193;
+  border-radius: 8px;
+  background: #f8f2e8;
+  color: #2d2d2d;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  letter-spacing: 0.02em;
+  box-sizing: border-box;
+}
+
 .itinerery-title {
   display: flex;
   justify-content: center;
@@ -405,4 +423,13 @@
 .cBut {
   color: white;
   background-color: #bf772f;
+}
+
+@media (max-width: 700px) {
+  .itin::before {
+    width: calc(100% - 24px);
+    margin-bottom: 10px;
+    padding: 8px 10px;
+    font-size: 0.82rem;
+  }
 }
