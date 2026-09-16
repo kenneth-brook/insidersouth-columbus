@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { useHeightContext } from '../hooks/HeightContext';
@@ -73,13 +73,14 @@ const sortItineraryData = (data) => {
 
 const Itinerary = ({ pageTitle }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { headerRef, footerRef, headerHeight, footerHeight, updateHeights } = useHeightContext();
   const orientation = useOrientation();
   const { userId, isAuthenticated, setUserId } = useAuth();
   const { itineraries, selectedItinerary, setSelectedItinerary, fetchItineraries, saveItinerary, updateItinerary, removeFromItinerary } = useItineraryContext();
   const [selectedItineraryId, setSelectedItineraryId] = useState(localStorage.getItem('selectedItineraryId') || '');
   const [newItineraryName, setNewItineraryName] = useState('');
-  const [showNewItineraryPopup, setShowNewItineraryPopup] = useState(false);
+  const [showNewItineraryPopup, setShowNewItineraryPopup] = useState(Boolean(location.state?.openNewItinerary));
   const [showEditItineraryPopup, setShowEditItineraryPopup] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [editLocationId, setEditLocationId] = useState(null);
