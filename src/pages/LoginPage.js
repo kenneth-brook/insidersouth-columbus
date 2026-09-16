@@ -72,7 +72,7 @@ const LoginPage = () => {
     <>
       <div className="demo-mode-notice">
         <strong>Demo Mode</strong>
-        <span>Sign-in is simulated and itinerary data is temporary. Refreshing the page clears the demo session.</span>
+        <span>Sign-in is simulated. Login and itinerary data persist through page refreshes on this device.</span>
       </div>
 
       <div className="form-group">
