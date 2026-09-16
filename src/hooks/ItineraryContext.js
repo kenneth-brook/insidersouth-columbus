@@ -1,105 +1,75 @@
-import React, { createContext, useState, useContext, useCallback, useEffect } from 'react';
+import React, { createContext, useState, useContext, useCallback } from 'react';
 
 const ItineraryContext = createContext();
 
-export const ItineraryProvider = ({ children }) => {
-  const [itineraries, setItineraries] = useState([]);
-  const [selectedItinerary, setSelectedItinerary] = useState(null);
-  const [pendingLocations, setPendingLocations] = useState([]);
+const createDefaultItinerary = () => ({
+  id: 1,
+  user_id: 'demo-user',
+  itinerary_name: 'My Itinerary',
+  itinerary_data: [],
+});
 
-  useEffect(() => {
-    // Demo itinerary data is intentionally session-only.
-    localStorage.removeItem('selectedItineraryId');
-  }, []);
+export const ItineraryProvider = ({ children }) => {
+  const [itineraries, setItineraries] = useState(() => [createDefaultItinerary()]);
+  const [selectedItinerary, setSelectedItinerary] = useState(() => createDefaultItinerary());
 
   const updateItinerary = useCallback(async (itineraryId, itineraryData, itineraryName = null) => {
-    const currentItinerary = itineraries.find((itinerary) => itinerary.id === itineraryId)
-      || (selectedItinerary?.id === itineraryId ? selectedItinerary : null);
-
-    if (!currentItinerary) return null;
-
     const updatedItinerary = {
-      ...currentItinerary,
+      ...selectedItinerary,
+      id: itineraryId,
       itinerary_data: itineraryData,
-      itinerary_name: itineraryName || currentItinerary.itinerary_name,
+      itinerary_name: itineraryName || selectedItinerary.itinerary_name || 'My Itinerary',
     };
 
-    setItineraries((prevItineraries) =>
-      prevItineraries.map((itinerary) =>
-        itinerary.id === itineraryId ? updatedItinerary : itinerary
-      )
-    );
     setSelectedItinerary(updatedItinerary);
-
+    setItineraries([updatedItinerary]);
     return updatedItinerary;
-  }, [itineraries, selectedItinerary]);
+  }, [selectedItinerary]);
 
   const saveItinerary = useCallback(async (userId, itineraryName, itineraryData = []) => {
-    const newItinerary = {
-      id: Date.now(),
-      user_id: userId,
-      itinerary_name: itineraryName || 'My Itinerary',
-      itinerary_data: [...itineraryData, ...pendingLocations],
+    const updatedItinerary = {
+      ...selectedItinerary,
+      user_id: userId || selectedItinerary.user_id,
+      itinerary_name: itineraryName || selectedItinerary.itinerary_name || 'My Itinerary',
+      itinerary_data: itineraryData,
     };
 
-    setItineraries((prevItineraries) => [...prevItineraries, newItinerary]);
-    setSelectedItinerary(newItinerary);
-    setPendingLocations([]);
-
-    return newItinerary;
-  }, [pendingLocations]);
+    setSelectedItinerary(updatedItinerary);
+    setItineraries([updatedItinerary]);
+    return updatedItinerary;
+  }, [selectedItinerary]);
 
   const fetchItineraries = useCallback(async () => {
-    // No backend request in demo mode. State already contains this session's itineraries.
+    // Demo mode uses one in-memory itinerary and never calls the backend.
   }, []);
 
   const addToItinerary = useCallback(async (location) => {
-    if (selectedItinerary) {
-      const updatedData = [...selectedItinerary.itinerary_data, location];
-      return updateItinerary(
-        selectedItinerary.id,
-        updatedData,
-        selectedItinerary.itinerary_name
-      );
-    }
+    const dayOneLocation = {
+      ...location,
+      visitDate: location.visitDate || '',
+      visitTime: location.visitTime || '',
+    };
 
-    setPendingLocations((prevLocations) => [...prevLocations, location]);
-    return null;
-  }, [selectedItinerary, updateItinerary]);
+    const updatedItinerary = {
+      ...selectedItinerary,
+      itinerary_data: [...selectedItinerary.itinerary_data, dayOneLocation],
+    };
 
-  const removeFromItinerary = useCallback(async (itineraryId) => {
-    setItineraries((prevItineraries) =>
-      prevItineraries.filter((itinerary) => itinerary.id !== itineraryId)
-    );
-
-    if (selectedItinerary?.id === itineraryId) {
-      setSelectedItinerary(null);
-    }
+    setSelectedItinerary(updatedItinerary);
+    setItineraries([updatedItinerary]);
+    return updatedItinerary;
   }, [selectedItinerary]);
 
-  const selectItinerary = useCallback((itineraryId) => {
-    const itinerary = itineraries.find((it) => it.id === itineraryId);
+  const removeFromItinerary = useCallback(async () => {
+    const resetItinerary = createDefaultItinerary();
+    setSelectedItinerary(resetItinerary);
+    setItineraries([resetItinerary]);
+  }, []);
 
-    if (!itinerary) return;
-
-    if (pendingLocations.length > 0) {
-      const updatedItinerary = {
-        ...itinerary,
-        itinerary_data: [...itinerary.itinerary_data, ...pendingLocations],
-      };
-
-      setItineraries((prevItineraries) =>
-        prevItineraries.map((it) =>
-          it.id === itineraryId ? updatedItinerary : it
-        )
-      );
-      setSelectedItinerary(updatedItinerary);
-      setPendingLocations([]);
-      return;
-    }
-
-    setSelectedItinerary(itinerary);
-  }, [itineraries, pendingLocations]);
+  const selectItinerary = useCallback(() => {
+    // There is only one itinerary in demo mode, so selection is unnecessary.
+    return selectedItinerary;
+  }, [selectedItinerary]);
 
   return (
     <ItineraryContext.Provider
