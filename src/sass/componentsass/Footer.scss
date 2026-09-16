@@ -101,15 +101,16 @@ footer {
 
 /*
  * Desktop content pages use the footer component as the right-side sticky
- * navigation bar. Match the measured left header height so both halves form
- * one continuous top edge while the page content scrolls below it.
+ * navigation bar. Leave the content scroller's 20px right gutter uncovered
+ * so its scrollbar remains visible and draggable from the very top, even on
+ * short laptop screens.
  */
 .app-container.desktop.internal-desktop > footer {
   top: 0 !important;
-  right: 0 !important;
+  right: 20px !important;
   bottom: auto !important;
   left: auto !important;
-  width: 50% !important;
+  width: calc(50% - 20px) !important;
   height: var(--content-nav-height, 180px) !important;
   min-height: var(--content-nav-height, 180px) !important;
   max-height: var(--content-nav-height, 180px) !important;
@@ -119,16 +120,6 @@ footer {
   justify-content: center;
   background: $columbus-cream;
   z-index: 200;
-}
-
-/*
- * Keep the desktop content scroller entirely below the sticky navigation.
- * Previously the main element still occupied the full viewport height, so the
- * footer/nav sat on top of the upper section of its scrollbar.
- */
-.app-container.desktop.internal-desktop > main {
-  top: var(--content-nav-height, 180px) !important;
-  height: calc(100% - var(--content-nav-height, 180px)) !important;
 }
 
 .app-container.desktop.internal-desktop > footer .footer-circles {
