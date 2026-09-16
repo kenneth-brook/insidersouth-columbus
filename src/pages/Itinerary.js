@@ -94,6 +94,19 @@ const calculateDayNumbers = (data) => {
   });
 };
 
+const groupLocationsByDay = (data, dayNumbers) => {
+  return data.reduce((groups, location, index) => {
+    const day = dayNumbers[index] || 1;
+
+    if (!groups[day]) {
+      groups[day] = [];
+    }
+
+    groups[day].push({ location, index });
+    return groups;
+  }, {});
+};
+
 const Itinerary = ({ pageTitle }) => {
   const navigate = useNavigate();
   const { headerRef, footerRef, headerHeight, footerHeight, updateHeights } = useHeightContext();
@@ -298,6 +311,10 @@ const Itinerary = ({ pageTitle }) => {
 
   const sortedData = sortItineraryData(selectedItinerary?.itinerary_data || []);
   const dayNumbers = calculateDayNumbers(sortedData);
+  const groupedDays = groupLocationsByDay(sortedData, dayNumbers);
+  const dayEntries = Object.entries(groupedDays).sort(
+    ([dayA], [dayB]) => Number(dayA) - Number(dayB)
+  );
 
   return (
     <div
@@ -327,10 +344,16 @@ const Itinerary = ({ pageTitle }) => {
         <div className="itinerary-content">
           {isMapView ? (
             <MapView data={selectedItinerary?.itinerary_data || []} />
-          ) : sortedData.length > 0 ? (
-            sortedData.map((location, index) =>
-              renderLocationItem(location, index, dayNumbers[index])
-            )
+          ) : dayEntries.length > 0 ? (
+            <div className={`itinerary-days itinerary-days--count-${dayEntries.length}`}>
+              {dayEntries.map(([day, items]) => (
+                <section className="itinerary-day-column" key={`day-${day}`}>
+                  {items.map(({ location, index }) =>
+                    renderLocationItem(location, index, Number(day))
+                  )}
+                </section>
+              ))}
+            </div>
           ) : (
             <p>Your itinerary is empty. Add places from Stay, Play, Dine, Shop, or Events.</p>
           )}
