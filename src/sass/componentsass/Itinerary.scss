@@ -16,13 +16,24 @@
 }
 
 .itinerary-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
   width: 100%;
   margin-top: 20px;
   padding: 0 6px 28px;
   box-sizing: border-box;
+}
+
+.itinerary-days {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  width: 100%;
+}
+
+.itinerary-day-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
 }
 
 .itinerary-card {
@@ -233,16 +244,43 @@
 }
 
 @media (min-width: 1080px) {
-  .desktop .itin .itinerary-content {
+  .desktop .itin .itinerary-days {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
+  }
+
+  .desktop .itin .itinerary-days--count-1 {
+    grid-template-columns: minmax(0, calc(50% - 9px));
+    justify-content: center;
+  }
+
+  .desktop .itin .itinerary-days:not(.itinerary-days--count-1) > .itinerary-day-column:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc(50% - 9px);
+    justify-self: center;
   }
 }
 
 @media (max-width: 700px) {
   .itinerary-content {
-    gap: 14px;
     padding: 0 2px 20px;
+  }
+
+  .itinerary-days,
+  .desktop .itin .itinerary-days,
+  .desktop .itin .itinerary-days--count-1 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .desktop .itin .itinerary-days:not(.itinerary-days--count-1) > .itinerary-day-column:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .itinerary-day-column {
+    gap: 14px;
   }
 
   .itinerary-card {
