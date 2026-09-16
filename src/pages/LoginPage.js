@@ -20,15 +20,25 @@ const LoginPage = () => {
   const location = useLocation();
   const { isAuthenticated, login } = useAuth();
 
+  const resumeDestination = location.state?.from || '/itinerary';
+  const resumeState = location.state?.returnState || null;
+
+  const resumeAfterLogin = () => {
+    navigate(resumeDestination, {
+      replace: true,
+      state: resumeState,
+    });
+  };
+
   useEffect(() => {
     updateHeights();
   }, [headerRef, footerRef, updateHeights]);
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate(location.state?.from || '/itinerary');
+      resumeAfterLogin();
     }
-  }, [isAuthenticated, navigate, location.state]);
+  }, [isAuthenticated]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,7 +65,7 @@ const LoginPage = () => {
     }
 
     login('demo-user');
-    navigate(location.state?.from || '/itinerary');
+    resumeAfterLogin();
   };
 
   const renderForm = () => (
