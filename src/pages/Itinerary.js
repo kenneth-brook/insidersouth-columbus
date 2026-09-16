@@ -27,7 +27,7 @@ const formatDate = (dateString) => {
 };
 
 const formatTime = (timeString) => {
-  if (!timeString) return '--:--';
+  if (!timeString) return '';
 
   const [hours, minutes] = timeString.split(':');
   const date = new Date();
@@ -36,6 +36,19 @@ const formatTime = (timeString) => {
   const hours12 = date.getHours() % 12 || 12;
   const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
   return `${hours12}:${minutes} ${ampm}`;
+};
+
+const resolveImageUrl = (image) => {
+  let rawUrl = image || '';
+  rawUrl = rawUrl.replace(/^\{+|\}+$/g, '').trim();
+  rawUrl = rawUrl.replace(/^"+|"+$/g, '').trim();
+
+  if (rawUrl.startsWith('https://') || rawUrl.startsWith('http://')) {
+    return rawUrl;
+  }
+
+  const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/images/columbus/${rawUrl}`;
+  return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
 };
 
 const sortItineraryData = (data) => {
@@ -177,78 +190,91 @@ const Itinerary = ({ pageTitle }) => {
     window.open(directionsUrl, '_blank', 'noopener,noreferrer');
   };
 
-  const renderLocationItem = (location, index, dayCount) => (
-    <div key={`${location.id}-${index}`} className="location-item">
-      <div className="left-side">
-        <div
-          className="day-box"
-          role="button"
-          tabIndex={0}
-          aria-label={`Edit date and time for ${location.name}`}
-          onClick={() => handleEditLocation(location)}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-              event.preventDefault();
-              handleEditLocation(location);
+  const renderLocationItem = (location, index, dayCount) => {
+    const image = location.images?.[0] || location.image || '';
+    const categoryLabel = (location.category || '').toUpperCase();
+
+    return (
+      <div key={`${location.id}-${index}`} className="itinerary-card">
+        <div className="itinerary-card__top">
+          <div className="itinerary-card__image-wrap">
+            {image ? (
+              <img
+                src={resolveImageUrl(image)}
+                alt={location.name}
+                className="itinerary-card__image"
+              />
+            ) : (
+              <div className="itinerary-card__image itinerary-card__image--placeholder" />
+            )}
+
+            <div
+              className="itinerary-card__day"
+              role="button"
+              tabIndex={0}
+              aria-label={`Edit date and time for ${location.name}`}
+              onClick={() => handleEditLocation(location)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  handleEditLocation(location);
+                }
+              }}
+            >
+              <span className="itinerary-card__day-label">DAY</span>
+              <strong>{String(dayCount).padStart(2, '0')}</strong>
+              {location.visitDate && (
+                <span className="itinerary-card__date">{formatDate(location.visitDate)}</span>
+              )}
+              {location.visitTime && (
+                <span className="itinerary-card__time">{formatTime(location.visitTime)}</span>
+              )}
+            </div>
+          </div>
+
+          <div className="itinerary-card__copy">
+            {categoryLabel && <div className="itinerary-card__category">{categoryLabel}</div>}
+            <h2>{location.name}</h2>
+            {location.description && (
+              <p dangerouslySetInnerHTML={{ __html: location.description }} />
+            )}
+          </div>
+        </div>
+
+        <div className="itinerary-card__actions">
+          <button
+            onClick={() =>
+              navigate(`/detail/${location.id}`, {
+                state: { location, category: location.category },
+              })
             }
-          }}
-        >
-          <div className="day-label">DAY</div>
-          <div className="day-number">{String(dayCount).padStart(2, '0')}</div>
-        </div>
-        <div className="date-box">
-          <div className="date-value">
-            {location.visitDate ? formatDate(location.visitDate) : ''}
-          </div>
-        </div>
-        <div className="time-box">
-          <div className="time-value">
-            {location.visitTime ? formatTime(location.visitTime) : '--:--'}
-          </div>
-        </div>
-        <button
-          className="details-button"
-          onClick={() =>
-            navigate(`/detail/${location.id}`, {
-              state: { location, category: location.category },
-            })
-          }
-        >
-          <EyeIcon />
-          Details
-        </button>
-      </div>
+          >
+            <EyeIcon />
+            <span>Details</span>
+          </button>
 
-      <div className="right-side">
-        <div className="right-side-header">
-          <div className="textBlock">
-            <h3>{location.name}</h3>
-            <p>{location.street_address},</p>
-            <p>{location.city}, {location.state} {location.zip}</p>
-          </div>
-        </div>
-
-        <div className="button-group">
           {location.web && (
-            <button onClick={() => window.open(location.web, '_blank')}>
+            <button onClick={() => window.open(location.web, '_blank', 'noopener,noreferrer')}>
               <WebIcon />
-              Web
+              <span>Website</span>
             </button>
           )}
+
           {location.phone && (
-            <button onClick={() => window.open(`tel:${location.phone}`, '_blank')}>
+            <button onClick={() => window.open(`tel:${location.phone}`, '_self')}>
               <PhoneIcon />
-              Call
+              <span>Call</span>
             </button>
           )}
+
           <button onClick={() => handleGetDirections(location)}>
             <MapIcon />
-            Get Directions
+            <span>Directions</span>
           </button>
         </div>
 
         {editLocationId === location.id && (
-          <div className="edit-box">
+          <div className="edit-box itinerary-card__edit">
             <label>Date:</label>
             <input
               type="date"
@@ -267,8 +293,8 @@ const Itinerary = ({ pageTitle }) => {
           </div>
         )}
       </div>
-    </div>
-  );
+    );
+  };
 
   const sortedData = sortItineraryData(selectedItinerary?.itinerary_data || []);
   const dayNumbers = calculateDayNumbers(sortedData);
