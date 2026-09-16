@@ -165,9 +165,18 @@ const Itinerary = ({ pageTitle }) => {
     );
   };
 
-  const handleMapView = (location) => {
-    setIsMapView(true);
-    navigate(`/${location.category}/${location.id}`, { state: { location } });
+  const handleGetDirections = (location) => {
+    const destination =
+      location.lat && location.long
+        ? `${location.lat},${location.long}`
+        : [location.street_address, location.city, location.state, location.zip]
+            .filter(Boolean)
+            .join(', ');
+
+    if (!destination) return;
+
+    const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}`;
+    window.open(directionsUrl, '_blank', 'noopener,noreferrer');
   };
 
   const renderLocationItem = (location, index, dayCount) => (
@@ -225,9 +234,9 @@ const Itinerary = ({ pageTitle }) => {
               Call
             </button>
           )}
-          <button onClick={() => handleMapView(location)}>
+          <button onClick={() => handleGetDirections(location)}>
             <MapIcon />
-            Map
+            Get Directions
           </button>
         </div>
 
