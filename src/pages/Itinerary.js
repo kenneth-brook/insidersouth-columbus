@@ -12,7 +12,6 @@ import { ReactComponent as EyeIcon } from '../assets/icos/eye.svg';
 import { ReactComponent as PhoneIcon } from '../assets/icos/phone2.svg';
 import { ReactComponent as WebIcon } from '../assets/icos/web.svg';
 import { ReactComponent as MapIcon } from '../assets/icos/maps.svg';
-import { ReactComponent as EditIcon } from '../assets/icos/edit.svg';
 import '../sass/componentsass/Itinerary.scss';
 import MapView from './components/MapView';
 
@@ -64,7 +63,6 @@ const calculateDayNumbers = (data) => {
 
   const datedItems = data.filter((item) => item.visitDate);
 
-  // Until the user starts assigning dates, every stop is Day 1.
   if (datedItems.length === 0) {
     return data.map(() => 1);
   }
@@ -182,7 +180,19 @@ const Itinerary = ({ pageTitle }) => {
   const renderLocationItem = (location, index, dayCount) => (
     <div key={`${location.id}-${index}`} className="location-item">
       <div className="left-side">
-        <div className="day-box">
+        <div
+          className="day-box"
+          role="button"
+          tabIndex={0}
+          aria-label={`Edit date and time for ${location.name}`}
+          onClick={() => handleEditLocation(location)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              handleEditLocation(location);
+            }
+          }}
+        >
           <div className="day-label">DAY</div>
           <div className="day-number">{String(dayCount).padStart(2, '0')}</div>
         </div>
@@ -216,9 +226,6 @@ const Itinerary = ({ pageTitle }) => {
             <p>{location.street_address},</p>
             <p>{location.city}, {location.state} {location.zip}</p>
           </div>
-          <button className="edit-button" onClick={() => handleEditLocation(location)}>
-            <EditIcon />Edit
-          </button>
         </div>
 
         <div className="button-group">
