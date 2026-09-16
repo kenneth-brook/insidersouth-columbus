@@ -10,16 +10,19 @@ import { useItineraryContext } from '../../hooks/ItineraryContext';
 
 const DetailViewCard = ({ item, category, handleShare }) => {
   const { isMapView, setIsMapView } = useViewMode();
-  const { addToItinerary } = useItineraryContext();
+  const { addToItinerary, selectedItinerary } = useItineraryContext();
   const navigate = useNavigate();
 
   if (!item) {
     return <div>Loading...</div>;
   }
 
-  const handleAddToItinerary = () => {
-    addToItinerary(item);
-    navigate('/itinerary');
+  const handleAddToItinerary = async () => {
+    const needsNewItinerary = !selectedItinerary;
+    await addToItinerary(item);
+    navigate('/itinerary', {
+      state: { openNewItinerary: needsNewItinerary },
+    });
   };
 
   const handleMapView = () => {
