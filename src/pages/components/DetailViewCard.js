@@ -18,7 +18,10 @@ const DetailViewCard = ({ item, category, handleShare }) => {
   }
 
   const handleAddToItinerary = async () => {
-    await addToItinerary(item);
+    await addToItinerary({
+      ...item,
+      category: item.category || category,
+    });
     navigate('/itinerary');
   };
 
