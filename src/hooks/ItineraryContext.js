@@ -1,6 +1,7 @@
-import React, { createContext, useState, useContext, useCallback } from 'react';
+import React, { createContext, useState, useContext, useCallback, useEffect } from 'react';
 
 const ItineraryContext = createContext();
+const ITINERARY_STORAGE_KEY = 'columbus-demo-itinerary';
 
 const createDefaultItinerary = () => ({
   id: 1,
@@ -9,9 +10,38 @@ const createDefaultItinerary = () => ({
   itinerary_data: [],
 });
 
+const loadStoredItinerary = () => {
+  try {
+    const stored = localStorage.getItem(ITINERARY_STORAGE_KEY);
+    if (!stored) return createDefaultItinerary();
+
+    const parsed = JSON.parse(stored);
+    if (!parsed || !Array.isArray(parsed.itinerary_data)) {
+      return createDefaultItinerary();
+    }
+
+    return {
+      ...createDefaultItinerary(),
+      ...parsed,
+      itinerary_data: parsed.itinerary_data,
+    };
+  } catch (error) {
+    console.warn('Unable to restore itinerary from local storage:', error);
+    return createDefaultItinerary();
+  }
+};
+
 export const ItineraryProvider = ({ children }) => {
-  const [itineraries, setItineraries] = useState(() => [createDefaultItinerary()]);
-  const [selectedItinerary, setSelectedItinerary] = useState(() => createDefaultItinerary());
+  const [selectedItinerary, setSelectedItinerary] = useState(() => loadStoredItinerary());
+  const [itineraries, setItineraries] = useState(() => [loadStoredItinerary()]);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(ITINERARY_STORAGE_KEY, JSON.stringify(selectedItinerary));
+    } catch (error) {
+      console.warn('Unable to persist itinerary to local storage:', error);
+    }
+  }, [selectedItinerary]);
 
   const updateItinerary = useCallback(async (itineraryId, itineraryData, itineraryName = null) => {
     const updatedItinerary = {
@@ -40,7 +70,7 @@ export const ItineraryProvider = ({ children }) => {
   }, [selectedItinerary]);
 
   const fetchItineraries = useCallback(async () => {
-    // Demo mode uses one in-memory itinerary and never calls the backend.
+    // Demo mode uses one locally persisted itinerary and never calls the backend.
   }, []);
 
   const addToItinerary = useCallback(async (location) => {
@@ -64,6 +94,7 @@ export const ItineraryProvider = ({ children }) => {
     const resetItinerary = createDefaultItinerary();
     setSelectedItinerary(resetItinerary);
     setItineraries([resetItinerary]);
+    localStorage.removeItem(ITINERARY_STORAGE_KEY);
   }, []);
 
   const selectItinerary = useCallback(() => {
