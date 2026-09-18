@@ -1,0 +1,23 @@
+.publication-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 8px 14px;
+  border: 1px solid #b8924a;
+  border-radius: 8px;
+  background: #fff;
+  color: #b8924a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.publication-button:hover,
+.publication-button:focus {
+  background: #b8924a;
+  color: #fff;
+  outline: none;
+}
