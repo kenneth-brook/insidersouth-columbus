@@ -11,8 +11,8 @@ const LoginPage = () => {
   const { headerRef, footerRef, headerHeight, footerHeight, updateHeights } = useHeightContext();
   const orientation = useOrientation();
   const [mode, setMode] = useState('login');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('demo@visitcolumbusga.com');
+  const [password, setPassword] = useState('demo1234');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(null);
@@ -52,7 +52,7 @@ const LoginPage = () => {
       }
 
       setMode('login');
-      setPassword('');
+      setPassword('demo1234');
       setRepeatPassword('');
       setStatus('Registration successful! Please sign in.');
       return;
