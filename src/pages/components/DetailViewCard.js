@@ -7,6 +7,7 @@ import { ReactComponent as AddItinerary } from '../../assets/icos/add-itinerary.
 import '../../sass/componentsass/DetailViewCard.scss';
 import { useViewMode } from '../../hooks/ViewModeContext';
 import { useItineraryContext } from '../../hooks/ItineraryContext';
+import DistanceLabel from './DistanceLabel';
 
 const DetailViewCard = ({ item, category, handleShare }) => {
   const { isMapView, setIsMapView } = useViewMode();
@@ -87,6 +88,7 @@ const DetailViewCard = ({ item, category, handleShare }) => {
           />
         )}
         <div className="text-container">
+          <DistanceLabel item={item} />
           <h2>{item.name}</h2>
           {item.start_date && <h3>{formatDate(item.start_date)}</h3>}
           <div className="content-box">
