@@ -189,6 +189,19 @@ const Itinerary = ({ pageTitle }) => {
     );
   };
 
+  const handleDeleteLocation = async (location) => {
+    const confirmed = window.confirm(
+      `Delete ${location.name} from your itinerary?`
+    );
+
+    if (!confirmed) return;
+
+    await handleRemoveLocation(location.id);
+    if (editLocationId === location.id) {
+      handleCancelEdit();
+    }
+  };
+
   const handleGetDirections = (location) => {
     const destination =
       location.lat && location.long
@@ -209,6 +222,15 @@ const Itinerary = ({ pageTitle }) => {
 
     return (
       <div key={`${location.id}-${index}`} className="itinerary-card">
+        <button
+          type="button"
+          className="itinerary-card__delete"
+          onClick={() => handleDeleteLocation(location)}
+          aria-label={`Delete ${location.name} from itinerary`}
+        >
+          Delete
+        </button>
+
         <div className="itinerary-card__top">
           <div className="itinerary-card__image-wrap">
             {image ? (
@@ -301,7 +323,6 @@ const Itinerary = ({ pageTitle }) => {
               onChange={(e) => setEditTime(e.target.value)}
             />
             <button className="uBut" onClick={() => handleUpdateLocation(location)}>Save</button>
-            <button className="rBut" onClick={() => handleRemoveLocation(location.id)}>Delete</button>
             <button className="cBut" onClick={handleCancelEdit}>Cancel</button>
           </div>
         )}
