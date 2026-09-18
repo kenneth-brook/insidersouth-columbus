@@ -4,6 +4,7 @@ import { ReactComponent as Phone } from '../../assets/icos/phone.svg';
 import { ReactComponent as MapIcon } from '../../assets/icos/map-icon.svg';
 import { ReactComponent as Share } from '../../assets/icos/share-icon.svg';
 import { ReactComponent as AddItinerary } from '../../assets/icos/add-itinerary.svg';
+import { ReactComponent as EyeIcon } from '../../assets/icos/eye.svg';
 import '../../sass/componentsass/DetailViewCard.scss';
 import { useViewMode } from '../../hooks/ViewModeContext';
 import { useItineraryContext } from '../../hooks/ItineraryContext';
@@ -147,6 +148,10 @@ const DetailViewCard = ({ item, category, handleShare }) => {
           </div>
         </div>
         <div className="bottom-button">
+          <button onClick={() => navigate(`/${category}/${item.id}`)}>
+            <EyeIcon />
+            More
+          </button>
           {handleShare && (
             <button onClick={() => {
               const baseUrl = window.location.origin;
