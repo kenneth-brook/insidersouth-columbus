@@ -9,6 +9,7 @@ import '../../sass/componentsass/DetailViewCard.scss';
 import { useViewMode } from '../../hooks/ViewModeContext';
 import { useItineraryContext } from '../../hooks/ItineraryContext';
 import DistanceLabel from './DistanceLabel';
+import PublicationButton from './PublicationButton';
 
 const DetailViewCard = ({ item, category, handleShare }) => {
   const { isMapView, setIsMapView } = useViewMode();
@@ -95,6 +96,7 @@ const DetailViewCard = ({ item, category, handleShare }) => {
           <div className="content-box">
             <div className="text-box">
               <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
+              <PublicationButton item={item} />
               <div className="reviews-container">
                 {item.rating && (
                   <div className="reviews-block">
