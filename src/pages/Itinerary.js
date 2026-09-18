@@ -310,13 +310,13 @@ const Itinerary = ({ pageTitle }) => {
 
         {editLocationId === location.id && (
           <div className="edit-box itinerary-card__edit">
-            <label>Date:</label>
+            <label>Set Date:</label>
             <input
               type="date"
               value={editDate}
               onChange={(e) => setEditDate(e.target.value)}
             />
-            <label>Time:</label>
+            <label>Set Time:</label>
             <input
               type="time"
               value={editTime}
