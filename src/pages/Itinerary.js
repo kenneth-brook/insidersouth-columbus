@@ -300,8 +300,8 @@ const Itinerary = ({ pageTitle }) => {
               value={editTime}
               onChange={(e) => setEditTime(e.target.value)}
             />
-            <button className="uBut" onClick={() => handleUpdateLocation(location)}>Update</button>
-            <button className="rBut" onClick={() => handleRemoveLocation(location.id)}>Remove</button>
+            <button className="uBut" onClick={() => handleUpdateLocation(location)}>Save</button>
+            <button className="rBut" onClick={() => handleRemoveLocation(location.id)}>Delete</button>
             <button className="cBut" onClick={handleCancelEdit}>Cancel</button>
           </div>
         )}
