@@ -10,6 +10,7 @@ import { useDataContext } from '../hooks/DataContext';
 import { useViewMode } from '../hooks/ViewModeContext';
 import MapView from './components/MapView';
 import DetailViewCard from './components/DetailViewCard';
+import DistanceLabel from './components/DistanceLabel';
 import ShareModal from './components/ShareModal';
 
 const Play = ({ pageTitle }) => {
@@ -72,6 +73,7 @@ const Play = ({ pageTitle }) => {
     <div className="two-column-layout">
       {playData.map((item) => (
         <div key={item.id} className="content-item">
+          <DistanceLabel item={item} />
           <h2>{item.name}</h2>
           <div className="content-box">
             <div className="box-top">
