@@ -201,34 +201,52 @@
 }
 
 .itinerary-card__edit {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
   margin: 0 20px 18px;
-  padding: 14px;
+  padding: 12px;
   border: 1px solid rgba(184, 146, 74, 0.35);
   border-radius: 10px;
   background: #fff;
+  box-sizing: border-box;
 }
 
 .itinerary-card__edit label {
-  display: inline-block;
-  margin: 0 6px 0 8px;
+  flex: 0 0 auto;
+  margin: 0 2px 0 4px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .itinerary-card__edit input {
-  max-width: 160px;
+  flex: 0 1 auto;
+  min-width: 0;
   padding: 6px;
   border: 1px solid #cfc7bd;
   border-radius: 5px;
-  font-size: 1rem;
+  font-size: 0.92rem;
+  box-sizing: border-box;
+}
+
+.itinerary-card__edit input[type='date'] {
+  width: 132px;
+}
+
+.itinerary-card__edit input[type='time'] {
+  width: 104px;
 }
 
 .itinerary-card__edit button {
-  margin: 10px 6px 0 0;
-  padding: 7px 11px;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 7px 9px;
   border: 0;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .uBut {
@@ -349,6 +367,7 @@
   }
 
   .itinerary-card__edit {
+    display: block;
     margin: 0 10px 12px;
   }
 
@@ -359,5 +378,14 @@
     max-width: none;
     margin: 5px 0;
     box-sizing: border-box;
+  }
+
+  .itinerary-card__edit input[type='date'],
+  .itinerary-card__edit input[type='time'] {
+    width: 100%;
+  }
+
+  .itinerary-card__edit button {
+    margin: 8px 6px 0 0;
   }
 }
