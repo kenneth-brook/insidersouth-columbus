@@ -229,7 +229,7 @@
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 6px;
+  gap: 8px;
   margin: 0 20px 18px;
   padding: 12px;
   border: 1px solid rgba(184, 146, 74, 0.35);
@@ -248,30 +248,31 @@
 .itinerary-card__edit input {
   flex: 0 1 auto;
   min-width: 0;
-  padding: 6px;
+  padding: 7px 8px;
   border: 1px solid #cfc7bd;
   border-radius: 5px;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   box-sizing: border-box;
 }
 
 .itinerary-card__edit input[type='date'] {
-  width: 132px;
+  width: 156px;
 }
 
 .itinerary-card__edit input[type='time'] {
-  width: 104px;
+  width: 122px;
 }
 
 .itinerary-card__edit button {
   flex: 0 0 auto;
   margin: 0;
-  padding: 7px 9px;
+  padding: 8px 14px;
   border: 0;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .uBut {
