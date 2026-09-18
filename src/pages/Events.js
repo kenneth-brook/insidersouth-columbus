@@ -10,6 +10,7 @@ import { useViewMode } from '../hooks/ViewModeContext';
 import MapView from './components/MapView';
 import { useNavigate } from 'react-router-dom';
 import DetailViewCard from './components/DetailViewCard';
+import DistanceLabel from './components/DistanceLabel';
 import ShareModal from './components/ShareModal';
 
 function formatDate(dateString) {
@@ -78,6 +79,7 @@ const Events = ({ pageTitle }) => {
       <div className="two-column-layout">
         {sortedEventsData.map((item) => (
           <div key={item.id} className="content-item">
+            <DistanceLabel item={item} />
             <h2>{item.name}</h2>
             <p>{formatDate(item.start_date)}</p>
             <div className="content-box">
