@@ -1,0 +1,18 @@
+.location-distance {
+  width: 100%;
+  margin: 0 0 4px;
+  color: #b8924a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .location-distance {
+    margin-bottom: 3px;
+    font-size: 0.7rem;
+  }
+}
