@@ -11,7 +11,7 @@ const LoginPage = () => {
   const { headerRef, footerRef, headerHeight, footerHeight, updateHeights } = useHeightContext();
   const orientation = useOrientation();
   const [mode, setMode] = useState('login');
-  const [email, setEmail] = useState('demo@visitcolumbusga.com');
+  const [email, setEmail] = useState('demo@insidersouth.com');
   const [password, setPassword] = useState('demo1234');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [error, setError] = useState(null);
