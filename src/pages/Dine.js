@@ -11,6 +11,7 @@ import MapView from './components/MapView';
 import { useNavigate } from 'react-router-dom';
 import DetailViewCard from './components/DetailViewCard';
 import DistanceLabel from './components/DistanceLabel';
+import PublicationButton from './components/PublicationButton';
 import ShareModal from './components/ShareModal';
 
 const Dine = ({ pageTitle }) => {
@@ -77,6 +78,7 @@ const Dine = ({ pageTitle }) => {
               )}
               <div className="text-box">
                 <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
+                <PublicationButton item={item} />
               </div>
             </div>
             <div className="reviews-container">
