@@ -12,6 +12,7 @@ import { ReactComponent as StayIcon } from '../assets/icos/stay.svg'
 import { ReactComponent as ShopIcon } from '../assets/icos/shop.svg'
 import { useNavigate } from 'react-router-dom'
 import DetailViewCard from './components/DetailViewCard'
+import PublicationButton from './components/PublicationButton'
 
 const AllView = ({ pageTitle }) => {
   const { headerHeight, footerHeight, footerRef } = useHeightContext()
@@ -109,6 +110,7 @@ const AllView = ({ pageTitle }) => {
               })()}
                 <div className="text-box">
                   <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
+                  <PublicationButton item={item} />
                   <div className="reviews-container">
                     {item.rating && (
                       <div className="reviews-block">
