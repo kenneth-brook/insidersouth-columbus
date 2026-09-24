@@ -264,6 +264,7 @@ const Itinerary = ({ pageTitle }) => {
               {location.visitTime && (
                 <span className="itinerary-card__time">{formatTime(location.visitTime)}</span>
               )}
+              <span className="itinerary-card__edit-label">EDIT</span>
             </div>
           </div>
 
