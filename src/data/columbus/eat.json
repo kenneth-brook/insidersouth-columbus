@@ -53,6 +53,23 @@
     "menu_types": []
   },
   {
+    "id": "mabella",
+    "name": "Mabella",
+    "street_address": "14 W. 11th Street",
+    "city": "Columbus",
+    "state": "GA",
+    "zip": "31909",
+    "phone": "706-940-0070",
+    "web": "http://mabells.com/",
+    "description": "Serving quality interpretations of classic dishes and daringly ventures into uncharted territories of Italian cuisine. The dynamic menu features a mixture of old and new, satisfying patrons with its wide array of flavors.",
+    "images": ["/images/Mabella.jpg"],
+    "rating": null,
+    "lat": 32.46638550000001,
+    "long": -84.992449,
+    "source_category": "Restaurant",
+    "menu_types": []
+  },
+  {
     "id": "ruth-anns-family-restaurant",
     "name": "Ruth Ann's Restaurant",
     "street_address": "941 Veterans Parkway",
