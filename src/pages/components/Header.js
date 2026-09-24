@@ -19,7 +19,7 @@ const Header = forwardRef((props, ref) => {
   const orientation = useOrientation();
   const location = useLocation();
   const isHomePage = location.pathname === '/home';
-  const isNotHomePage = !isHomePage && location.pathname !== '/itinerary';
+  const isNotHomePage = !isHomePage && location.pathname !== '/itinerary' && !props.hideSearch;
   const keywordInputRef = useRef(null);
   const navigate = useResettingNavigate();
   const [selectedDate, setDate] = useState(null);
