@@ -36,6 +36,23 @@
     "menu_types": []
   },
   {
+    "id": "mellow-mushroom-columbus",
+    "name": "Mellow Mushroom Columbus",
+    "street_address": "6100 Veterans Parkway",
+    "city": "Columbus",
+    "state": "GA",
+    "zip": "",
+    "phone": "706-322-4602",
+    "web": "http://mellowmushroom.com/",
+    "description": "Serving hand-tossed, baked-on-stone pizzas and calzones, monumental hoagies, and scrumptious salads in a unique setting. Offering over 100 beers.",
+    "images": ["/images/MellowMushroom_front.png"],
+    "rating": null,
+    "lat": 32.5321893,
+    "long": -84.9547608,
+    "source_category": "Restaurant",
+    "menu_types": []
+  },
+  {
     "id": "ruth-anns-family-restaurant",
     "name": "Ruth Ann's Restaurant",
     "street_address": "941 Veterans Parkway",
