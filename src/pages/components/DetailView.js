@@ -150,7 +150,7 @@ const DetailView = () => {
 
   return (
     <div
-      className={`app-container ${
+      className={`app-container detail-view-page ${
         orientation === 'landscape-primary' ||
         orientation === 'landscape-secondary'
           ? 'landscape'
@@ -159,9 +159,9 @@ const DetailView = () => {
           : 'portrait'
       }`}
     >
-      <Header ref={headerRef} />
+      <Header ref={headerRef} hideSearch />
       <main
-        className="internal-content"
+        className="internal-content detail-view-content"
         style={{
           paddingTop: `calc(${headerHeight}px)`,
           paddingBottom: `calc(${footerHeight}px + 90px)`,
