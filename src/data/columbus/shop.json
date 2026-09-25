@@ -52,5 +52,22 @@
     "long": -84.99093,
     "source_category": "Retail",
     "shop_types": []
+  },
+  {
+    "id": "midland-commons",
+    "name": "Midland Commons",
+    "street_address": "6801 Flat Rock Rd",
+    "city": "Columbus",
+    "state": "GA",
+    "zip": "31909",
+    "phone": "",
+    "web": "https://www.midlandcommons.com/",
+    "description": "Midland Commons brings shopping, dining, services, residential loft living, and commercial development together on an 88-acre property at the eastern gateway to Columbus, Georgia.",
+    "images": ["/images/2025 Columbus Midland Commons.jpg"],
+    "rating": null,
+    "lat": 32.5427851,
+    "long": -84.8758874,
+    "source_category": "Retail",
+    "shop_types": []
   }
 ]
