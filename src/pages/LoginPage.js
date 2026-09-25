@@ -7,12 +7,14 @@ import { useOrientation } from '../hooks/OrientationContext';
 import { useAuth } from '../hooks/AuthContext';
 import '../sass/componentsass/LoginPage.scss';
 
+const DEMO_PASSWORD = 'V7#rQ2!mX9@kL4$p';
+
 const LoginPage = () => {
   const { headerRef, footerRef, headerHeight, footerHeight, updateHeights } = useHeightContext();
   const orientation = useOrientation();
   const [mode, setMode] = useState('login');
   const [email, setEmail] = useState('demo@insidersouth.com');
-  const [password, setPassword] = useState('demo1234');
+  const [password, setPassword] = useState(DEMO_PASSWORD);
   const [repeatPassword, setRepeatPassword] = useState('');
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(null);
@@ -52,7 +54,7 @@ const LoginPage = () => {
       }
 
       setMode('login');
-      setPassword('demo1234');
+      setPassword(DEMO_PASSWORD);
       setRepeatPassword('');
       setStatus('Registration successful! Please sign in.');
       return;
