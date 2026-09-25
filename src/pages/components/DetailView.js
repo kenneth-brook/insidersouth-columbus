@@ -15,6 +15,7 @@ import { ReactComponent as BackArrow } from '../../assets/icos/back-arrow.svg';
 import Header from './Header';
 import Footer from './Footer';
 import MapView from './MapView';
+import PublicationButton from './PublicationButton';
 import '../../sass/componentsass/DetailView.scss';
 import { useViewMode } from '../../hooks/ViewModeContext';
 import ShareModal from './ShareModal';
@@ -245,6 +246,7 @@ const DetailView = () => {
                 </div>
               )}
               <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
+              <PublicationButton item={item} />
             </div>
 
             {orientation === 'landscape-primary' ? (
