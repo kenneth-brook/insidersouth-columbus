@@ -70,6 +70,23 @@
     "menu_types": []
   },
   {
+    "id": "saltcellar",
+    "name": "Saltcellar",
+    "street_address": "1039 1st Avenue",
+    "city": "Columbus",
+    "state": "GA",
+    "zip": "31901",
+    "phone": "706-507-1308",
+    "web": "http://saltcellar.com/",
+    "description": "Located in historic downtown Columbus. Dive into fresh seafood, craft cocktails, and scratch desserts. Columbus’ premier destination for an elevated dining experience.",
+    "images": ["/images/Saltcellar.jpg"],
+    "rating": null,
+    "lat": 32.4660771,
+    "long": -84.9921014,
+    "source_category": "Restaurant",
+    "menu_types": []
+  },
+  {
     "id": "ruth-anns-family-restaurant",
     "name": "Ruth Ann's Restaurant",
     "street_address": "941 Veterans Parkway",
