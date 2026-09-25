@@ -52,5 +52,22 @@
     "long": -84.82728,
     "source_category": "Accommodations",
     "stay_types": []
+  },
+  {
+    "id": "laquinta-inn-and-suites",
+    "name": "LaQuinta Inn & Suites",
+    "street_address": "1711 Rollins Way",
+    "city": "Columbus",
+    "state": "GA",
+    "zip": "31904",
+    "phone": "706-225-1000",
+    "web": "http://wyndhamhotels.com/",
+    "description": "Located in the heart of North Columbus with shopping and restaurants within walking distance. Complimentary hot Breakfast daily & pet friendly.",
+    "images": ["/images/ezgif-5-2b5bc6e54e.jpg"],
+    "rating": null,
+    "lat": 32.5361836,
+    "long": -84.97140329999999,
+    "source_category": "Accommodations",
+    "stay_types": []
   }
 ]
