@@ -282,13 +282,9 @@
   margin-right: auto;
 }
 
-.app-container.detail-view-page.desktop.internal-desktop .view-card .contact-container,
-.app-container.detail-view-page.desktop.internal-desktop .view-card .bottom-button {
+.app-container.detail-view-page.desktop.internal-desktop .view-card .contact-container {
   width: min(760px, 100%);
   box-sizing: border-box;
-}
-
-.app-container.detail-view-page.desktop.internal-desktop .view-card .contact-container {
   display: grid;
   grid-template-columns: 120px minmax(0, 1fr);
   align-items: center;
@@ -321,9 +317,13 @@
 }
 
 .app-container.detail-view-page.desktop.internal-desktop .view-card .bottom-button {
+  width: fit-content;
+  max-width: 100%;
   justify-content: center;
   gap: 12px;
   margin-top: 30px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .app-container.detail-view-page.desktop.internal-desktop .view-card .bottom-button button {
