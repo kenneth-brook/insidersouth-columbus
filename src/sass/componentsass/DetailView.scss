@@ -265,8 +265,8 @@
   display: grid;
   grid-template-columns: repeat(3, 180px);
   justify-content: center;
-  width: 100%;
-  max-width: 100%;
+  width: 760px;
+  max-width: none;
   gap: 12px;
   margin-top: 30px;
   margin-left: 0 !important;
