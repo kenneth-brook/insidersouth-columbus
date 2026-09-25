@@ -1,16 +1,26 @@
-.publication-button {
+.feature-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.feature-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: auto !important;
   max-width: 100%;
-  align-self: center;
-  margin: 10px auto 0;
+  margin: 0;
   padding: 11px 28px;
   border: 0;
   border-radius: 50%;
   background: #d9c193;
   color: #fff;
+  font-family: inherit;
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -18,11 +28,93 @@
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
-.publication-button:hover,
-.publication-button:focus {
+.feature-button:hover,
+.feature-button:focus {
   background: #b8924a;
   color: #fff;
   outline: none;
+}
+
+.feature-video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.78);
+  box-sizing: border-box;
+}
+
+.feature-video-modal__content {
+  position: relative;
+  width: min(960px, 94vw);
+  background: #111;
+  border-radius: 12px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45);
+}
+
+.feature-video-modal__close {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #d9c193;
+  color: #2d2d2d;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.feature-video-modal__close:hover,
+.feature-video-modal__close:focus {
+  background: #b8924a;
+  color: #fff;
+  outline: none;
+}
+
+.feature-video-modal__frame {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.feature-video-modal__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 700px) {
+  .feature-actions {
+    gap: 8px;
+  }
+
+  .feature-button {
+    padding: 10px 20px;
+    font-size: 0.78rem;
+  }
+
+  .feature-video-modal {
+    padding: 16px;
+  }
+
+  .feature-video-modal__close {
+    top: -12px;
+    right: -8px;
+  }
 }
