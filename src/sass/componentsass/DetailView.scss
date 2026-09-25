@@ -262,19 +262,20 @@
 }
 
 .app-container.detail-view-page .view-card .bottom-button {
-  display: grid;
-  grid-template-columns: repeat(3, 180px);
+  display: flex;
   justify-content: center;
+  align-items: center;
   width: 760px;
-  max-width: none;
+  max-width: 100%;
   gap: 12px;
   margin-top: 30px;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
   box-sizing: border-box;
 }
 
 .app-container.detail-view-page .view-card .bottom-button button {
+  flex: 0 0 180px;
   width: 180px;
 }
 
