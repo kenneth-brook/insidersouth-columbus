@@ -69,5 +69,39 @@
     "long": -84.8758874,
     "source_category": "Retail",
     "shop_types": []
+  },
+  {
+    "id": "uptown-wine-and-spirits",
+    "name": "Uptown Wine & Spirits",
+    "street_address": "1208 Broadway",
+    "city": "Columbus",
+    "state": "GA",
+    "zip": "31901",
+    "phone": "706-221-5024",
+    "web": "https://uptownwinespirits.net/",
+    "description": "Find local and regional favorites at Uptown Wine & Spirits. Conveniently located on Broadway and walkable to restaurants and hotels, this bottle shop features beloved brands such as Richland Rum, Creature Comforts, and Orpheus Brewing.",
+    "images": ["/images/uptown wine and spirits Storefront.png"],
+    "rating": null,
+    "lat": 32.4689615,
+    "long": -84.992864,
+    "source_category": "Retail",
+    "shop_types": []
+  },
+  {
+    "id": "uptown-columbus",
+    "name": "Uptown Columbus",
+    "street_address": "25 West 10th Street",
+    "city": "Columbus",
+    "state": "GA",
+    "zip": "31901",
+    "phone": "706.596.0111",
+    "web": "http://www.alwaysuptown.com",
+    "description": "Uptown is the city’s vibrant arts and entertainment district, featuring locally owned restaurants, boutique shops, pubs, galleries, and public art.",
+    "images": ["/images/Screen Shot 2021-01-18 at 3.58.17 PM.jpg"],
+    "rating": null,
+    "lat": 32.4650148,
+    "long": -84.9938529,
+    "source_category": "Retail",
+    "shop_types": []
   }
 ]
