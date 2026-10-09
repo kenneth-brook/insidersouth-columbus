@@ -48,7 +48,7 @@ const resolveImageUrl = (image) => {
   }
 
   const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/images/columbus/${rawUrl}`;
-  return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
+  return cleanPath;
 };
 
 const sortItineraryData = (data) => {
