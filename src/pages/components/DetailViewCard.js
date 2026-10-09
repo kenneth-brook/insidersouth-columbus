@@ -76,7 +76,7 @@ const DetailViewCard = ({ item, category, handleShare }) => {
     }
 
     const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/images/columbus/${rawUrl}`;
-    return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
+    return cleanPath;
   };
 
   return (
