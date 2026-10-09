@@ -63,7 +63,7 @@ const Events = ({ pageTitle }) => {
     let rawUrl = image.replace(/^\{+|\}+$/g, '').trim().replace(/^"+|"+$/g, '').trim();
     if (rawUrl.startsWith('http://') || rawUrl.startsWith('https://')) return rawUrl;
     const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/images/columbus/${rawUrl}`;
-    return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
+    return cleanPath;
   };
 
   const pageTitleContent = (
