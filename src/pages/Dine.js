@@ -40,7 +40,7 @@ const Dine = ({ pageTitle }) => {
     if (!image) return '';
     if (image.startsWith('http://') || image.startsWith('https://')) return image;
     const cleanPath = image.startsWith('/') ? image : `/images/columbus/${image}`;
-    return `${process.env.PUBLIC_URL || ''}${cleanPath}`;
+    return cleanPath;
   };
 
   const renderStars = (rating) => {
