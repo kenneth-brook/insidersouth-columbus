@@ -47,7 +47,9 @@ const Shop = ({ pageTitle }) => {
     if (!image) return '';
     if (image.startsWith('http://') || image.startsWith('https://')) return image;
     const cleanPath = image.startsWith('/') ? image : `/images/columbus/${image}`;
-    return cleanPath;
+    const publicUrl = process.env.PUBLIC_URL || '';
+    if (publicUrl && cleanPath.startsWith(`${publicUrl}/`)) return cleanPath;
+    return `${publicUrl}${cleanPath}`;
   };
 
   const renderStars = (rating) => {
