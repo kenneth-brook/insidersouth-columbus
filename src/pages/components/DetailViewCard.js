@@ -76,7 +76,9 @@ const DetailViewCard = ({ item, category, handleShare }) => {
     }
 
     const cleanPath = rawUrl.startsWith('/') ? rawUrl : `/images/columbus/${rawUrl}`;
-    return cleanPath;
+    const publicUrl = process.env.PUBLIC_URL || '';
+    if (publicUrl && cleanPath.startsWith(`${publicUrl}/`)) return cleanPath;
+    return `${publicUrl}${cleanPath}`;
   };
 
   return (
